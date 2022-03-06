@@ -17,9 +17,9 @@ There are 3 versions of source codes available:
 [Nx](https://github.com/vugar005/youtube-webapp)   
 [Lerna]()   
 
-## Demo:
+## Demo: ▶
 http://youtube.vugar.app
-## Getting Started
+## Getting Started 🚀
 ### Prerequisites
 Since workspaces are available from npm v7, you should have <b>NodeJs 16+</b> installed.
 
