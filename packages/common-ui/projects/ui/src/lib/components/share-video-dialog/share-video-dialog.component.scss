@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  width: auto;
+}
+
+.share-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  &__title {
+    color: var(--yt-spec-text-primary);
+    margin: 0;
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+}
+
+.dialog-input {
+  display: flex;
+  border: 1px solid var(--yt-spec-10-percent-layer);
+  margin-top: var(--ytd-margin-6x);
+  margin-bottom: var(--ytd-margin-6x);
+  &__field {
+    flex: 1;
+    color: var(--yt-spec-text-primary);
+    border: 0;
+    font-size: 1.4rem;
+  }
+  &__suffix {
+    background: inherit;
+  }
+}
+
+@media (min-width: 768px) {
+  :host {
+    width: 500px;
+  }
+}

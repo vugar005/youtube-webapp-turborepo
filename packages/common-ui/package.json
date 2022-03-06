@@ -1,0 +1,25 @@
+{
+  "name": "@youtube/common-ui",
+  "version": "0.0.0",
+  "main": "./dist/@youtube/common-ui/esm2020/index.mjs",
+  "module": "./dist/@youtube/common-ui/esm2020/index.mjs",
+  "types": "./dist/@youtube/common-ui/index.d.ts",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "pack-lib": "ng build ui --configuration=development --watch ",
+    "pack-lib:prod": "ng build ui --configuration=production --watch ",
+    "build": "ng build ui",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "clean": "rimraf .angular && rimraf node_modules && rimraf dist"
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+  
+  }
+}

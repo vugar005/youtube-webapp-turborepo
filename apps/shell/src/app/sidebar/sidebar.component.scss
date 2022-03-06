@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  width: var(--yt-sidebar-width);
+}
+
+.sidebar {
+  width: 100%;
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    height: var(--ytd-watch-flexy-masthead-height);
+  }
+  &__nav {
+    padding: 12px 0;
+  }
+}
+
+.sidebar-endpoint {
+  display: flex;
+  align-items: center;
+  min-height: var(--yt-sidebar-nav-min-height);
+  padding: 0 24px;
+  color: var(--yt-spec-text-primary);
+  cursor: pointer;
+  outline: none;
+
+  &:hover,
+  &--active {
+    background: var(--yt-spec-10-percent-layer);
+  }
+
+  &__icon {
+    margin-right: 24px;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}
+
+.header-nav-icon {
+  button {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    width: 40px;
+    height: 40px;
+    color: var(--yt-spec-text-primary);
+  }
+}
+
+.header-brand-icon {
+  yt-brand-icon {
+    width: 97px;
+    margin-left: 16px;
+  }
+}

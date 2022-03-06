@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.mini-sidebar {
+  width: 72px;
+}
+
+.mini-sidebar-endpoint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0 14px;
+  outline: 0;
+  width: 72px;
+  color: var(--yt-spec-text-primary);
+  cursor: pointer;
+  &:hover {
+    background: var(--yt-spec-10-percent-layer);
+  }
+
+  &__icon {
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}

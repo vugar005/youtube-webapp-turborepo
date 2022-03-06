@@ -1,0 +1,26 @@
+<div
+  class="thumbnail"
+  [ngClass]="{ 'thumbnail--vertical': direction === 'vertical', 'thumbnail--horizontal': direction === 'horizontal' }"
+>
+  <div class="thumbnail__image" [ytAspectRatio]="0.56">
+    <img [src]="snippet?.thumbnails?.high?.url" alt="Video image" loading="lazy" />
+
+    <div class="thumbnail__image__duration">
+      {{ snippet?.duration }}
+    </div>
+    <div class="image-backdrop"></div>
+  </div>
+
+  <div class="thumbnail-details">
+    <div class="thumbnail-details__icon"></div>
+    <div class="thumbnail-details-content">
+      <div class="thumbnail-details-content">
+        <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="snippet?.title"></h3>
+        <p class="thumbnail-details-content__footer mat-h4">
+          <span *ngIf="snippet?.views">{{ snippet?.views | number: '1.0-0' }} views •</span>
+          {{ snippet?.publishedAt | timeAgo }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

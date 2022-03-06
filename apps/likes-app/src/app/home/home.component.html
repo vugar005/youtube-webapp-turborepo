@@ -1,0 +1,60 @@
+<div class="home">
+  <ng-container *ngIf="!isLoading && videoIds?.length; else emptyTemplate">
+    <div class="home-sidebar">
+      <div class="home-sidebar__video">
+        <ng-container *ngIf="likedVideos?.[0] as primaryVideo else primaryLoadingTemplate">
+          <yt-video-thumbnail
+            (click)="onWatchVideo(primaryVideo.id?.videoId)"
+            [snippet]="primaryVideo.snippet"
+            [direction]="'horizontal'"
+          ></yt-video-thumbnail>
+        </ng-container>
+      </div>
+
+      <h1 class="home-sidebar__title mat-display-1">Liked videos</h1>
+    </div>
+    <div class="video-list">
+      <ng-container *ngIf="likedVideos?.length; else loadingTemplate">
+        <div
+          class="video-item"
+          *ngFor="let video of likedVideos; index as videoIndex"
+          (click)="onWatchVideo(video.id?.videoId)"
+        >
+          <div class="video-item__index">{{ videoIndex + 1 }}</div>
+
+          <div class="video-item__thumbnail">
+            <yt-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></yt-video-thumbnail>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #loadingTemplate>
+  <yt-video-thumbnail-loader
+    class="thumbnail-loader-template-item"
+    [direction]="'vertical'"
+    *ngFor="let item of videoIds"
+  ></yt-video-thumbnail-loader>
+</ng-template>
+
+<ng-template #primaryLoadingTemplate>
+  <yt-video-thumbnail-loader
+    class="thumbnail-primary-loader-template-item"
+    [direction]="'horizontal'"
+  ></yt-video-thumbnail-loader>
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <div class="emptyTemplate">
+    <div class="emptyTemplate__header">
+      <mat-icon class="emptyTemplate-icon">search</mat-icon>
+    </div>
+
+    <div class="emptyTemplate__text">
+      <h1 class="mat-h1">Seems like you have not liked videos yet</h1>
+      <a class="mat-h3" (click)="onBrowseVideos()"> Watch and like some videos </a>
+    </div>
+  </div>
+</ng-template>

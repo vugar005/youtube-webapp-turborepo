@@ -1,0 +1,21 @@
+{
+  "name": "watch-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "serve": "ng serve",
+    "serve:prod": "ng serve --configuration=production",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "deploy": "firebase deploy",
+    "clean": "rimraf .angular && rimraf node_modules && rimraf dist"
+  },
+  "private": true,
+  "dependencies": {
+    "@youtube/common-ui": "*"
+  }
+}

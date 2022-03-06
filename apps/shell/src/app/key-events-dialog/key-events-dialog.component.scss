@@ -1,0 +1,70 @@
+:host {
+    display: block;
+    width: 100%;
+    cursor: default;
+}
+
+.yt-dialog {
+    width: 100%;
+    color: var(--yt-spec-text-secondary);
+  .yt-dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--yt-spec-text-primary);
+
+     &__title {
+        margin-bottom: 0;
+    }
+
+    &__close {
+        cursor: pointer;
+    }
+
+  }
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+
+.yt-dialog-section {
+    flex: 1;
+    margin: 16px 16px 0 0;
+
+    h2 {
+        padding: 16px 8px;
+        margin: 0;
+    }
+
+    .shortcut {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px;
+        border-top: 1px solid var(--yt-spec-10-percent-layer);
+        width: 100%;
+
+        &__label {
+            margin: 0;
+        }
+        &__key {
+            margin: 0;
+            color: var(--yt-spec-text-primary);
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .yt-dialog {
+        &__content {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+    .yt-dialog-section {
+       flex: 1 0 200px;
+    }
+}

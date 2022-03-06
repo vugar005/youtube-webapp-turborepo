@@ -1,0 +1,73 @@
+<div class="header">
+  <div class="header__start">
+    <div class="header-nav-icon" (click)="onToggleMenu()">
+      <button color="" mat-mini-fab [attr.aria-label]="'Sidenav Menu'">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="header-brand-icon" routerLink="/">
+      <yt-brand-icon></yt-brand-icon>
+      <span class="header-brand-icon__country-code">{{ countryCode?.slice(0, 3) }}</span>
+    </div>
+  </div>
+  <div class="header__center">
+    <yt-search-box class="searchbox-desktop" [formControl]="searchControl"></yt-search-box>
+    <yt-search-box-mobile class="searchbox-mobile" [formControl]="searchControl"></yt-search-box-mobile>
+  </div>
+  <div class="header__end">
+    <div class="header-feature header-feature--community">
+      <button mat-mini-fab [matMenuTriggerFor]="appsMenu" [attr.aria-label]="'Apps Menu'">
+        <mat-icon [matTooltip]="'Community Apps'" [matTooltipPosition]="'below'">apps</mat-icon>
+      </button>
+
+      <mat-menu #appsMenu="matMenu" class="apps-header-menu">
+        <div class="apps-content">
+          <h3 class="apps-content__title mat-h3">Community Apps</h3>
+          <div class="apps-container">
+            <a
+              class="app-item"
+              href="https://github.com/trungk18/angular-spotify"
+              target="_blank"
+              [matTooltip]="'Spotify clone by Trung Vo and Chau'"
+            >
+              <div class="app-item__image">
+                <img src="assets/icons/spotify.svg" alt="Spotify icon" />
+              </div>
+              <div class="app-item__text mat-caption">
+                Spotify Clone by <br />
+                Trung Vo
+              </div>
+            </a>
+
+            <a
+              class="app-item"
+              href="https://github.com/trungk18/jira-clone-angular"
+              target="_blank"
+              [matTooltip]="'Jira clone by Trung Vo and Chau'"
+            >
+              <div class="app-item__image">
+                <img src="assets/icons/jira.svg" alt="Jira icon" />
+              </div>
+              <div class="app-item__text mat-caption">
+                Jira Clone by <br />
+                Trung Vo
+              </div>
+            </a>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+
+    <div class="header-feature" (click)="onChangeTheme()">
+      <button mat-mini-fab [attr.aria-label]="'Change Theme'">
+        <mat-icon [matTooltip]="'Change Theme'" [matTooltipPosition]="'below'">lightbulb</mat-icon>
+      </button>
+    </div>
+
+    <div class="header-feature" (click)="onToggleAccountMenu()">
+      <button mat-mini-fab [attr.aria-label]="'Account Menu'">
+        <mat-icon [matTooltip]="'Account'" [matTooltipPosition]="'below'">account_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

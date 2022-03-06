@@ -1,0 +1,19 @@
+<div class="share-dialog">
+  <div class="share-dialog-header">
+    <h2 class="share-dialog-header__title mat-h2">Share</h2>
+    <div class="share-dialog-header__close" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+  <div class="dialog-input">
+    <input matInput [formControl]="videoUrlControl" class="dialog-input__field" />
+
+    <button mat-button class="dialog-input__suffix" color="primary" (click)="onCopyUrl()">COPY</button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-checkbox color="primary" [formControl]="startTimeControl"
+    >Start at {{ currenVideoTime | secondsToTime }}</mat-checkbox
+  >
+</div>

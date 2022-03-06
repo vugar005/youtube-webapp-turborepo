@@ -1,0 +1,92 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@import '../styles/_palette';
+@import '../styles/_typography';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$youtube-theme-primary: mat.define-palette($youtube-primary, 50, 10, 70);
+$youtube-theme-accent: mat.define-palette($youtube-accent, 50, 10, 70);
+
+@function define-dark-theme($config) {
+  $theme: mat.define-dark-theme($config);
+  $color: map.get($theme, color);
+  $color: map.merge(
+    $color,
+    (
+      background: $dark-theme-background-palette,
+      foreground: $dark-theme-foreground-palette,
+    )
+  );
+  @return map.merge(
+    $theme,
+    (
+      color: $color,
+    )
+  );
+}
+
+@function define-light-theme($config) {
+  $theme: mat.define-light-theme($config);
+  $color: map.get($theme, color);
+  $color: map.merge(
+    $color,
+    (
+      background: $light-theme-background-palette,
+      foreground: $light-theme-foreground-palette,
+    )
+  );
+  @return map.merge(
+    $theme,
+    (
+      color: $color,
+    )
+  );
+}
+
+$youtube-dark-theme: define-dark-theme(
+  (
+    color: (
+      primary: $youtube-theme-primary,
+      accent: $youtube-theme-accent,
+    ),
+  )
+);
+
+$youtube-light-theme: define-light-theme(
+  (
+    color: (
+      primary: $youtube-theme-primary,
+      accent: $youtube-theme-accent,
+    ),
+  )
+);
+
+@mixin fields-theme($theme) {
+  $warn: map-get($theme, warn);
+
+  .mat-input-element {
+    background: var(--yt-spec-general-background-a);
+  }
+}
+
+@mixin custom-components-theme($theme) {
+  @include fields-theme($theme);
+}
+
+// default
+@include mat.all-component-themes($youtube-dark-theme);
+
+html[theme='dark-theme'] {
+  @include custom-components-theme($youtube-dark-theme);
+}
+
+html[theme='light-theme'] {
+  @include mat.all-component-colors($youtube-light-theme);
+  @include custom-components-theme($youtube-light-theme);
+}
+@include mat.core($youtube-typography);

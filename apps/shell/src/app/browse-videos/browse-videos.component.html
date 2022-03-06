@@ -1,0 +1,34 @@
+<div class="browse-videos">
+  <div class="browse-videos__sidenav">
+    <yt-mini-sidebar class="mini-sidebar-wrapper"></yt-mini-sidebar>
+  </div>
+  <div class="browse-videos-list">
+    <ng-container *ngIf="!isLoading; else loadingTemplate">
+      <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
+        <div class="video-player" *ngFor="let video of videoLinks" (click)="onSelectVideo(video.id.videoId)">
+          <yt-video-thumbnail [snippet]="video.snippet" [direction]="'horizontal'"></yt-video-thumbnail>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loader-template">
+    <ng-container *ngFor="let item of items">
+      <yt-video-thumbnail-loader class="loader-template__item" [direction]="'horizontal'"></yt-video-thumbnail-loader>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <div class="emptyTemplate">
+    <div class="emptyTemplate__header">
+      <mat-icon class="emptyTemplate-icon">search</mat-icon>
+    </div>
+
+    <div class="emptyTemplate__text">
+      <h1 class="mat-h1">No results found</h1>
+    </div>
+  </div>
+</ng-template>

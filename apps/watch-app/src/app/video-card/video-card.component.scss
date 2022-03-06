@@ -1,0 +1,83 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.video-card {
+  width: 100%;
+  &__player {
+    height: var(--ytd-watch-flexy-player-height);
+  }
+}
+
+.video-details {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 8px 0;
+  &__title {
+    display: block;
+    max-height: 5.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: var(--yt-spec-text-primary);
+    margin: 0;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--yt-spec-text-secondary);
+    padding: 1rem 0;
+    &__views {
+      margin: 0;
+    }
+  }
+}
+
+.video-details-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  &__item {
+    display: flex;
+    align-items: center;
+    color: var(--yt-spec-text-primary);
+    margin-right: 2.5rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+
+    &__icon {
+      font-size: 2rem;
+      height: 2rem;
+      margin-right: 0.5rem;
+    }
+    &__text {
+      margin: 0;
+    }
+
+    &.flash {
+      animation-iteration-count: 2;
+    }
+  }
+}
+
+.video-card-loader {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .video-details {
+    &__footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .video-details-actions {
+    &__item {
+      margin-top: 0;
+    }
+  }
+}

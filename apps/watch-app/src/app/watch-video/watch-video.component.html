@@ -1,0 +1,12 @@
+<div class="watch-video">
+  <div class="video-card-wrapper">
+    <watch-app-video-card
+      [videoId]="videoId"
+      [startSeconds]="startSeconds"
+      [videoResult]="videoInfo"
+    ></watch-app-video-card>
+  </div>
+  <div class="related-videos-wrapper">
+    <watch-app-related-videos *ngIf="videoInfo?.title as videoTitle" [query]="videoTitle"></watch-app-related-videos>
+  </div>
+</div>

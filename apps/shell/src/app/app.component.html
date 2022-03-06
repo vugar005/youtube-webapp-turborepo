@@ -1,0 +1,33 @@
+<mat-drawer-container [hasBackdrop]="true">
+  <mat-drawer #sideNavDrawer [mode]="'over'" [position]="'start'" [autoFocus]="false">
+    <yt-sidebar (toggleMenu)="sideNavDrawer.toggle()"> </yt-sidebar>
+  </mat-drawer>
+
+  <mat-drawer #accountDrawer [mode]="'over'" [position]="'end'" [autoFocus]="false">
+    <yt-account-sidebar (toggleMenu)="accountDrawer.toggle()"> </yt-account-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <yt-header
+      class="header-wrapper"
+      (toggleMenu)="sideNavDrawer.toggle()"
+      (toggleAccountMenu)="accountDrawer.toggle()"
+    >
+    </yt-header>
+
+    <router-outlet></router-outlet>
+
+    <yt-key-events-listener></yt-key-events-listener>
+
+    <ng-container *ngIf="isMiniPlayerMode$ | async">
+      <ng-container *ngIf="miniVideo$ | async as miniVideo">
+        <yt-mini-player
+          (closeVideo)="onCloseVideo()"
+          (expandVideo)="onExpandVideo($event)"
+          [videoId]="miniVideo.videoId!"
+          [startSeconds]="miniVideo.startSeconds"
+        ></yt-mini-player>
+      </ng-container>
+    </ng-container>
+  </mat-drawer-content>
+</mat-drawer-container>

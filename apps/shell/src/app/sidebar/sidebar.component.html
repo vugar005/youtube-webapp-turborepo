@@ -1,0 +1,28 @@
+<div class="sidebar">
+  <div class="sidebar__header">
+    <div class="header-nav-icon" (click)="onToggleMenu()">
+      <button mat-mini-fab aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="header-brand-icon">
+      <yt-brand-icon></yt-brand-icon>
+    </div>
+  </div>
+  <div class="sidebar__nav">
+    <a
+      class="sidebar-endpoint"
+      *ngFor="let endpoint of endpointLinks"
+      [routerLink]="endpoint.url"
+      [routerLinkActive]="'sidebar-endpoint--active'"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="onToggleMenu()"
+    >
+      <div class="sidebar-endpoint__icon">
+        <mat-icon>{{ endpoint?.icon }}</mat-icon>
+      </div>
+      <div class="sidebar-endpoint__text mat-h3">{{ endpoint?.text }}</div>
+    </a>
+    <mat-divider></mat-divider>
+  </div>
+</div>
