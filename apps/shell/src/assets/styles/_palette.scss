@@ -1,0 +1,173 @@
+@use 'sass:map';
+@import '@angular/material/theming';
+
+$youtube-primary: (
+  10: #c5e4ff,
+  20: #9fd2ff,
+  30: #78c0ff,
+  40: #5bb3ff,
+  50: #3ea5ff,
+  60: #389dff,
+  70: #3093ff,
+  80: #288aff,
+  90: #1b79ff,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ccdfff,
+  A700: #b3d0ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$youtube-accent: (
+  70: #91a4a0,
+  50: #b0bebb,
+  10: #eff2f1,
+  contrast: (
+    10: #000,
+    50: #fff,
+    70: #fff,
+  ),
+);
+
+$youtube-warning: (
+  dark: #ffa02f,
+  base: #ffcf97,
+  contrast: (
+    90: #fff,
+    50: #fff,
+  ),
+);
+
+$youtube-error: (
+  dark: #e00034,
+  light: #ef8099,
+  lightest: #f7bfcc,
+  contrast: (
+    dark: #fff,
+    light: #fff,
+    lightest: #fff,
+  ),
+);
+
+$grey-palette: (
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #e0e0e0,
+  400: #bdbdbd,
+  500: #9e9e9e,
+  600: #757575,
+  700: #616161,
+  800: var(--yt-spec-background-primary),
+  900: #212121,
+  A100: #ffffff,
+  A200: #eeeeee,
+  A400: #bdbdbd,
+  A700: #616161,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+$gray-palette: $grey-palette;
+
+$light-dividers: var(--yt-spec-10-percent-layer);
+
+$dark-theme-background-palette: (
+  status-bar: black,
+  app-bar: map.get($grey-palette, 900),
+  background: var(--yt-spec-general-background-a),
+  hover: rgba(#fff, 0.04),
+  card: var(--yt-spec-general-background-a),
+  dialog: var(--yt-spec-background-solid),
+  disabled-button: rgba(#fff, 0.12),
+  raised-button: map.get($grey-palette, 800),
+  focused-button: $light-focused,
+  selected-button: map.get($grey-palette, 900),
+  selected-disabled-button: map.get($grey-palette, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map.get($grey-palette, 700),
+  disabled-list-option: rgba(#fff, 0.12),
+  tooltip: map.get($grey-palette, 700),
+);
+
+$dark-theme-foreground-palette: (
+  base: #fff,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(#fff, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: #fff,
+  icons: #fff,
+  text: #fff,
+  slider-min: #fff,
+  slider-off: rgba(#fff, 0.3),
+  slider-off-active: rgba(#fff, 0.3),
+);
+
+$light-theme-background-palette: (
+  status-bar: map.get($grey-palette, 300),
+  app-bar: map.get($grey-palette, 100),
+  background: var(--yt-spec-general-background-a),
+  hover: rgba(black, 0.04),
+  card: var(--yt-spec-general-background-a),
+  dialog: var(--yt-spec-background-solid),
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map.get($grey-palette, 300),
+  selected-disabled-button: map.get($grey-palette, 400),
+  disabled-button-toggle: map.get($grey-palette, 200),
+  unselected-chip: map.get($grey-palette, 300),
+  disabled-list-option: map.get($grey-palette, 200),
+  tooltip: map.get($grey-palette, 700),
+);
+
+$light-theme-foreground-palette: (
+  base: #000,
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba(#000, 0.26),
+  disabled-text: $dark-disabled-text,
+  elevation: #000,
+  hint-text: $dark-disabled-text,
+  secondary-text: $dark-secondary-text,
+  icon: rgba(#000, 0.54),
+  icons: rgba(#000, 0.54),
+  text: rgba(#000, 0.87),
+  slider-min: rgba(#000, 0.87),
+  slider-off: rgba(#000, 0.26),
+  slider-off-active: rgba(#000, 0.38),
+);

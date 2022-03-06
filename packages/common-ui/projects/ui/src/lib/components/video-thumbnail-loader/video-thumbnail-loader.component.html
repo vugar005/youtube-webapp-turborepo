@@ -1,0 +1,21 @@
+<a
+  class="content-loader"
+  [ngClass]="{
+    'content-loader--vertical': direction === 'vertical',
+    'content-loader--horizontal': direction === 'horizontal'
+  }"
+>
+  <div class="content-loader__image" [ytAspectRatio]="0.56">
+    <div></div>
+  </div>
+
+  <div class="content-loader-details">
+    <div class="content-loader-details__icon"></div>
+    <div class="content-loader-details-content">
+      <div class="content-loader-details-content">
+        <h3 class="content-loader-details-content__title"></h3>
+        <p class="content-loader-details-content__footer"></p>
+      </div>
+    </div>
+  </div>
+</a>

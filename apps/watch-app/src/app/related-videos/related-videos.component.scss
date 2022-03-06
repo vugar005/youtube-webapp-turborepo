@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.video-item {
+  display: flex;
+  &__thumbnail {
+    width: var(--yt-related-thumbnail-width);
+    margin-bottom: 8px;
+  }
+}
+
+.thumbnail-loader-template {
+  width: var(--yt-related-thumbnail-width);
+  margin-bottom: 8px;
+}

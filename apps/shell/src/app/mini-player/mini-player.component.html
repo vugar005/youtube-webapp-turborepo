@@ -1,0 +1,46 @@
+<div class="miniplayer">
+  <div class="miniplayer-header">
+    <div class="header-actions">
+      <mat-icon
+        class="header-actions__item header-actions__item--expand"
+        [matTooltip]="'Expand'"
+        [matTooltipPosition]="'above'"
+        (click)="onExpandVideo()"
+        >featured_video</mat-icon
+      >
+      <mat-icon
+        class="header-actions__item"
+        [matTooltip]="'Close'"
+        [matTooltipPosition]="'above'"
+        (click)="onCloseVideo()"
+        >close</mat-icon
+      >
+    </div>
+  </div>
+
+  <div class="miniplayer__video">
+    <yt-video-player
+      [videoId]="videoId"
+      [startSeconds]="startSeconds"
+      [playerVars]="playerVars"
+      (videoLoaded)="onVideoLoaded($event)"
+      (stateChange)="onPlayerStateChange($event)"
+    ></yt-video-player>
+
+    <div class="player-backdrop"></div>
+    <div class="player-controls" *ngIf="isPlayerControlsVisible">
+      <div class="player-controls__item" [matTooltip]="'Pause Video'" *ngIf="playerState === 1">
+        <mat-icon (click)="onPlayToggle()">pause</mat-icon>
+      </div>
+
+      <div class="player-controls__item" [matTooltip]="'Resume Video'" *ngIf="playerState === 2">
+        <mat-icon (click)="onPlayToggle()">play_arrow</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="miniplayer-footer">
+    <div class="miniplayer-footer__title mat-h3 text-ellipsis">
+      {{ videoTitle }}
+    </div>
+  </div>
+</div>

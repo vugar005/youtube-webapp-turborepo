@@ -1,0 +1,9 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {}
+    }
+  ]
+}

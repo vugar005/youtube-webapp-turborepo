@@ -1,0 +1,34 @@
+<div class="searchbox" [ngClass]="{ 'cdk-visually-hidden': !isMobileSearchActive }">
+  <div class="searchbox-icon searchbox-icon--close" (click)="onClose()">
+    <mat-icon>arrow_back</mat-icon>
+  </div>
+
+  <div class="searchbox-field">
+    <input
+      type="text"
+      (focus)="onFocusInput()"
+      [placeholder]="placeholder"
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+      #searchInput
+    />
+
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected()">
+      <mat-option class="searchbox-field__option" *ngFor="let option of searchOptions" [value]="option.snippet.title">
+        {{ option.snippet?.title }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+
+  <div class="searchbox-icon searchbox-icon--reset" *ngIf="searchControl?.value" (click)="onReset()">
+    <mat-icon>close</mat-icon>
+  </div>
+
+  <div class="searchbox-icon searchbox-icon--submit" (click)="onSubmit()">
+    <mat-icon>search</mat-icon>
+  </div>
+</div>
+
+<div class="searchbox-icon searchbox-icon--activate" (click)="onSearchboxActivate()">
+  <mat-icon>search</mat-icon>
+</div>

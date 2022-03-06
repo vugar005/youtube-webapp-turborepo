@@ -1,0 +1,71 @@
+<div class="home">
+  <div class="home-primary">
+    <h1 class="home-primary__title mat-h1" *ngIf="watchedVideos?.length">Watch History</h1>
+
+    <ng-container *ngIf="!isLoading; else loadingTemplate">
+      <ng-container *ngIf="watchedVideos?.length; else noItemsTemplate">
+        <div
+          class="video-item"
+          *ngFor="let video of watchedVideos; index as videoIndex"
+          (click)="onWatchVideo(video.id?.videoId)"
+        >
+          <div class="video-item__thumbnail">
+            <yt-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></yt-video-thumbnail>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div class="home-secondary">
+    <div class="home-secondary_actions">
+      <div class="secondary-action" (click)="onClearWatchHistory()">
+        <mat-icon class="secondary-action__icon">delete</mat-icon>
+        <div class="secondary-action__text mat-h3">Clear All Watch History</div>
+      </div>
+
+      <ng-container [ngSwitch]="isWatchHistoryEnabled">
+        <div class="secondary-action" *ngSwitchCase="true" (click)="onToggleWatchHistoryEnable()">
+          <mat-icon class="secondary-action__icon">pause</mat-icon>
+          <div class="secondary-action__text mat-h3">Pause Watch History</div>
+        </div>
+
+        <div class="secondary-action" *ngSwitchCase="false" (click)="onToggleWatchHistoryEnable()">
+          <mat-icon class="secondary-action__icon">replay</mat-icon>
+          <div class="secondary-action__text mat-h3">Resume Watch History</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <yt-video-thumbnail-loader
+    class="thumbnail-loader-template-item"
+    [direction]="'vertical'"
+    *ngFor="let item of watchedVideoIds"
+  ></yt-video-thumbnail-loader>
+</ng-template>
+
+<ng-template #noItemsTemplate>
+  <div class="emptyTemplate" *ngIf="isWatchHistoryEnabled">
+    <div class="emptyTemplate__header">
+      <mat-icon class="emptyTemplate-icon">delete_outline</mat-icon>
+    </div>
+    <div class="emptyTemplate__text">
+      <h1 class="mat-h1">Empty Watch History</h1>
+      <a class="mat-h3" (click)="onBrowseVideos()"> Watch some videos </a>
+    </div>
+  </div>
+
+  <div class="emptyTemplate" *ngIf="!isWatchHistoryEnabled">
+    <div class="emptyTemplate__header">
+      <mat-icon class="emptyTemplate-icon">pause</mat-icon>
+    </div>
+
+    <div class="emptyTemplate__text">
+      <h1 class="mat-h1">Watch History is Paused</h1>
+      <h3 class="mat-h3" (click)="onToggleWatchHistoryEnable()">Enable Watch History</h3>
+    </div>
+  </div>
+</ng-template>

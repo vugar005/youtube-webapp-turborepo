@@ -1,0 +1,7 @@
+<div *ngIf="isElementLoaded">
+  <watch-app-element
+    likedVideoList="{{ likedVideosList$ | async }}"
+    dislikedVideosList="{{ dislikedVideosList$ | async }}"
+  >
+  </watch-app-element>
+</div>

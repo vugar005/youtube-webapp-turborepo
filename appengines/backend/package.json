@@ -1,0 +1,16 @@
+{
+  "name": "nestjs-backend",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "8.3.0",
+    "@nestjs/core": "8.3.0",
+    "@nestjs/platform-express": "8.3.0",
+    "reflect-metadata": "0.1.13",
+    "rxjs": "7.4.0",
+    "youtube-search-without-api-key": "1.0.7"
+  }
+}

@@ -1,0 +1,24 @@
+<div class="yt-dialog">
+  <div class="yt-dialog-header">
+    <h1 class="yt-dialog-header__title mat-display-1">Keyboard Shortcuts</h1>
+    <div class="yt-dialog-header__close" mat-dialog-close><mat-icon>close</mat-icon></div>
+  </div>
+
+  <div class="yt-dialog__content">
+    <div class="yt-dialog-section">
+      <h2 class="mat-subheading-2">GENERAL</h2>
+      <div class="shortcut" *ngFor="let keyEvent of keyEventOptinos?.GENERAL">
+        <div class="shortcut__label mat-subheading-1">{{ keyEvent.label }}</div>
+        <div class="shortcut__key mat-subheading-1">{{ keyEvent.key }}</div>
+      </div>
+    </div>
+
+    <div class="yt-dialog-section">
+      <h2 class="mat-subheading-2">PLAYBACK</h2>
+      <div class="shortcut" *ngFor="let keyEvent of keyEventOptinos?.PLAYBACK">
+        <div class="shortcut__label mat-subheading-1">{{ keyEvent.label }}</div>
+        <div class="shortcut__key mat-subheading-1">{{ keyEvent.key }}</div>
+      </div>
+    </div>
+  </div>
+</div>

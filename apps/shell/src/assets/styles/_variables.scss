@@ -1,0 +1,103 @@
+:root {
+  --ytd-watch-flexy-masthead-height: 56px;
+  --ytd-watch-flexy-masthead-z-index: 1;
+  --yt-spec-background-primary: rgba(33, 33, 33, 0.98);
+  --yt-sidebar-width: 240px;
+  --yt-sidebar-nav-min-height: 40px;
+  --yt-spec-10-percent-layer: rgba(255, 255, 255, 0.1);
+  --yt-spec-text-primary: #fff;
+  --yt-drawer-backdrop-background: rgba(0, 0, 0, 0.5);
+  --yt-spec-background-solid: #212121;
+  --yt-searchbox-background: hsl(0, 0%, 7%);
+  --yt-searchbox-legacy-button-color: hsla(0, 0%, 100%, 0.08);
+  --yt-searchbox-legacy-border-color: hsl(0, 0%, 18.82%);
+  --yt-searchbox-text-color: hsla(0, 100%, 100%, 0.88);
+  --yt-searchbox-legacy-button-hover-color: hsla(0, 0%, 100%, 0.08);
+  --ytd-rich-grid-items-per-row: 1;
+  --ytd-rich-grid-item-margin: 16px;
+  --yt-endpoint-color: var(--yt-spec-text-secondary);
+  --yt-spec-text-secondary: #aaa;
+  --yt-spec-badge-chip-background: rgba(255, 255, 255, 0.1);
+  --yt-spec-general-background-a: #181818;
+  --yt-spec-general-background-b: #0f0f0f;
+  --yt-spec-brand-background-primary: rgba(33, 33, 33, 0.98);
+  --ytd-watch-flexy-player-width: calc(100vw - 2 * var(--ytd-margin-6x));
+  --ytd-watch-flexy-player-height: calc(
+    var(--ytd-watch-flexy-player-width) * var(--ytd-watch-flexy-height-ratio) / var(--ytd-watch-flexy-width-ratio)
+  );
+  --ytd-watch-flexy-space-below-player: 156px;
+  --ytd-watch-flexy-width-ratio: 16;
+  --ytd-watch-flexy-height-ratio: 9;
+  --ytd-margin-6x: 24px;
+  --yt-related-thumbnail-width: 300px;
+  --yt-header-feature-icon-width: 4rem;
+  --yt-header-feature-icon-height: 4rem;
+  --yt-header-feature-icon-padding: 0.8rem;
+  --yt-spec-tooltip-background: hsla(0, 0%, 53.3%, 0.4);
+  --ytd-miniplayer-width: 300px;
+  --ytd-miniplayer-height: 160px;
+  --ytd-miniplayer-z-index: 100;
+}
+
+html[theme='light-theme'] {
+  --yt-spec-background-primary: #fbfbf8;
+  --yt-spec-10-percent-layer: rgba(0, 0, 0, 0.1);
+  --yt-spec-badge-chip-background: rgba(0, 0, 0, 0.1);
+  --yt-spec-text-primary: #2c2c54;
+  --yt-spec-text-secondary: #606060;
+  --yt-spec-background-solid: #fbfbf8;
+  --yt-spec-general-background-a: #f5f5f5;
+  --yt-spec-general-background-b: #f1f1f1;
+  --yt-searchbox-text-color: hsl(0, 0%, 6.7%);
+  --yt-searchbox-background: hsl(0, 0%, 100%);
+  --yt-spec-brand-background-primary: rgba(255, 255, 255, 0.98);
+  --yt-searchbox-legacy-button-color: #f5f5f5;
+  --yt-searchbox-legacy-button-border-color: #ccc;
+}
+
+@media (min-width: 576px) {
+  :root {
+    --ytd-watch-flexy-player-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --ytd-watch-flexy-player-width: 720px;
+    --ytd-rich-grid-items-per-row: 2;
+    --ytd-miniplayer-width: 400px;
+    --ytd-miniplayer-height: 225px;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --ytd-watch-flexy-player-width: 640px;
+    --ytd-rich-grid-items-per-row: 3;
+  }
+}
+
+@media (min-width: 1199px) {
+  :root {
+    --ytd-rich-grid-items-per-row: 4;
+    --ytd-watch-flexy-player-width: 720px;
+  }
+}
+
+@media (min-width: 1350px) {
+  :root {
+    --ytd-watch-flexy-player-width: 960px;
+  }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    --ytd-watch-flexy-player-width: 1280px;
+  }
+}
+
+@media (min-width: 2550px) {
+  :root {
+    --ytd-watch-flexy-player-width: 1440px;
+  }
+}

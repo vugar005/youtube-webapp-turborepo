@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+@import './_palette';
+
+$youtube-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+  $display-4: mat.define-typography-level(7.2rem, 7.2rem, 300, 300),
+  $display-3: mat.define-typography-level(5.6rem, 5.6rem, 400),
+  $display-2: mat.define-typography-level(4.5rem, 4.8rem, 400),
+  $display-1: mat.define-typography-level(2.4rem, 3.2rem, 400),
+  // mat-h1
+  $headline: mat.define-typography-level(1.8rem, 2.6rem, 400),
+  // mat-h2
+  $title: mat.define-typography-level(1.6rem, 2.2rem, 500, 400, -0.5px),
+  // mat-h3
+  $subheading-2: mat.define-typography-level(1.4rem, 2rem, 500),
+  // mat-h4
+  $subheading-1: mat.define-typography-level(1.2rem, 1.8rem, 400, $letter-spacing: 0.15px),
+  $body-2: mat.define-typography-level(1.1rem, 2.4rem, 500),
+  $body-1: mat.define-typography-level(1.1rem, 2rem, 400),
+  $caption: mat.define-typography-level(1rem, 1.4rem, 400, $letter-spacing: 0.15px),
+  $button: mat.define-typography-level(1.4rem, 1.6rem, 500),
+  $input: mat.define-typography-level(1.4rem, 1.12, $letter-spacing: 0.15px),
+);
