@@ -20,6 +20,7 @@ There are 3 versions of source codes available:
 
 ## Features:   
 ☑ Multiple Angular applications on different domains   
+☑ Shared UI components and utils  
 ☑ NgRx Store state management on each application   
 ☑ Communication between angular applications   
 ☑ Routing between applications     
