@@ -35,7 +35,14 @@ npm ci
 ```bash
 npm run serve
 ```
-Other commands: please see ```package.json``` for other commands.   
+Other commands: please see ```package.json``` for other commands. 
+
+## Features:   
+☑ Multiple Angular applications on different domains   
+☑ NgRx Store state management on each application   
+☑ Communication between angular applications   
+☑ Routing between applications     
+☑ Server Side Rendering   
 
 ## Tech Stack:   
 <div style="display:flex;">
