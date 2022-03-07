@@ -15,7 +15,15 @@ There is 1 host (shell) and 3 remote apps (watch-app, likes-app, history-app).
 There are 3 versions of source codes available:   
 [Turborepo (Current Repo)](https://github.com/vugar005/youtube-webapp-turborepo)   
 [Nx](https://github.com/vugar005/youtube-webapp)   
-[Lerna]()   
+[Lerna]()  
+
+
+## Features:   
+☑ Multiple Angular applications on different domains   
+☑ NgRx Store state management on each application   
+☑ Communication between angular applications   
+☑ Routing between applications     
+☑ Server Side Rendering   
 
 ## Demo: ▶
 http://youtube.vugar.app
@@ -37,12 +45,6 @@ npm run serve
 ```
 Other commands: please see ```package.json``` for other commands. 
 
-## Features:   
-☑ Multiple Angular applications on different domains   
-☑ NgRx Store state management on each application   
-☑ Communication between angular applications   
-☑ Routing between applications     
-☑ Server Side Rendering   
 
 ## Tech Stack:   
 <div style="display:flex;">
