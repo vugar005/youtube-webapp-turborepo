@@ -20,7 +20,7 @@ There are 3 versions of source codes available:
 ---
 **NOTE**:
 
-*Server side rendering is implemented only on lerna and Turborepo edition*
+*Server side rendering is implemented only on Lerna and Turborepo edition*
 
 ---
 
