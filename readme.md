@@ -17,6 +17,12 @@ There are 3 versions of source codes available:
 [Nx](https://github.com/vugar005/youtube-webapp)   
 [Lerna](https://github.com/vugar005/youtube-webapp-lerna)  
 
+---
+**NOTE**:
+
+*Server side rendering is implemented only on lerna edition*
+
+---
 
 ## Features:   
 ☑ Multiple Angular applications on different domains   
