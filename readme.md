@@ -14,7 +14,7 @@ There is 1 host (shell) and 3 remote apps (watch-app, likes-app, history-app).
 
 There are 3 versions of source codes available:   
 [Turborepo (Current Repo)](https://github.com/vugar005/youtube-webapp-turborepo)   
-[Nx](https://github.com/vugar005/youtube-webapp)   
+[Nx](https://github.com/vugar005/youtube-webapp-nx)   
 [Lerna](https://github.com/vugar005/youtube-webapp-lerna)  
 
 ---
