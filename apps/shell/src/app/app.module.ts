@@ -19,7 +19,6 @@ import {
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
   YoutubeServiceV2,
-  YOUTUBE_API_KEY,
   YOUTUBE_SERVICE,
   BrandIconModule,
   NotFoundPageModule,
@@ -95,10 +94,6 @@ import { KeyEventsListenerComponent } from './key-events-listener/key-events-lis
       : [],
   ],
   providers: [
-    {
-      provide: YOUTUBE_API_KEY,
-      useValue: environment.youtubeApiKey,
-    },
     {
       provide: YOUTUBE_SERVICE,
       useClass: YoutubeServiceV2,
