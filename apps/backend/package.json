@@ -38,5 +38,8 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "@youtube/common-ui": "*"
   }
 }
