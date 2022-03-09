@@ -13,6 +13,7 @@ import { KeyEventsDialogComponent } from '../key-events-dialog/key-events-dialog
 export class AccountSidebarComponent {
   public readonly version = VERSION.full;
   public readonly appTheme = AppTheme;
+  public readonly currentDate = new Date();
 
   constructor(private themeService: ThemeService, private dialog: MatDialog) {}
 

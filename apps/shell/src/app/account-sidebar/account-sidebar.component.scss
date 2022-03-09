@@ -8,6 +8,9 @@
 }
 
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   color: var(--yt-spec-text-primary);
 }
 
