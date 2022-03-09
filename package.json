@@ -15,7 +15,7 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "clean": "turbo run clean && rimraf node_modules --continue",
-    "deploy:fe": "npm run build && npm run deploy"
+    "deploy:fe": "turbo run build --concurrency=1 --stream --ignore=*backend* && turbo run deploy --ignore=*backend* --concurrency=1 --stream"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.2.2",

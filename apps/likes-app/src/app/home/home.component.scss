@@ -1,4 +1,4 @@
-@import '@youtube/common-ui/dist/src/lib/styles/_theme';
+
 
 :host {
   display: block;
@@ -91,7 +91,7 @@
     width: 14rem;
     height: 14rem;
     font-size: 14rem;
-    color: map-get($youtube-primary, 50);
+    color: var(--yt-primary-50);
   }
   &__text {
     text-align: center;
@@ -101,7 +101,7 @@
     }
     a,
     h3 {
-      color: map-get($youtube-primary, 50);
+      color: var(--yt-primary-50);
       cursor: pointer;
     }
     a {
