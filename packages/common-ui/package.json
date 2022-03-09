@@ -1,9 +1,9 @@
 {
   "name": "@youtube/common-ui",
   "version": "0.0.0",
-  "main": "./dist/@youtube/common-ui/esm2020/index.mjs",
-  "module": "./dist/@youtube/common-ui/esm2020/index.mjs",
-  "types": "./dist/@youtube/common-ui/index.d.ts",
+  "main": "./dist/esm2020/index.mjs",
+  "module": "./dist/esm2020/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,12 +14,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "clean": "rimraf .angular && rimraf node_modules && rimraf dist"
+    "clean": "rimraf .angular && rimraf dist"
   },
-  "private": true,
-  "dependencies": {
-  },
-  "devDependencies": {
-  
-  }
+  "private": true
 }

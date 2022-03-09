@@ -11,5 +11,19 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "exports": {
+    "./styles/_palette": {
+      "sass": "./lib/styles/_palette.scss"
+    },
+    "./styles/_typography": {
+      "sass": "./lib/styles/_typography.scss"
+    },
+    "./styles/_variables": {
+      "sass": "./lib/styles/_variables.scss"
+    },
+    "./styles/_theme": {
+      "sass": "./lib/styles/_theme.scss"
+    }
   }
 }

@@ -1,3 +1,5 @@
+@import '@youtube/common-ui/dist/src/lib/styles/_theme';
+
 :host {
   display: block;
   background: var(--yt-spec-general-background-a);
@@ -17,7 +19,6 @@
   margin: 8px 8px 40px 8px;
   width: calc(100% / var(--ytd-rich-grid-items-per-row) - var(--ytd-rich-grid-item-margin) - 0.01px);
   margin-bottom: 1.5rem;
-  // padding: 16px;
 }
 
 .loader-template {
@@ -28,7 +29,6 @@
     margin: 8px 8px 40px 8px;
     width: calc(100% / var(--ytd-rich-grid-items-per-row) - var(--ytd-rich-grid-item-margin) - 0.01px);
     margin-bottom: 1.5rem;
-    //  height: 237px;
   }
 }
 
@@ -48,7 +48,7 @@
     width: 10rem;
     height: 10rem;
     font-size: 10rem;
-    color: #3ea5ff;
+    color: map-get($youtube-primary, 50);
   }
   &__text {
     text-align: center;

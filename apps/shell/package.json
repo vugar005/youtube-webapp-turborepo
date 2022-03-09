@@ -15,7 +15,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "deploy": "firebase deploy",
-    "clean": "rimraf .angular && rimraf node_modules && rimraf dist"
+    "clean": "rimraf .angular && rimraf dist"
   },
   "private": true,
   "dependencies": {
