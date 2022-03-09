@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/themes/youtube-theme';
+
+@import '@youtube/common-ui/dist/src/lib/styles/_variables';
+@import '@youtube/common-ui/dist/src/lib/styles/_theme';
 @import './assets/styles/_scrollbar';
-@import './assets/styles/_variables';
+
 
 * {
   margin: 0;
@@ -42,13 +44,13 @@ a {
 
 .error-toast {
   .mat-simple-snackbar-action {
-    color: red;
+    color: map-get($youtube-error, dark)
   }
 }
 
 .success-toast {
   .mat-simple-snackbar-action {
-    color: #3ea5ff;
+    color: map-get($youtube-primary, 50);
   }
 }
 
@@ -62,7 +64,7 @@ a {
   height: 100vh;
   left: 0;
   top: 0;
-  background: #f5f5f5;
+  background: var(--yt-spec-general-background-a);
   &__icon {
     width: 300px;
     height: 61.3px;

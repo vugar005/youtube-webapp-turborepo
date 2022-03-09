@@ -3,6 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "ui": [
+        "dist/ui/ui",
+        "dist/ui"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -21,13 +27,7 @@
     "lib": [
       "es2020",
       "dom"
-    ],
-    "paths": {
-      "ui": [
-        "dist/ui/ui",
-        "dist/ui"
-      ]
-    }
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
