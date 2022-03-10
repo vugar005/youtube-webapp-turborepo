@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
 import { WindowEnum } from '../../constants';
-import { WebApiService } from '../../services';
+import { ScriptUtilsService, WebApiService } from '../../services';
 
 @Component({
   selector: 'yt-video-player',
@@ -39,7 +39,12 @@ export class VideoPlayerComponent implements OnInit, OnChanges, AfterViewInit, O
 
   private readonly onDestroy$ = new Subject<void>();
 
-  constructor(private element: ElementRef, private webApi: WebApiService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private element: ElementRef,
+    private webApi: WebApiService,
+    private scriptService: ScriptUtilsService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   public ngOnInit(): void {
     this.loadIframScript();
@@ -92,10 +97,7 @@ export class VideoPlayerComponent implements OnInit, OnChanges, AfterViewInit, O
   }
 
   private loadIframScript(): void {
-    const script = document.createElement('script');
-    script.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(script);
-    script.addEventListener('load', () => {
+    this.scriptService.loadScript({ src: `https://www.youtube.com/iframe_api` }).subscribe((data: any) => {
       this.isIframLoaded = true;
       this.cdr.detectChanges();
     });
