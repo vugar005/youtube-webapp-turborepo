@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.listenToEvents();
-    this.getCountryCode();
+    // this.getCountryCode();
   }
 
   public ngOnDestroy(): void {

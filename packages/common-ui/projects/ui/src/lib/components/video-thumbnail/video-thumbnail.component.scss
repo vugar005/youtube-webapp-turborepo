@@ -19,6 +19,18 @@ $opacity-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
     flex-direction: row;
     .thumbnail-details {
       margin-left: 12px;
+      margin-top: 5px;
+      padding-right: 16px;
+    }
+
+    .thumbnail__image {
+      flex: 0 0 168px;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+
+      }
     }
   }
 
@@ -66,18 +78,19 @@ $opacity-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
       font-size: 1.2rem;
     }
 
-    .image-backdrop {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: $opacity-transition;
-    }
-
   }
+}
+
+
+.image-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: $opacity-transition;
 }
 
 .thumbnail-details {

@@ -18,7 +18,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public videoWidth?: number;
   public items = new Array(18);
   public isLoading = false;
-  public isServer!: boolean; 
+  public isServer!: boolean;
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -34,7 +34,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.listenToEvents();
     this.isServer = isPlatformServer(this.platformId);
-    console.log(this.isServer)
+    console.log(this.isServer);
   }
 
   public ngOnDestroy(): void {

@@ -39,7 +39,6 @@
   flex-direction: column;
   padding: 24px;
   &__title {
-    margin: 0;
     padding-left: 16px;
   }
 }
@@ -54,8 +53,9 @@
   }
 
   &__thumbnail {
-    max-width: 600px;
+    position: relative;
     width: 100%;
+    height: 94px;
     margin-bottom: 8px;
     padding: 16px 0;
     padding-left: 16px;
@@ -64,11 +64,12 @@
 }
 
 .thumbnail-loader-template-item {
-  max-width: 600px;
   width: 100%;
+  position: relative;
+  margin-top: 16px;
   padding: 16px 0;
-  padding-left: 16px;
   margin-bottom: 8px;
+  height: 94px;
 }
 
 .secondary-action {
