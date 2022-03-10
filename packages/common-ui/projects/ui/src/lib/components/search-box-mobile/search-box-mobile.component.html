@@ -20,15 +20,15 @@
     </mat-autocomplete>
   </div>
 
-  <div class="searchbox-icon searchbox-icon--reset" *ngIf="searchControl?.value" (click)="onReset()">
+  <button class="searchbox-icon searchbox-icon--reset" *ngIf="searchControl?.value" (click)="onReset()">
     <mat-icon>close</mat-icon>
-  </div>
+  </button>
 
-  <div class="searchbox-icon searchbox-icon--submit" (click)="onSubmit()">
+  <button class="searchbox-icon searchbox-icon--submit" (click)="onSubmit()">
     <mat-icon>search</mat-icon>
-  </div>
+  </button>
 </div>
 
-<div class="searchbox-icon searchbox-icon--activate" (click)="onSearchboxActivate()">
+<button class="searchbox-icon searchbox-icon--activate" (click)="onSearchboxActivate()">
   <mat-icon>search</mat-icon>
-</div>
+</button>

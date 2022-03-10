@@ -1,3 +1,5 @@
+import { isPlatformServer } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IYoutubeService, IYoutubeSearchResult, YOUTUBE_SERVICE } from '@youtube/common-ui';
@@ -16,9 +18,12 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public videoWidth?: number;
   public items = new Array(18);
   public isLoading = false;
+  public isServer!: boolean;
+
   private readonly onDestroy$ = new Subject<void>();
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object, //eslint-disable-line
     private videoStore: VideoStoreService,
     private accountStore: AccountStoreService,
     @Inject(YOUTUBE_SERVICE) private youtubeService: IYoutubeService,
@@ -28,6 +33,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.listenToEvents();
+    this.isServer = isPlatformServer(this.platformId);
   }
 
   public ngOnDestroy(): void {

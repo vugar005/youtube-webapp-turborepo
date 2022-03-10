@@ -21,6 +21,8 @@
   min-width: 300px;
   margin-left: var(--ytd-margin-6x);
   margin-top: var(--ytd-margin-6x);
+  flex: 1;
+  width: calc(100% - 16px);
 }
 
 @media (min-width: 992px) {

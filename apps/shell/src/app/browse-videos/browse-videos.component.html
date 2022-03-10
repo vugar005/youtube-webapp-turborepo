@@ -3,7 +3,7 @@
     <yt-mini-sidebar class="mini-sidebar-wrapper"></yt-mini-sidebar>
   </div>
   <div class="browse-videos-list">
-    <ng-container *ngIf="!isLoading; else loadingTemplate">
+    <ng-container *ngIf="!isLoading && !isServer; else loadingTemplate">
       <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
         <div class="video-player" *ngFor="let video of videoLinks" (click)="onSelectVideo(video.id.videoId)">
           <yt-video-thumbnail [snippet]="video.snippet" [direction]="'horizontal'"></yt-video-thumbnail>
@@ -16,7 +16,9 @@
 <ng-template #loadingTemplate>
   <div class="loader-template">
     <ng-container *ngFor="let item of items">
-      <yt-video-thumbnail-loader class="loader-template__item" [direction]="'horizontal'"></yt-video-thumbnail-loader>
+      <div class="loader-template__item">
+        <yt-video-thumbnail-loader [direction]="'horizontal'"></yt-video-thumbnail-loader>
+      </div>
     </ng-container>
   </div>
 </ng-template>
