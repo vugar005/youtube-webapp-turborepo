@@ -4,3 +4,4 @@ export * from './events-dispatcher';
 export * from './web-api';
 export * from './toast';
 export * from './country-api';
+export * from './meta-tag';

@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
 
 import {
   CustomEventConfig,
@@ -20,6 +19,8 @@ import {
   WebApiService,
   ToastService,
   GlobalCustomEvent,
+  MetaTagService,
+  ICommonMetaTagConfig,
 } from '@youtube/common-ui';
 import { Subject, takeUntil } from 'rxjs';
 import { UIStoreService } from '../core/services/ui-store/ui-store.service';
@@ -45,7 +46,7 @@ export class VideoCardComponent implements OnInit, OnDestroy {
     private eventDispatcher: EventDispatcherService,
     private dialog: MatDialog,
     private webApiService: WebApiService,
-    private title: Title,
+    private metaTagService: MetaTagService,
     private toastService: ToastService,
     private cdr: ChangeDetectorRef
   ) {}
@@ -142,6 +143,10 @@ export class VideoCardComponent implements OnInit, OnDestroy {
 
   private setMetaTags(player: YT.Player): void {
     const videoData = (player as any).getVideoData();
-    this.title.setTitle(videoData?.title);
+    const config: ICommonMetaTagConfig = {
+      title: videoData?.title,
+      description: videoData?.title,
+    };
+    this.metaTagService.setTags(config);
   }
 }

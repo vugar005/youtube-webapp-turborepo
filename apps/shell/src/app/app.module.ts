@@ -78,7 +78,6 @@ import { KeyEventsListenerComponent } from './key-events-listener/key-events-lis
     ReactiveFormsModule,
     VideoThumbnailLoaderModule,
     SearchBoxMobileModule,
-    //   SeverOnlyDirectiveModule,
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
         // strictStateImmutability and strictActionImmutability are enabled by default
