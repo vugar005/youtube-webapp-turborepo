@@ -12,7 +12,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
+import { debounceTime, filter, fromEvent, Subject, takeUntil } from 'rxjs';
 import { WindowEnum } from '../../constants';
 import { ScriptUtilsService, WebApiService } from '../../services';
 
@@ -97,10 +97,13 @@ export class VideoPlayerComponent implements OnInit, OnChanges, AfterViewInit, O
   }
 
   private loadIframScript(): void {
-    this.scriptService.loadScript({ src: `https://www.youtube.com/iframe_api` }).subscribe((data: any) => {
-      this.isIframLoaded = true;
-      this.cdr.detectChanges();
-    });
+    this.scriptService
+      .loadScript({ src: `https://www.youtube.com/iframe_api` })
+      .pipe(filter((value: boolean | ErrorEvent) => value === true))
+      .subscribe(() => {
+        this.isIframLoaded = true;
+        this.cdr.detectChanges();
+      });
   }
 
   private listenToWindowResize(): void {
