@@ -10,7 +10,8 @@ import {
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountryApiService } from '@youtube/common-ui';
-import { Subject, take, takeUntil } from 'rxjs';
+import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { SettingsStore } from '../core/services/settings-store/settings-store.service';
 import { AppTheme } from '../core/services/theme-service/theme.constants';
 import { ThemeService } from '../core/services/theme-service/theme.service';
@@ -41,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.listenToEvents();
-    // this.getCountryCode();
+    this.getCountryCode();
   }
 
   public ngOnDestroy(): void {
@@ -82,9 +83,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private getCountryCode(): void {
-    this.countryApiService.getCountryCode().subscribe((data: string) => {
-      this.countryCode = data;
-      this.cdr.detectChanges();
-    });
+    // load only on production to save api traffic :)
+    if (!environment.production) {
+      return;
+    }
+    this.countryApiService
+      .getCountryCode()
+      .pipe(catchError(() => EMPTY))
+      .subscribe((data: string) => {
+        this.countryCode = data;
+        this.cdr.detectChanges();
+      });
   }
 }
