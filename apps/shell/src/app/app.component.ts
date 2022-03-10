@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import {
@@ -9,9 +9,10 @@ import {
   WebApiService,
   LocalStorageEnum,
 } from '@youtube/common-ui';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
 import { VideoStoreService } from './core/services/video-store/video-store.service';
+import { SHELL_META_TAGS } from 'src/app.constants';
 
 @Component({
   selector: 'yt-root',
@@ -83,7 +84,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private setMetaTags(): void {
-    this.title.setTitle(`Youtube Angular Clone`);
+    this.title.setTitle(SHELL_META_TAGS.title!);
+    this.router.events
+      .pipe(
+      filter((event: any) => event instanceof NavigationEnd), //eslint-disable-line
+        filter((event: NavigationEnd) => event.url === '/'),
+        takeUntil(this.onDestroy$)
+      )
+      .subscribe(() => {
+        this.title.setTitle(SHELL_META_TAGS.title!);
+      });
   }
 
   private tryRestoreMiniVideoSetings(): void {

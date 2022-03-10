@@ -58,13 +58,15 @@ export class MiniPlayerComponent {
 
   public onExpandVideo(): void {
     const player = this.videoPlayerRef?.player;
-    const videoId = (player as any).videoId;
+    const videoId = (player as any)?.videoId;
     const currentTime = player?.getCurrentTime() || 0;
-    this.expandVideo.next({ videoId, startSeconds: currentTime });
+    if (videoId) {
+      this.expandVideo.next({ videoId, startSeconds: currentTime });
+    }
   }
 
   public onVideoLoaded(player: YT.Player): void {
-    const videoData = (player as any).getVideoData();
+    const videoData = (player as any)?.getVideoData();
     this.videoTitle = videoData?.title;
   }
 }

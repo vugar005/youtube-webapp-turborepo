@@ -66,7 +66,9 @@ a {
   top: 0;
   background: #f5f5f5;
   &__icon {
-    width: 300px;
+    width: 50%;
+    min-width: 150px;
+    max-width: 300px;
     height: 61.3px;
     img {
       width: 100%;
@@ -93,6 +95,7 @@ a {
     opacity: 0;
   }
 }
+
 
 @media (min-width: 1900px) {
   html {

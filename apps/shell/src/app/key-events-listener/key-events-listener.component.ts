@@ -78,6 +78,7 @@ export class KeyEventsListenerComponent {
 
   private get playerRef(): YT.Player | null {
     const playerFrameId = (this.webApi.window as any)[WindowEnum.CURRENT_VIDEO_FRAME_ID];
+    console.log(playerFrameId)
     return (this.webApi.window.YT as any).get(playerFrameId) as YT.Player;
   }
 
