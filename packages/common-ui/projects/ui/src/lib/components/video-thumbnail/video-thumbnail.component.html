@@ -2,8 +2,8 @@
   class="thumbnail"
   [ngClass]="{ 'thumbnail--vertical': direction === 'vertical', 'thumbnail--horizontal': direction === 'horizontal' }"
 >
-  <div class="thumbnail__image" [ytAspectRatio]="0.56">
-    <img [src]="snippet?.thumbnails?.high?.url" alt="Video image" loading="lazy" />
+  <div class="thumbnail__image">
+    <img [src]="snippet?.thumbnails?.high?.url" alt="Video image" />
 
     <div class="thumbnail__image__duration">
       {{ snippet?.duration }}

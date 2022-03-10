@@ -40,11 +40,9 @@
 </div>
 
 <ng-template #loadingTemplate>
-  <yt-video-thumbnail-loader
-    class="thumbnail-loader-template-item"
-    [direction]="'vertical'"
-    *ngFor="let item of watchedVideoIds"
-  ></yt-video-thumbnail-loader>
+  <div class="thumbnail-loader-template-item" *ngFor="let item of watchedVideoIds">
+    <yt-video-thumbnail-loader [direction]="'vertical'"></yt-video-thumbnail-loader>
+  </div>
 </ng-template>
 
 <ng-template #noItemsTemplate>
