@@ -24,6 +24,8 @@ export class AspectRatioDirective implements AfterViewInit, OnDestroy {
 
   private setDimensions(): void {
     if (!this.ytAspectRatio) {
+      this.renderer.setStyle(this.element.nativeElement, 'height', `100%`);
+
       return;
     }
     const width = this.element.nativeElement.clientWidth;

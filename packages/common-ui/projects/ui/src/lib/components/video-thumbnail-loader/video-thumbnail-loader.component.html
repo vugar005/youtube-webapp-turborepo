@@ -1,21 +1,19 @@
 <a
-  class="content-loader"
+  class="thumbnail"
   [ngClass]="{
-    'content-loader--vertical': direction === 'vertical',
-    'content-loader--horizontal': direction === 'horizontal'
+    'thumbnail--vertical': direction === 'vertical',
+    'thumbnail--horizontal': direction === 'horizontal'
   }"
 >
-  <div class="content-loader__image" [ytAspectRatio]="0.56">
+  <div class="thumbnail__image" >
     <div></div>
   </div>
 
-  <div class="content-loader-details">
-    <div class="content-loader-details__icon"></div>
-    <div class="content-loader-details-content">
-      <div class="content-loader-details-content">
-        <h3 class="content-loader-details-content__title"></h3>
-        <p class="content-loader-details-content__footer"></p>
-      </div>
+  <div class="thumbnail-details">
+    <div class="thumbnail-details__icon"></div>
+    <div class="thumbnail-details-content">
+      <h3 class="thumbnail-details-content__title"></h3>
+      <p class="thumbnail-details-content__footer"></p>
     </div>
   </div>
 </a>

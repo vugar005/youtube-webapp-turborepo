@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "serve": "concurrently \"turbo run pack-lib\"  \"turbo run serve --no-cache   --continue\"",
+    "serve": "concurrently \"turbo run pack-lib\"  \"turbo run serve --no-cache --ignore=*backend*   --continue\"",
     "serve:prod": "concurrently \"turbo run pack-lib:prod\"  \"turbo run serve:prod --no-cache --continue\"",
     "build": "turbo run build",
     "lint": "turbo run lint",
