@@ -6,7 +6,7 @@ import { IScriptConfig } from '../../models';
   providedIn: 'root',
 })
 export class ScriptUtilsService {
-  public loadScript(config: IScriptConfig): Observable<boolean> {
+  public loadScript(config: IScriptConfig): Observable<boolean | ErrorEvent> {
     const { src } = config;
     const scriptLoaderSubject$ = new ReplaySubject<boolean>();
     const isScriptExist = document.querySelectorAll(`script[src="${src}"]`)?.length;
