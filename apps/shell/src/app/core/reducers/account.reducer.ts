@@ -12,10 +12,10 @@ export interface AccountState {
 }
 
 const initialState: AccountState = {
-  likedVideoList: ['P_S-2_lLsIo', 'E63UETMYMjc', 'P_S-2_lLsIo', 'E63UETMYMjc'],
+  likedVideoList: [],
   dislikedVideoList: [],
   isAuthenticated: false,
-  watchedVideos: ['P_S-2_lLsIo', 'E63UETMYMjc', 'P_S-2_lLsIo', 'E63UETMYMjc'],
+  watchedVideos: [],
   isWatchHistoryEnabled: true,
 };
 

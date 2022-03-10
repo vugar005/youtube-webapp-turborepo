@@ -23,7 +23,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   private readonly onDestroy$ = new Subject<void>();
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Object, //eslint-disable-line
     private videoStore: VideoStoreService,
     private accountStore: AccountStoreService,
     @Inject(YOUTUBE_SERVICE) private youtubeService: IYoutubeService,
@@ -34,7 +34,6 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.listenToEvents();
     this.isServer = isPlatformServer(this.platformId);
-    console.log(this.isServer);
   }
 
   public ngOnDestroy(): void {

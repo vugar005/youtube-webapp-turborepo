@@ -58,6 +58,9 @@
   color: var(--yt-searchbox-text-color);
   border-radius: 0 2px 2px 0;
   width: 32px;
+  background: transparent;
+  border: 0;
+  outline: 0;
   cursor: pointer;
 
   &--activate {

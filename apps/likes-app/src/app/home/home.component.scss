@@ -23,7 +23,7 @@
   &__video {
     width: 100%;
     position: relative;
-    padding-top: calc(var( --sidebar-width) * 0.56 + 70px);
+    padding-top: calc(var( --sidebar-width) / var(--yt-image-aspect-ratio) + var(--yt-thumbnail-details-height));
   }
 
   &__title {
