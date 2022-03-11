@@ -13,6 +13,7 @@ import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
 import { VideoStoreService } from './core/services/video-store/video-store.service';
 import { SHELL_META_TAGS } from 'src/app.constants';
+import { ThemeService } from './core/services/theme-service/theme.service';
 
 @Component({
   selector: 'yt-root',
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private eventDispatcher: EventDispatcherService,
     private webApiService: WebApiService,
+    private themeService: ThemeService,
     private title: Title
   ) {}
 
@@ -39,6 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.initGlobalEventListeners();
     this.setMetaTags();
     this.tryRestoreMiniVideoSetings();
+    this.tryRestoreTheme();
   }
 
   public ngOnDestroy(): void {
@@ -104,5 +107,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     this.videoStore.setIsMiniPlayerMode(true);
     this.videoStore.setMiniPlayerVideo(JSON.parse(settings));
+  }
+
+  private tryRestoreTheme(): void {
+    const localStorageRef = this.webApiService.localStorage;
+    const theme = localStorageRef.getItem(LocalStorageEnum.SAVED_THEME);
+    if (!theme) {
+      return;
+    }
+    this.themeService.setTheme(JSON.parse(theme));
   }
 }
