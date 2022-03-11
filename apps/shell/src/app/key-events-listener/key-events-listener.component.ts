@@ -21,58 +21,62 @@ export class KeyEventsListenerComponent {
   ) {}
 
   @HostListener('window:keydown.k', ['$event'])
-  public onKeyDownK(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownK(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
+
     this.togglePlayPause();
   }
 
   @HostListener('window:keydown.j', ['$event'])
-  public onKeyDownJ(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownJ(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
     this.seekVideoBy(-10);
   }
 
   @HostListener('window:keydown.l', ['$event'])
-  public onKeyDownL(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownL(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
     this.seekVideoBy(10);
   }
 
   @HostListener('window:keydown.m', ['$event'])
-  public onKeyDownM(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownM(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
     this.toggleMute();
   }
 
   @HostListener('window:keydown.f', ['$event'])
-  public onKeyDownF(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownF(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
+
     this.toggleFullScreen();
   }
 
   @HostListener('window:keydown.i', ['$event'])
-  public onKeyDownI(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownI(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
+
     this.toggleMiniPlayer();
   }
 
   @HostListener('window:keydown.ESCAPE', ['$event'])
-  public onKeyDownEscape(event: Event): void {
-    if (event.target !== document.body) {
+  public onKeyDownEscape(event: KeyboardEvent): void {
+    if (!this.isWhiteListedTarget(event)) {
       return;
     }
+
     this.closeMiniPlayer();
   }
 
@@ -172,5 +176,13 @@ export class KeyEventsListenerComponent {
   private closeMiniPlayer(): void {
     this.videoStore.setIsMiniPlayerMode(false);
     this.videoStore.setMiniPlayerVideo({ videoId: null, startSeconds: 0 });
+  }
+
+  private isWhiteListedTarget(event: KeyboardEvent): boolean {
+    const target = event.target as Element;
+    if (target.tagName === 'INPUT') {
+      return false;
+    }
+    return true;
   }
 }
