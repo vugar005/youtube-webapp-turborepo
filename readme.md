@@ -1,4 +1,4 @@
-# Youtube clone using Angular, Module Federation. Turborepo edition.
+# Youtube microfrontend using Angular, Module Federation. Turborepo edition.
 
 <img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo.webp" alt="Youtube Angular brand" width="100%"  height="400px">
 
