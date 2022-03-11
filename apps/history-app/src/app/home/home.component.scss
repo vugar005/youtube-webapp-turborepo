@@ -80,6 +80,8 @@
   color: var(--yt-spec-text-secondary);
   &__icon {
     margin-right: 8px;
+    width: 2.4rem;
+    overflow: hidden;
   }
 
   &__text {
@@ -97,6 +99,7 @@
     width: 10rem;
     height: 10rem;
     font-size: 10rem;
+    overflow: hidden;
     color: var(--yt-primary-50);
   }
   &__text {
