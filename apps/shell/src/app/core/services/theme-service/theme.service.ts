@@ -10,7 +10,7 @@ export class ThemeService {
   public setTheme(theme: AppTheme): void {
     const root = this.webApi.document.getElementsByTagName('html')[0];
     root.setAttribute('theme', theme);
-    this.webApi.localStorage.setItem(LocalStorageEnum.SAVED_THEME, JSON.stringify(theme));
     this.settingsStore.setTheme(theme);
+    this.webApi.localStorage.setItem(LocalStorageEnum.SAVED_THEME, JSON.stringify(theme));
   }
 }
