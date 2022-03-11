@@ -103,5 +103,8 @@ Currently, the unit tests were not aded since the project was focused on main fe
 ## Contribution guide 🌴
 Want to contribute to improve community app? Looking forward for pull requests. Let's get started :)
 
+## Supporting guide
+Found repo useful? :) Let's star it ⭐
+
 ## About me 🌴🏌️
 Xtreme Junior Front end developer focused on nice architecture and long term webapps.
