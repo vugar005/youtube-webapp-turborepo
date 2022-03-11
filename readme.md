@@ -34,6 +34,13 @@ There are 3 versions of source codes available:
 
 ## Demo: ▶
 http://youtube.vugar.app
+---
+**NOTE**:
+
+*Hosted application is using Turborepo edition*
+
+---
+
 ## Getting Started 🚀
 ### Prerequisites
 Since workspaces are available from npm v7, you should have <b>NodeJs 16+</b> installed.
@@ -52,6 +59,12 @@ npm run serve
 ```
 Other commands: please see ```package.json``` for other commands. 
 
+---
+**NOTE**:
+
+*In case of error that components are not exported from youtube/common-ui, on project root run command ```npm run clean``` and then ```npm install```*
+
+---
 
 ## Tech Stack:   
 <div style="display:flex;">
