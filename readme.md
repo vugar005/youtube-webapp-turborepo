@@ -50,7 +50,7 @@ npm install turbo@1.1.4 -g
 ```  
 2- On root project install dependencies:
 ```bash
-npm ci
+npm install
 ```  
 3- Start project and navigate to localhost:4200:  
 ```bash
