@@ -101,7 +101,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private tryRestoreMiniVideoSetings(): void {
     const localStorageRef = this.webApiService.localStorage;
-    const settings = localStorageRef.getItem(LocalStorageEnum.MINI_WIDEO_SETTINGS);
+    const settings = localStorageRef?.getItem(LocalStorageEnum.MINI_WIDEO_SETTINGS);
     if (!settings) {
       return;
     }
@@ -111,7 +111,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private tryRestoreTheme(): void {
     const localStorageRef = this.webApiService.localStorage;
-    const theme = localStorageRef.getItem(LocalStorageEnum.SAVED_THEME);
+    const theme = localStorageRef?.getItem(LocalStorageEnum.SAVED_THEME);
     if (!theme) {
       return;
     }

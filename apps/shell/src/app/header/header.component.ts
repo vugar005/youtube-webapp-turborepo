@@ -1,11 +1,14 @@
+import { isPlatformServer } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  Inject,
   OnDestroy,
   OnInit,
   Output,
+  PLATFORM_ID,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -32,6 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private readonly onDestroy$ = new Subject<void>();
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object, //eslint-disable-line
     private videoStore: VideoStoreService,
     private router: Router,
     private settingsStore: SettingsStore,
@@ -76,7 +80,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private listenToSearchInput(): void {
-    this.searchControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe((value) => {
+    this.searchControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe((value: string) => {
       this.videoStore.setSearchQuery(value);
       this.router.navigate(['']);
     });
@@ -84,7 +88,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private getCountryCode(): void {
     // load only on production to save api traffic :)
-    if (!environment.production) {
+    if (!environment.production || isPlatformServer(this.platformId)) {
       return;
     }
     this.countryApiService
