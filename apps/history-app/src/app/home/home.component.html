@@ -19,21 +19,21 @@
 
   <div class="home-secondary">
     <div class="home-secondary_actions">
-      <div class="secondary-action" (click)="onClearWatchHistory()">
+      <button type="button" class="secondary-action" (click)="onClearWatchHistory()">
         <mat-icon class="secondary-action__icon">delete</mat-icon>
         <div class="secondary-action__text mat-h3">Clear All Watch History</div>
-      </div>
+      </button>
 
       <ng-container [ngSwitch]="isWatchHistoryEnabled">
-        <div class="secondary-action" *ngSwitchCase="true" (click)="onToggleWatchHistoryEnable()">
+        <button type="button" class="secondary-action" *ngSwitchCase="true" (click)="onToggleWatchHistoryEnable()">
           <mat-icon class="secondary-action__icon">pause</mat-icon>
           <div class="secondary-action__text mat-h3">Pause Watch History</div>
-        </div>
+        </button>
 
-        <div class="secondary-action" *ngSwitchCase="false" (click)="onToggleWatchHistoryEnable()">
+        <button type="button" class="secondary-action" *ngSwitchCase="false" (click)="onToggleWatchHistoryEnable()">
           <mat-icon class="secondary-action__icon">replay</mat-icon>
           <div class="secondary-action__text mat-h3">Resume Watch History</div>
-        </div>
+        </button>
       </ng-container>
     </div>
   </div>
