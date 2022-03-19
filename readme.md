@@ -31,6 +31,9 @@
 ☑ Routing between applications     
 ☑ Server Side Rendering   
 
+## Mission:
+My mission is to make complex microfrontend app as much as possible to have many cases for developers.
+
 ## Demo: ▶
 http://youtube.vugar.app
 ---
@@ -99,7 +102,11 @@ Below are just my experiences working in those tools. They can be inaccurate.
 ✅ Dependency graph  
 
 ## What is next?
-Currently, the unit tests were not aded since the project was focused on main features such as module federation, managing state, intercommucation and so on. It can be started soon.
+Currently, the unit tests were not aded since the project was focused on main features such as module federation, managing state, intercommucation and so on. It can be started soon.   
+
+### Backlog 
+1) Add I18n translations
+2) Add Authorization with Auth0 to enable faster api fetcing and more features.   
 
 ## Contribution guide 🌴
 Want to contribute to improve community app? Looking forward for pull requests. Let's get started :)
