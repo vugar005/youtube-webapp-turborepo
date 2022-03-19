@@ -5,7 +5,7 @@
 ---
 **NOTE**:
 
-*This is project is for educaiton purpose only and was made to illustrate example of building microfrontend using Angular, Module Federation.*   
+*This is project is for education purpose only and was made to illustrate example of building microfrontend using Angular, Module Federation.*   
 
 ---
 
