@@ -15,7 +15,8 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "clean": "turbo run clean && rimraf node_modules --continue",
-    "deploy:fe": "turbo run build --concurrency=1 --stream --ignore=*backend* && turbo run deploy --ignore=*backend* --concurrency=1 --stream"
+    "deploy:fe": "turbo run build --concurrency=1 --stream --ignore=*backend* && turbo run deploy --ignore=*backend* --concurrency=1 --stream",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.2.2",
@@ -42,6 +43,7 @@
     "cross-port-killer": "1.4.0",
     "eslint": "^8.2.0",
     "eslint-plugin-prettier": "4.0.0",
+    "husky": "7.0.4",
     "jasmine-core": "~4.0.0",
     "jest": "^27.2.5",
     "karma": "~6.3.0",
