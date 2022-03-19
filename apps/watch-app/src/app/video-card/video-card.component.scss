@@ -40,12 +40,13 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   &__item {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--yt-spec-text-primary);
-    margin-right: 2.5rem;
     margin-top: 1.5rem;
     background: transparent;
     border: 0;
@@ -57,7 +58,6 @@
       width: 2.4rem;
       overflow: hidden;
       height: 2rem;
-      margin-right: 0.5rem;
       margin-bottom: 0.5rem;
     }
     &__text {
@@ -77,10 +77,25 @@
 }
 
 
-
 @media (min-width: 576px) {
+  
+  .video-details-actions {
+    width: unset;
+    justify-content: flex-start;
+    &__item {
+      flex-direction: row;
+      margin-top: 0;
+      margin-right: 2.5rem;
+     &__icon {
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+     }
+    }
+  }
+}
+
+@media (min-width: 768px) {
   .video-details {
-    
     &__footer {
       flex-direction: row;
       align-items: center;
@@ -88,13 +103,4 @@
     }
   }
   
-  .video-details-actions {
-    &__item {
-      flex-direction: row;
-      margin-top: 0;
-     &__icon {
-      margin-bottom: 0;
-     }
-    }
-  }
 }
