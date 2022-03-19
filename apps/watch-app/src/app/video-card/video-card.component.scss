@@ -42,6 +42,7 @@
   align-items: center;
   &__item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     color: var(--yt-spec-text-primary);
     margin-right: 2.5rem;
@@ -57,6 +58,7 @@
       overflow: hidden;
       height: 2rem;
       margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
     }
     &__text {
       margin: 0;
@@ -74,17 +76,25 @@
   position: relative;
 }
 
-@media (min-width: 768px) {
+
+
+@media (min-width: 576px) {
   .video-details {
+    
     &__footer {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
     }
   }
+  
   .video-details-actions {
     &__item {
+      flex-direction: row;
       margin-top: 0;
+     &__icon {
+      margin-bottom: 0;
+     }
     }
   }
 }
