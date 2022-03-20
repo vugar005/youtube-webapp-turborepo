@@ -18,7 +18,7 @@
         <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="snippet?.title"></h3>
         <p class="thumbnail-details-content__footer mat-h4">
           <span *ngIf="snippet?.views">{{ snippet?.views | number: '1.0-0' }} views •</span>
-          {{ snippet?.publishedAt | timeAgo }}
+          {{ snippet?.publishedAt | ytdTimeAgo }}
         </p>
       </div>
     </div>

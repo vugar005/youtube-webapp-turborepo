@@ -2,7 +2,7 @@ import { Directive, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef }
 import { isPlatformServer } from '@angular/common';
 
 @Directive({
-  selector: '[ytBrowserOnly]',
+  selector: '[ytdBrowserOnly]',
 })
 export class BrowserOnlyDirective implements OnInit {
   constructor(
