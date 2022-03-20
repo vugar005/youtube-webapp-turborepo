@@ -6,13 +6,13 @@
       </button>
     </div>
     <div class="header-brand-icon" routerLink="/">
-      <yt-brand-icon></yt-brand-icon>
+      <ytd-brand-icon></ytd-brand-icon>
       <span class="header-brand-icon__country-code">{{ countryCode?.slice(0, 3) }}</span>
     </div>
   </div>
   <div class="header__center">
-    <yt-search-box class="searchbox-desktop" [formControl]="searchControl"></yt-search-box>
-    <yt-search-box-mobile class="searchbox-mobile" [formControl]="searchControl"></yt-search-box-mobile>
+    <ytd-search-box class="searchbox-desktop" [formControl]="searchControl"></ytd-search-box>
+    <ytd-search-box-mobile class="searchbox-mobile" [formControl]="searchControl"></ytd-search-box-mobile>
   </div>
   <div class="header__end">
     <div class="header-feature header-feature--community">

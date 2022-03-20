@@ -6,7 +6,7 @@
     <ng-container *ngIf="!isLoading && !isServer; else loadingTemplate">
       <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
         <div class="video-player" *ngFor="let video of videoLinks" (click)="onSelectVideo(video.id.videoId)">
-          <yt-video-thumbnail [snippet]="video.snippet" [direction]="'horizontal'"></yt-video-thumbnail>
+          <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'horizontal'"></ytd-video-thumbnail>
         </div>
       </ng-container>
     </ng-container>
@@ -17,7 +17,7 @@
   <div class="loader-template">
     <ng-container *ngFor="let item of items">
       <div class="loader-template__item">
-        <yt-video-thumbnail-loader [direction]="'horizontal'"></yt-video-thumbnail-loader>
+        <ytd-video-thumbnail-loader [direction]="'horizontal'"></ytd-video-thumbnail-loader>
       </div>
     </ng-container>
   </div>

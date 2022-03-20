@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'secondsToTime',
+  name: 'ytdSecondsToTime',
 })
 export class SecondsToTime implements PipeTransform {
   public transform(value: number | string): string | undefined {

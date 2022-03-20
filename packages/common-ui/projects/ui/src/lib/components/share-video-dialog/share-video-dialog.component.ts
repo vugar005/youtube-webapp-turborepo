@@ -6,7 +6,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'yt-share-video-dialog',
+  selector: 'ytd-share-video-dialog',
   templateUrl: './share-video-dialog.component.html',
   styleUrls: ['./share-video-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
