@@ -11,11 +11,11 @@
   "scripts": {
     "serve": "concurrently \"turbo run pack-lib\"  \"turbo run serve --no-cache  --continue\"",
     "serve:prod": "concurrently \"turbo run pack-lib:prod\"  \"turbo run serve:prod --no-cache --continue\"",
-    "build": "turbo run build",
+    "build": "turbo run build --no-cache",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "clean": "turbo run clean && rimraf node_modules --continue",
-    "deploy:fe": "turbo run build --concurrency=1 --stream --ignore=*backend* && turbo run deploy --ignore=*backend* --concurrency=1 --stream",
+    "deploy:fe": "turbo run build --no-cache --concurrency=1 --stream --ignore=*backend* && turbo run deploy --ignore=*backend* --concurrency=1 --stream",
     "prepare": "husky install"
   },
   "devDependencies": {
