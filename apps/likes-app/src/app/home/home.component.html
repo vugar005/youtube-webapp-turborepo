@@ -3,11 +3,11 @@
     <div class="home-sidebar">
       <div class="home-sidebar__video">
         <ng-container *ngIf="likedVideos?.[0] as primaryVideo else primaryLoadingTemplate">
-          <yt-video-thumbnail
+          <ytd-video-thumbnail
             (click)="onWatchVideo(primaryVideo.id?.videoId)"
             [snippet]="primaryVideo.snippet"
             [direction]="'horizontal'"
-          ></yt-video-thumbnail>
+          ></ytd-video-thumbnail>
         </ng-container>
       </div>
 
@@ -24,7 +24,7 @@
           <div class="video-item__index">{{ videoIndex + 1 }}</div>
 
           <div class="video-item__thumbnail">
-            <yt-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></yt-video-thumbnail>
+            <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></ytd-video-thumbnail>
           </div>
         </div>
       </ng-container>
@@ -34,13 +34,13 @@
 
 <ng-template #loadingTemplate>
   <div class="thumbnail-loader-template-item" *ngFor="let item of videoIds">
-    <yt-video-thumbnail-loader [direction]="'vertical'"></yt-video-thumbnail-loader>
+    <ytd-video-thumbnail-loader [direction]="'vertical'"></ytd-video-thumbnail-loader>
   </div>
 </ng-template>
 
 <ng-template #primaryLoadingTemplate>
   <div class="thumbnail-primary-loader-template-item">
-    <yt-video-thumbnail-loader [direction]="'horizontal'"> </yt-video-thumbnail-loader>
+    <ytd-video-thumbnail-loader [direction]="'horizontal'"> </ytd-video-thumbnail-loader>
   </div>
 </ng-template>
 

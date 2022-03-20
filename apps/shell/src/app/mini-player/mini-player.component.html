@@ -19,13 +19,13 @@
   </div>
 
   <div class="miniplayer__video">
-    <yt-video-player
+    <ytd-video-player
       [videoId]="videoId"
       [startSeconds]="startSeconds"
       [playerVars]="playerVars"
       (videoLoaded)="onVideoLoaded($event)"
       (stateChange)="onPlayerStateChange($event)"
-    ></yt-video-player>
+    ></ytd-video-player>
 
     <div class="player-backdrop"></div>
     <div class="player-controls" *ngIf="isPlayerControlsVisible">

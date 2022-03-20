@@ -7,7 +7,7 @@
       [queryParams]="{ v: video.id?.videoId }"
     >
       <div class="video-item__thumbnail">
-        <yt-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></yt-video-thumbnail>
+        <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></ytd-video-thumbnail>
       </div>
     </div>
   </ng-container>
@@ -15,6 +15,6 @@
 
 <ng-template #loadingTemplate>
   <div class="thumbnail-loader-template" *ngFor="let item of items">
-    <yt-video-thumbnail-loader [direction]="'vertical'"></yt-video-thumbnail-loader>
+    <ytd-video-thumbnail-loader [direction]="'vertical'"></ytd-video-thumbnail-loader>
   </div>
 </ng-template>

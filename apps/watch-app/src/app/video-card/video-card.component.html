@@ -1,10 +1,10 @@
 <div class="video-card" *ngIf="videoResult?.title; else loadingTemplate">
   <div class="video-card__player">
-    <yt-video-player
+    <ytd-video-player
       [videoId]="videoId"
       (videoLoaded)="onVideoReady($event)"
       [startSeconds]="startSeconds"
-    ></yt-video-player>
+    ></ytd-video-player>
   </div>
 
   <div class="video-details" *ngIf="videoResult">
@@ -49,6 +49,6 @@
 
 <ng-template #loadingTemplate>
   <div class="video-card-loader">
-    <yt-video-thumbnail-loader [direction]="'horizontal'"></yt-video-thumbnail-loader>
+    <ytd-video-thumbnail-loader [direction]="'horizontal'"></ytd-video-thumbnail-loader>
   </div>
 </ng-template>

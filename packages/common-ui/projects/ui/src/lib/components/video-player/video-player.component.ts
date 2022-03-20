@@ -17,7 +17,7 @@ import { WindowEnum } from '../../constants';
 import { ScriptUtilsService, WebApiService } from '../../services';
 
 @Component({
-  selector: 'yt-video-player',
+  selector: 'ytd-video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

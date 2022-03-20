@@ -2,7 +2,7 @@ import { Directive, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewContainerRef }
 import { isPlatformServer } from '@angular/common';
 
 @Directive({
-  selector: '[ytServerOnly]',
+  selector: '[ytdServerOnly]',
 })
 export class ServerOnlyDirective implements OnInit {
   constructor(

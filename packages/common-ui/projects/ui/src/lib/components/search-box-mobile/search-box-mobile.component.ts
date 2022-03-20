@@ -18,7 +18,7 @@ import { IYoutubeSearchResult } from '../../models/youtube-search-list.model';
 import { YOUTUBE_SERVICE } from '../../tokens';
 
 @Component({
-  selector: 'yt-search-box-mobile',
+  selector: 'ytd-search-box-mobile',
   templateUrl: './search-box-mobile.component.html',
   styleUrls: ['./search-box-mobile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

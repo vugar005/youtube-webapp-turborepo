@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { VideoSnippet } from '../../models/youtube-search-list.model';
 
 @Component({
-  selector: 'yt-video-thumbnail',
+  selector: 'ytd-video-thumbnail',
   templateUrl: './video-thumbnail.component.html',
   styleUrls: ['./video-thumbnail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
