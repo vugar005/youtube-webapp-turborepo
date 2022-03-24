@@ -19,7 +19,7 @@ import {
   VideoPlayerModule,
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
-  YoutubeServiceV2,
+  YoutubeServiceV1,
   YOUTUBE_SERVICE,
   ShareVideoDialogModule,
   APP_CONFIG,
@@ -69,7 +69,7 @@ import { MatDividerModule } from '@angular/material/divider';
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useClass: YoutubeServiceV1,
     },
     {
       provide: APP_API_KEY,

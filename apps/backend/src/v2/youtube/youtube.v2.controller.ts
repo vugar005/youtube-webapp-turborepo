@@ -1,10 +1,13 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { YoutubeApiService } from './youtbe-api.service';
+import { YoutubeApiServiceV2 } from './youtbe-api.v2.service';
 import { IYoutubeSearchResult } from '@youtube/common-ui';
 import { firstValueFrom } from 'rxjs';
-@Controller('youtube')
-export class YoutubeController {
-  constructor(private readonly youtubeApiService: YoutubeApiService) {}
+@Controller({
+  path: 'youtube',
+  version: '2',
+})
+export class YoutubeControllerV2 {
+  constructor(private readonly youtubeApiService: YoutubeApiServiceV2) {}
 
   @Get('searchVideo')
   async searchVideos(@Query() query): Promise<IYoutubeSearchResult> {

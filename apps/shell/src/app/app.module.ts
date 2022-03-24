@@ -18,7 +18,7 @@ import {
   VideoPlayerModule,
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
-  YoutubeServiceV2,
+  YoutubeServiceV1,
   YOUTUBE_SERVICE,
   BrandIconModule,
   NotFoundPageModule,
@@ -96,7 +96,7 @@ import { KeyEventsListenerComponent } from './key-events-listener/key-events-lis
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useClass: YoutubeServiceV1,
     },
     { provide: APP_CONFIG, useValue: environment },
   ],

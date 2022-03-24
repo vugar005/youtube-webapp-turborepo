@@ -4,7 +4,7 @@ import { from, map, Observable } from 'rxjs';
 import * as yt from 'youtube-search-without-api-key';
 
 @Injectable()
-export class YoutubeApiService {
+export class YoutubeApiServiceV1 {
   public searchVideoResults(query: string): Observable<IYoutubeSearchResult> {
     return from(yt.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
   }

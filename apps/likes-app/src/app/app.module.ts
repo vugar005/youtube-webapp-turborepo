@@ -10,7 +10,7 @@ import {
   APP_CONFIG,
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
-  YoutubeServiceV2,
+  YoutubeServiceV1,
   YOUTUBE_SERVICE,
 } from '@youtube/common-ui';
 
@@ -49,7 +49,7 @@ import { MatIconModule } from '@angular/material/icon';
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useClass: YoutubeServiceV1,
     },
     { provide: APP_CONFIG, useValue: environment },
   ],
