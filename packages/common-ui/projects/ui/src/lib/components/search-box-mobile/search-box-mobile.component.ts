@@ -137,7 +137,7 @@ export class SearchBoxMobileComponent implements OnInit, OnDestroy, ControlValue
   }
 
   private getSearchRequest(payload: { query: string }): Observable<IYoutubeSearchResult> {
-    return this.youtubeService.searchVideoResults(payload).pipe(catchError(() => EMPTY));
+    return this.youtubeService.searchList(payload).pipe(catchError(() => EMPTY));
   }
 
   private closeDropdown(): void {

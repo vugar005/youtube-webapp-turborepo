@@ -5,7 +5,7 @@ import * as yt from 'youtube-search-api';
 
 @Injectable()
 export class YoutubeApiServiceV2 {
-  public searchVideoResults(query: string): Observable<IYoutubeSearchResult> {
+  public searchList(query: string): Observable<IYoutubeSearchResult> {
     return from(yt.GetListByKeyword(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
   }
 

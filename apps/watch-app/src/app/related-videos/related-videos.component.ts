@@ -31,7 +31,7 @@ export class RelatedVideosComponent implements OnChanges {
 
   private getRelatedVideos(): void {
     this.youtubeService
-      .searchVideoResults({ query: this.query?.slice(0, 10) })
+      .searchList({ query: this.query?.slice(0, 10) })
       .pipe(filter((results) => !!results?.items?.length))
       .subscribe((results: IYoutubeSearchResult) => {
         this.relatedVideos = results?.items;

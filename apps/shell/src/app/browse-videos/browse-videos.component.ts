@@ -85,6 +85,6 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   }
 
   private getSearchRequest(query: string): Observable<IYoutubeSearchResult> {
-    return this.youtubeService.searchVideoResults({ query }).pipe(catchError(() => EMPTY));
+    return this.youtubeService.searchList({ query }).pipe(catchError(() => EMPTY));
   }
 }

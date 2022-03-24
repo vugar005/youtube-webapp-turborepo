@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private getLikedVideosInfo(videoIds: string[]): void {
     const reqArray: Observable<IYoutubeSearchItem>[] = [];
     videoIds?.forEach((id: string) => {
-      const videoRequest = this.youtubeService.searchVideoResults({ query: id }).pipe(
+      const videoRequest = this.youtubeService.searchList({ query: id }).pipe(
         map((data) => data.items?.[0]),
         filter(Boolean)
       );

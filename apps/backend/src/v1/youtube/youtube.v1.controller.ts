@@ -9,10 +9,10 @@ import { firstValueFrom } from 'rxjs';
 export class YoutubeControllerV1 {
   constructor(private readonly youtubeApiService: YoutubeApiServiceV1) {}
 
-  @Get('searchVideo')
-  async searchVideos(@Query() query): Promise<IYoutubeSearchResult> {
+  @Get('searchList')
+  async searchList(@Query() query): Promise<IYoutubeSearchResult> {
     const { q } = query;
-    const results = await firstValueFrom(this.youtubeApiService.searchVideoResults(q.trim()));
+    const results = await firstValueFrom(this.youtubeApiService.searchList(q.trim()));
     return results;
   }
 }

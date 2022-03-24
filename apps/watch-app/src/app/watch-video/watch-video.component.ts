@@ -78,7 +78,7 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
   }
 
   private getVideoInfo(): Observable<IYoutubeSearchResult> {
-    return this.youtubeService.searchVideoResults({ query: this.videoId }).pipe(catchError(() => EMPTY));
+    return this.youtubeService.searchList({ query: this.videoId }).pipe(catchError(() => EMPTY));
   }
 
   private handleCaseVideoNotFound(): void {

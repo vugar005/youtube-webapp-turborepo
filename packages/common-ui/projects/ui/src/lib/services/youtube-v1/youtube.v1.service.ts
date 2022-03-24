@@ -8,9 +8,9 @@ import { APP_CONFIG } from '../../tokens';
 export class YoutubeServiceV1 implements IYoutubeService {
   constructor(@Inject(APP_CONFIG) private readonly appConfig: any, private http: HttpClient) {}
 
-  public searchVideoResults(params: IYoutubeSearchParams): Observable<IYoutubeSearchResult> {
+  public searchList(params: IYoutubeSearchParams): Observable<IYoutubeSearchResult> {
     const { query } = params;
-    const url = `${this.appConfig.backendUrl}/api/v1/youtube/searchVideo?q=${query}`;
+    const url = `${this.appConfig.backendUrl}/api/v1/youtube/searchList?q=${query}`;
     return this.http.get<IYoutubeSearchResult>(url);
   }
 }
