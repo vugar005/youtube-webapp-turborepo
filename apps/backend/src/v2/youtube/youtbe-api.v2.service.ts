@@ -1,22 +1,35 @@
 import { Injectable } from '@nestjs/common';
-import { IYoutubeSearchItem, IYoutubeSearchResult, IYoutubeSearchSnippet } from '@youtube/common-ui';
+import {
+  IYoutubeSearchItem,
+  IYoutubeVideoItem,
+  IYoutubeVideoResult,
+  IYoutubeVideoSnippet,
+  IYoutubeContentDetails,
+  IYoutubeStatistics,
+  IYoutubeSearchResult,
+  IYoutubeSearchSnippet,
+} from '@youtube/common-ui';
 import { from, map, Observable } from 'rxjs';
-import * as yt from 'youtube-search-api';
+import * as yts from 'youtube-sr';
 
 @Injectable()
 export class YoutubeApiServiceV2 {
   public searchList(query: string): Observable<IYoutubeSearchResult> {
-    return from(yt.GetListByKeyword(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
+    return from(yts.default.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
   }
 
-  private mapToYoutubeSearchResult(result): IYoutubeSearchResult {
+  public videoList(query: string): Observable<IYoutubeVideoResult> {
+    return from(yts.default.getVideo(query)).pipe(map((res) => this.mapToYoutubeVideoResult(res)));
+  }
+
+  private mapToYoutubeSearchResult(results): IYoutubeSearchResult {
     return {
       kind: null,
       etag: null,
-      nextPageToken: result.nextPageToken,
+      nextPageToken: results?.nextPageToken,
       regionCode: null,
       pageInfo: null,
-      items: this.mapToYoutubeSearchItem(result.items),
+      items: this.mapToYoutubeSearchItem(results),
     };
   }
 
@@ -34,22 +47,89 @@ export class YoutubeApiServiceV2 {
   }
 
   private mapToYoutubeSearchSnippet(result): IYoutubeSearchSnippet {
-    const hightThumbnail = result?.thumbnail?.thumbnails?.find((item) => item?.width === 720);
-    const defaultThumbnail = result?.thumbnail?.thumbnails?.[0];
+    const defaultThumbnail = result?.thumbnail;
 
     return {
-      publishedAt: result?.publishedAt,
-      channelId: null,
+      publishedAt: result?.uploadedAt,
+      channelId: result?.channel?.id,
       title: result?.title,
       description: result?.title,
       thumbnails: {
-        default: hightThumbnail || defaultThumbnail,
+        default: defaultThumbnail,
         medium: defaultThumbnail,
-        high: hightThumbnail || defaultThumbnail,
+        high: defaultThumbnail,
       },
-      channelTitle: result?.channelTitle,
+      channelTitle: result?.channel?.name,
       liveBroadcastContent: null,
       publishTime: null,
+    };
+  }
+
+  private mapToYoutubeVideoResult(result): IYoutubeVideoResult {
+    return {
+      kind: null,
+      etag: null,
+      pageInfo: {
+        totalResults: 1,
+        resultsPerPage: 1,
+      },
+      items: this.mapToYoutubeVideoItem(result),
+    };
+  }
+
+  private mapToYoutubeVideoItem(result): IYoutubeVideoItem[] {
+    return [
+      {
+        kind: null,
+        etag: null,
+        id: result?.id,
+        snippet: this.mapToYoutubeVideoSnippet(result),
+        contentDetails: this.mapToYoutubeVideoContent(result),
+        statistics: this.mapToYoutubeVideoStatistics(result),
+      },
+    ];
+  }
+
+  private mapToYoutubeVideoSnippet(result): IYoutubeVideoSnippet {
+    const defaultThumbnail = result?.thumbnail;
+
+    return {
+      publishedAt: result?.uploadedAt,
+      channelId: result?.channel?.id,
+      title: result?.title,
+      description: result?.description,
+      thumbnails: {
+        default: defaultThumbnail,
+        medium: defaultThumbnail,
+        high: defaultThumbnail,
+        standard: defaultThumbnail,
+        maxres: defaultThumbnail,
+      },
+      channelTitle: result?.channel?.name,
+      tags: result?.tags,
+      categoryId: null,
+      liveBroadcastContent: null,
+      localized: null,
+    };
+  }
+
+  private mapToYoutubeVideoContent(result): IYoutubeContentDetails {
+    return {
+      duration: result?.duration,
+      dimension: null,
+      definition: null,
+      caption: null,
+      licensedContent: null,
+      contentRating: null,
+      projection: null,
+    };
+  }
+  private mapToYoutubeVideoStatistics(result): IYoutubeStatistics {
+    return {
+      viewCount: result?.views,
+      likeCount: result?.ratings?.likes,
+      favoriteCount: null,
+      commentCount: null,
     };
   }
 }

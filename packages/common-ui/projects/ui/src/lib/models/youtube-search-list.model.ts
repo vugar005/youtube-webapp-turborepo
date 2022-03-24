@@ -1,9 +1,11 @@
+import { IYoutubePageInfo, IYoutubeThumbnailDetail } from './youtube-common.model';
+
 export interface IYoutubeSearchResult {
   kind?: string;
   etag?: string;
   nextPageToken?: string;
   regionCode?: string;
-  pageInfo?: IYoutubeSearchPageInfo;
+  pageInfo?: IYoutubePageInfo;
   items?: IYoutubeSearchItem[];
 }
 
@@ -24,25 +26,14 @@ export interface IYoutubeSearchSnippet {
   channelId?: string;
   title: string;
   description: string;
-  thumbnails: IYoutubeThumbnail;
+  thumbnails: IYoutubeSearchThumbnail;
   channelTitle?: string;
   liveBroadcastContent?: string;
   publishTime?: Date;
 }
 
-export interface IYoutubeThumbnail {
+export interface IYoutubeSearchThumbnail {
   default: IYoutubeThumbnailDetail;
   medium: IYoutubeThumbnailDetail;
   high: IYoutubeThumbnailDetail;
-}
-
-interface IYoutubeThumbnailDetail {
-  url: string;
-  width: number;
-  height: number;
-}
-
-export interface IYoutubeSearchPageInfo {
-  totalResults: number;
-  resultsPerPage: number;
 }
