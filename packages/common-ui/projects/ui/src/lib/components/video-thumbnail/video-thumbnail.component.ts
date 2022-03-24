@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { VideoSnippet } from '../../models/youtube-search-list.model';
+import { IYoutubeSearchSnippet } from '../../models/youtube-search-list.model';
 
 @Component({
   selector: 'ytd-video-thumbnail',
@@ -8,6 +8,6 @@ import { VideoSnippet } from '../../models/youtube-search-list.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VideoThumbnailComponent {
-  @Input() snippet?: VideoSnippet;
+  @Input() snippet?: IYoutubeSearchSnippet;
   @Input() direction?: 'vertical' | 'horizontal' = 'horizontal';
 }

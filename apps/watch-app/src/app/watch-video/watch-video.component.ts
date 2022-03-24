@@ -5,6 +5,7 @@ import {
   EventDispatcherService,
   GlobalCustomEvent,
   IYoutubeSearchResult,
+  IYoutubeSearchItem,
   IYoutubeService,
   ToastService,
   YOUTUBE_SERVICE,
@@ -22,9 +23,9 @@ import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
 export class WatchVideoComponent implements OnInit, OnDestroy {
   public videoId!: string;
   public startSeconds?: number;
-  public videoInfo?: IYoutubeSearchResult;
+  public videoInfo?: IYoutubeSearchItem;
   // fallback video in case api v2 fails.
-  public fallBackVideoInfo?: IYoutubeSearchResult;
+  public fallBackVideoInfo?: IYoutubeSearchItem;
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -57,8 +58,9 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
         }),
         switchMap(() => this.getVideoInfo())
       )
-      .subscribe((results: IYoutubeSearchResult[]) => {
-        this.videoInfo = results && results?.find((result) => result.id?.videoId === this.videoId);
+      .subscribe((results: IYoutubeSearchResult) => {
+        this.videoInfo =
+          results && results?.items?.find((result: IYoutubeSearchItem) => result.id?.videoId === this.videoId);
         if (this.videoInfo) {
           this.fallBackVideoInfo = this.videoInfo;
         } else {
@@ -75,7 +77,7 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
       });
   }
 
-  private getVideoInfo(): Observable<IYoutubeSearchResult[]> {
+  private getVideoInfo(): Observable<IYoutubeSearchResult> {
     return this.youtubeService.searchVideoResults({ query: this.videoId }).pipe(catchError(() => EMPTY));
   }
 

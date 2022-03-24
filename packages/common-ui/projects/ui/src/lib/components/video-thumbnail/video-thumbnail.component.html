@@ -6,7 +6,7 @@
     <img [src]="snippet?.thumbnails?.high?.url" alt="Video image" />
 
     <div class="thumbnail__image__duration">
-      {{ snippet?.duration }}
+      <!-- {{ snippet?.duration }} -->
     </div>
     <div class="image-backdrop"></div>
   </div>
@@ -17,7 +17,7 @@
       <div class="thumbnail-details-content">
         <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="snippet?.title"></h3>
         <p class="thumbnail-details-content__footer mat-h4">
-          <span *ngIf="snippet?.views">{{ snippet?.views | number: '1.0-0' }} views •</span>
+          <!-- <span *ngIf="snippet?.views">{{ snippet?.views | number: '1.0-0' }} views •</span> -->
           {{ snippet?.publishedAt | ytdTimeAgo }}
         </p>
       </div>

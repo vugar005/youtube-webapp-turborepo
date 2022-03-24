@@ -1,4 +1,4 @@
-<div class="video-card" *ngIf="videoResult?.title; else loadingTemplate">
+<div class="video-card" *ngIf="videoResult?.snippet?.title; else loadingTemplate">
   <div class="video-card__player">
     <ytd-video-player
       [videoId]="videoId"
@@ -8,9 +8,9 @@
   </div>
 
   <div class="video-details" *ngIf="videoResult">
-    <div class="video-details__title mat-h1">{{ videoResult?.title }}</div>
+    <div class="video-details__title mat-h1">{{ videoResult?.snippet?.title }}</div>
     <div class="video-details__footer">
-      <div class="video-details__footer__views mat-h3">{{ videoResult?.views | number: '1.0-0' }} views</div>
+      <!-- <div class="video-details__footer__views mat-h3">{{ videoResult?.views | number: '1.0-0' }} views</div> -->
       <div class="video-details-actions">
         <button class="video-details-actions__item" (click)="onToggleLike()">
           <mat-icon class="video-details-actions__item__icon">
