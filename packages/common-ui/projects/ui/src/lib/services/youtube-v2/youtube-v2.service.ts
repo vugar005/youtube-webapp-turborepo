@@ -10,7 +10,7 @@ export class YoutubeServiceV2 implements IYoutubeService {
 
   public searchVideoResults(params: IYoutubeSearchParams): Observable<IYoutubeSearchResult> {
     const { query } = params;
-    const url = `${this.appConfig.backendUrl}/api/youtube/searchVideo?q=${query}`;
+    const url = `${this.appConfig.backendUrl}/api/v2/youtube/searchVideo?q=${query}`;
     return this.http.get<IYoutubeSearchResult>(url);
   }
 }

@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { IYoutubeSearchItem, IYoutubeSearchResult, IYoutubeSearchSnippet } from '@youtube/common-ui';
 import { from, map, Observable } from 'rxjs';
-import * as yt from 'youtube-search-without-api-key';
+import * as yt from 'youtube-search-api';
 
 @Injectable()
 export class YoutubeApiServiceV2 {
   public searchVideoResults(query: string): Observable<IYoutubeSearchResult> {
-    return from(yt.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
+    return from(yt.GetListByKeyword(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
   }
 
-  private mapToYoutubeSearchResult(results): IYoutubeSearchResult {
+  private mapToYoutubeSearchResult(result): IYoutubeSearchResult {
     return {
       kind: null,
       etag: null,
-      nextPageToken: null,
+      nextPageToken: result.nextPageToken,
       regionCode: null,
       pageInfo: null,
-      items: this.mapToYoutubeSearchItem(results),
+      items: this.mapToYoutubeSearchItem(result.items),
     };
   }
 
@@ -26,7 +26,7 @@ export class YoutubeApiServiceV2 {
         kind: null,
         etag: null,
         id: {
-          videoId: result?.id?.videoId,
+          videoId: result?.id,
         },
         snippet: this.mapToYoutubeSearchSnippet(result),
       };
@@ -34,18 +34,20 @@ export class YoutubeApiServiceV2 {
   }
 
   private mapToYoutubeSearchSnippet(result): IYoutubeSearchSnippet {
-    const snippet = result?.snippet;
+    const hightThumbnail = result?.thumbnail?.thumbnails?.find((item) => item?.width === 720);
+    const defaultThumbnail = result?.thumbnail?.thumbnails?.[0];
+
     return {
-      publishedAt: snippet?.publishedAt,
+      publishedAt: result?.publishedAt,
       channelId: null,
       title: result?.title,
-      description: result?.description,
+      description: result?.title,
       thumbnails: {
-        default: snippet?.thumbnails?.default,
-        medium: snippet?.thumbnails?.medium,
-        high: snippet?.thumbnails?.high,
+        default: hightThumbnail || defaultThumbnail,
+        medium: defaultThumbnail,
+        high: hightThumbnail || defaultThumbnail,
       },
-      channelTitle: null,
+      channelTitle: result?.channelTitle,
       liveBroadcastContent: null,
       publishTime: null,
     };
