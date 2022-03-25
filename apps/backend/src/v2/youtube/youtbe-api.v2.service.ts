@@ -66,6 +66,7 @@ export class YoutubeApiServiceV2 {
   }
 
   private mapToYoutubeVideoResult(result): IYoutubeVideoResult {
+    const resultClone = JSON.parse(JSON.stringify(result));
     return {
       kind: null,
       etag: null,
@@ -73,19 +74,20 @@ export class YoutubeApiServiceV2 {
         totalResults: 1,
         resultsPerPage: 1,
       },
-      items: this.mapToYoutubeVideoItem(result),
+      items: this.mapToYoutubeVideoItem(resultClone),
     };
   }
 
   private mapToYoutubeVideoItem(result): IYoutubeVideoItem[] {
+    const resultClone = JSON.parse(JSON.stringify(result));
     return [
       {
         kind: null,
         etag: null,
         id: result?.id,
-        snippet: this.mapToYoutubeVideoSnippet(result),
-        contentDetails: this.mapToYoutubeVideoContent(result),
-        statistics: this.mapToYoutubeVideoStatistics(result),
+        snippet: this.mapToYoutubeVideoSnippet(resultClone),
+        contentDetails: this.mapToYoutubeVideoContent(resultClone),
+        statistics: this.mapToYoutubeVideoStatistics(resultClone),
       },
     ];
   }
@@ -115,7 +117,7 @@ export class YoutubeApiServiceV2 {
 
   private mapToYoutubeVideoContent(result): IYoutubeContentDetails {
     return {
-      duration: result?.duration,
+      duration: result?.duration_formatted,
       dimension: null,
       definition: null,
       caption: null,

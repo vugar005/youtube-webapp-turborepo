@@ -10,7 +10,7 @@
           (click)="onWatchVideo(video.id?.videoId)"
         >
           <div class="video-item__thumbnail">
-            <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></ytd-video-thumbnail>
+            <ytd-video-thumbnail [searchItem]="video" [direction]="'vertical'"></ytd-video-thumbnail>
           </div>
         </div>
       </ng-container>

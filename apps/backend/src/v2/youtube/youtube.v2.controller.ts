@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { YoutubeApiServiceV2 } from './youtbe-api.v2.service';
 import { IYoutubeSearchResult, IYoutubeVideoResult } from '@youtube/common-ui';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, lastValueFrom } from 'rxjs';
 @Controller({
   path: 'youtube',
   version: '2',
@@ -9,17 +9,15 @@ import { firstValueFrom } from 'rxjs';
 export class YoutubeControllerV2 {
   constructor(private readonly youtubeApiService: YoutubeApiServiceV2) {}
 
-  @Get('searchList')
+  @Get('searchlist')
   async searchList(@Query() query): Promise<IYoutubeSearchResult> {
     const { q } = query;
-    const results = await firstValueFrom(this.youtubeApiService.searchList(q.trim()));
-    return results;
+    return firstValueFrom(this.youtubeApiService.searchList(q.trim()));
   }
 
-  @Get('videoList')
+  @Get('videolist')
   async videoList(@Query() query): Promise<IYoutubeVideoResult> {
     const { q } = query;
-    const results = await firstValueFrom(this.youtubeApiService.videoList(q.trim()));
-    return results;
+    return firstValueFrom(this.youtubeApiService.videoList(q.trim()));
   }
 }

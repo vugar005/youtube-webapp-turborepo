@@ -102,6 +102,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     forkJoin(reqArray)
       .pipe(
+        takeUntil(this.onDestroy$),
         finalize(() => {
           this.isLoading = false;
           this.cdr.detectChanges();

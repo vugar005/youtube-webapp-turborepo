@@ -6,7 +6,7 @@
     <ng-container *ngIf="!isLoading && !isServer; else loadingTemplate">
       <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
         <div class="video-player" *ngFor="let video of videoLinks" (click)="onSelectVideo(video.id.videoId)">
-          <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'horizontal'"></ytd-video-thumbnail>
+          <ytd-video-thumbnail [searchItem]="video" [direction]="'horizontal'"></ytd-video-thumbnail>
         </div>
       </ng-container>
     </ng-container>

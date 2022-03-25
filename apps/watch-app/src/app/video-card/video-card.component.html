@@ -10,7 +10,9 @@
   <div class="video-details" *ngIf="videoResult">
     <div class="video-details__title mat-h1">{{ videoResult?.snippet?.title }}</div>
     <div class="video-details__footer">
-      <!-- <div class="video-details__footer__views mat-h3">{{ videoResult?.views | number: '1.0-0' }} views</div> -->
+      <div class="video-details__footer__views mat-h3">
+        {{ videoResult?.statistics?.viewCount | number: '1.0-0' }} views
+      </div>
       <div class="video-details-actions">
         <button class="video-details-actions__item" (click)="onToggleLike()">
           <mat-icon class="video-details-actions__item__icon">
@@ -19,7 +21,7 @@
             <ng-container *ngIf="!isLiked"> thumb_up_off_alt </ng-container>
           </mat-icon>
 
-          <p class="video-details-actions__item__text mat-h3">Like</p>
+          <p class="video-details-actions__item__text mat-h3">{{ videoResult?.statistics?.likeCount || 'Like' }}</p>
         </button>
 
         <button class="video-details-actions__item" (click)="onToggleDisLike()">
