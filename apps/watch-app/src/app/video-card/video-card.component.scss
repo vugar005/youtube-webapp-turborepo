@@ -76,6 +76,16 @@
   position: relative;
 }
 
+.video-details-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  .video-details-tag {
+    margin: 0;
+    margin-right: 3px;
+    color: var(--yt-primary-50);
+  }
+}
+
 
 @media (min-width: 576px) {
   
