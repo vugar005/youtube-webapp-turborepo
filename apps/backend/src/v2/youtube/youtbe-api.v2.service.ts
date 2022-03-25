@@ -124,6 +124,7 @@ export class YoutubeApiServiceV2 {
       projection: null,
     };
   }
+
   private mapToYoutubeVideoStatistics(result): IYoutubeStatistics {
     return {
       viewCount: result?.views,

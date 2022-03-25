@@ -1,5 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { IYoutubeSearchItem, IYoutubeSearchResult, IYoutubeSearchSnippet } from '@youtube/common-ui';
+import {
+  IYoutubeContentDetails,
+  IYoutubeSearchItem,
+  IYoutubeSearchResult,
+  IYoutubeSearchSnippet,
+  IYoutubeStatistics,
+  IYoutubeVideoItem,
+  IYoutubeVideoResult,
+  IYoutubeVideoSnippet,
+} from '@youtube/common-ui';
 import { from, map, Observable } from 'rxjs';
 import * as yt from 'youtube-search-without-api-key';
 
@@ -7,6 +16,10 @@ import * as yt from 'youtube-search-without-api-key';
 export class YoutubeApiServiceV1 {
   public searchList(query: string): Observable<IYoutubeSearchResult> {
     return from(yt.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
+  }
+
+  public videolist(query: string): Observable<IYoutubeVideoResult> {
+    return from(yt.search(query)).pipe(map((res) => this.mapToYoutubeVideoResult(res)));
   }
 
   private mapToYoutubeSearchResult(results): IYoutubeSearchResult {
@@ -48,6 +61,73 @@ export class YoutubeApiServiceV1 {
       channelTitle: null,
       liveBroadcastContent: null,
       publishTime: null,
+    };
+  }
+
+  private mapToYoutubeVideoResult(result): IYoutubeVideoResult {
+    return {
+      kind: null,
+      etag: null,
+      pageInfo: {
+        totalResults: 1,
+        resultsPerPage: 1,
+      },
+      items: this.mapToYoutubeVideoItem(result),
+    };
+  }
+
+  private mapToYoutubeVideoItem(results): IYoutubeVideoItem[] {
+    return results.map((result) => {
+      return {
+        kind: null,
+        etag: null,
+        id: result?.id?.videoId,
+        snippet: this.mapToYoutubeVideoSnippet(result),
+        contentDetails: this.mapToYoutubeVideoContent(result),
+        statistics: this.mapToYoutubeVideoStatistics(result),
+      };
+    });
+  }
+
+  private mapToYoutubeVideoSnippet(result): IYoutubeVideoSnippet {
+    return {
+      publishedAt: result?.uploadedAt,
+      channelId: null,
+      title: result?.title,
+      description: result?.description,
+      thumbnails: {
+        default: result?.snippet?.thumbnails?.default,
+        medium: result?.snippet?.thumbnails?.high,
+        high: result?.snippet?.thumbnails?.high,
+        standard: result?.snippet?.thumbnails?.high,
+        maxres: result?.snippet?.thumbnails?.high,
+      },
+      channelTitle: null,
+      tags: null,
+      categoryId: null,
+      liveBroadcastContent: null,
+      localized: null,
+    };
+  }
+
+  private mapToYoutubeVideoContent(result): IYoutubeContentDetails {
+    return {
+      duration: result?.snippet?.duration,
+      dimension: null,
+      definition: null,
+      caption: null,
+      licensedContent: null,
+      contentRating: null,
+      projection: null,
+    };
+  }
+
+  private mapToYoutubeVideoStatistics(result): IYoutubeStatistics {
+    return {
+      viewCount: result?.snippet?.views,
+      likeCount: null,
+      favoriteCount: null,
+      commentCount: null,
     };
   }
 }
