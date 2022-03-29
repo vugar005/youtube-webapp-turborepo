@@ -4,7 +4,6 @@ import {
   CustomEventConfig,
   EventDispatcherService,
   GlobalCustomEvent,
-  IYoutubeSearchItem,
   IYoutubeService,
   ToastService,
   YOUTUBE_SERVICE,

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IYoutubeSearchResult, IYoutubeVideoResult } from '../../models';
 import { IYoutubeSearchParams, IYoutubeService, IYoutubeVideoListParams } from '../../models/youtube.service.model';
 import { YOUTUBE_API_KEY } from '../../tokens/youtube-api-key.token';

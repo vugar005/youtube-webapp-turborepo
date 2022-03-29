@@ -82,7 +82,8 @@
 
 .video-details-tags {
   display: flex;
-  flex-wrap: nowrap;
+  height: 1.8rem;
+  overflow: hidden;
   .video-details-tag {
     margin: 0;
     margin-right: 3px;

@@ -24,6 +24,7 @@ import {
   ShareVideoDialogModule,
   APP_CONFIG,
   ToastModule,
+  AbbreviateNumberPipeModule,
 } from '@youtube/common-ui';
 import { RelatedVideosComponent } from './related-videos/related-videos.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -53,6 +54,7 @@ import { MatButtonModule } from '@angular/material/button';
     VideoThumbnailModule,
     VideoThumbnailLoaderModule,
     ShareVideoDialogModule,
+    AbbreviateNumberPipeModule,
     ToastModule,
     MatIconModule,
     MatButtonModule,

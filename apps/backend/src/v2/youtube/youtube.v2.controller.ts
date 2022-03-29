@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { YoutubeApiServiceV2 } from './youtbe-api.v2.service';
 import { IYoutubeSearchResult, IYoutubeVideoResult } from '@youtube/common-ui';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 @Controller({
   path: 'youtube',
   version: '2',
