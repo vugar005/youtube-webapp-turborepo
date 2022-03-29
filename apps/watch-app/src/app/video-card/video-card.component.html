@@ -28,9 +28,14 @@
             <ng-container *ngIf="!isLiked"> thumb_up_off_alt </ng-container>
           </mat-icon>
 
-          <p class="video-details-actions__item__text mat-h3" *ngIf="videoResult?.statistics?.likeCount">
-            {{ +videoResult.statistics.likeCount | ytdAbbreviateNumber: 1 || 'LIKE' }}
+          <p
+            class="video-details-actions__item__text mat-h3"
+            *ngIf="videoResult?.statistics?.likeCount; else emptyLikesCount"
+          >
+            {{ +videoResult.statistics.likeCount | ytdAbbreviateNumber: 0 }}
           </p>
+
+          <ng-template #emptyLikesCount> LIKES </ng-template>
         </button>
 
         <button class="video-details-actions__item" (click)="onToggleDisLike()">
@@ -57,7 +62,7 @@
 
   <mat-divider></mat-divider>
 
-  <div class="video-card__secondary-info">
+  <div class="video-card__secondary-info" *ngIf="this.videoResult?.snippet?.description">
     <watch-app-video-secondary-info [videoItem]="videoResult"></watch-app-video-secondary-info>
   </div>
 

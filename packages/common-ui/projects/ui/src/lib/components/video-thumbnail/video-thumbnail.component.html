@@ -22,7 +22,7 @@
         ></h4>
         <p class="thumbnail-details-content__footer mat-h4">
           <span *ngIf="videoItem?.statistics?.viewCount as viewsCount"
-            >{{ viewsCount | ytdAbbreviateNumber: 1 }} views •</span
+            >{{ viewsCount | ytdAbbreviateNumber: 0 }} views •</span
           >
           {{ searchItem?.snippet?.publishedAt | ytdTimeAgo }}
         </p>

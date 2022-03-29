@@ -19,12 +19,12 @@ import {
   VideoPlayerModule,
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
-  YoutubeServiceV2,
   YOUTUBE_SERVICE,
   ShareVideoDialogModule,
   APP_CONFIG,
   ToastModule,
   AbbreviateNumberPipeModule,
+  youtubeApiServiceFactory,
 } from '@youtube/common-ui';
 import { RelatedVideosComponent } from './related-videos/related-videos.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -80,7 +80,8 @@ import { MatButtonModule } from '@angular/material/button';
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useFactory: youtubeApiServiceFactory,
+      deps: [Injector],
     },
     {
       provide: APP_API_KEY,

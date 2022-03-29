@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -18,12 +18,12 @@ import {
   VideoPlayerModule,
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
-  YoutubeServiceV2,
   YOUTUBE_SERVICE,
   BrandIconModule,
   NotFoundPageModule,
   APP_CONFIG,
   SearchBoxMobileModule,
+  youtubeApiServiceFactory,
 } from '@youtube/common-ui';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -96,7 +96,8 @@ import { KeyEventsListenerComponent } from './key-events-listener/key-events-lis
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useFactory: youtubeApiServiceFactory,
+      deps: [Injector],
     },
     { provide: APP_CONFIG, useValue: environment },
   ],

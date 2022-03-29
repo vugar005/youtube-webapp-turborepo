@@ -53,7 +53,7 @@ export interface IYoutubeContentDetails {
 }
 
 export interface IYoutubeStatistics {
-  viewCount: string;
+  viewCount: number;
   likeCount: string;
   favoriteCount: string;
   commentCount: string;

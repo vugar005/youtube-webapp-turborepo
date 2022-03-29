@@ -1,0 +1,5 @@
+export enum YoutubeApiServiceType {
+  EXTERNAL_API_V1 = 'EXTERNAL_API_V1',
+  EXTERNAL_API_V2 = 'EXTERNAL_API_V2',
+  DATA_API_V3 = 'DATA_API_V3',
+}

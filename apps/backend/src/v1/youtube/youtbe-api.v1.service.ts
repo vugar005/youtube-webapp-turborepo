@@ -91,7 +91,7 @@ export class YoutubeApiServiceV1 {
 
   private mapToYoutubeVideoSnippet(result): IYoutubeVideoSnippet {
     return {
-      publishedAt: result?.uploadedAt,
+      publishedAt: result?.snippet?.publishedAt,
       channelId: null,
       title: result?.title,
       description: result?.description,
@@ -124,7 +124,7 @@ export class YoutubeApiServiceV1 {
 
   private mapToYoutubeVideoStatistics(result): IYoutubeStatistics {
     return {
-      viewCount: result?.snippet?.views,
+      viewCount: +result?.snippet?.views,
       likeCount: null,
       favoriteCount: null,
       commentCount: null,
