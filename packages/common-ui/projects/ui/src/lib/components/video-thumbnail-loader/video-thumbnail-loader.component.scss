@@ -90,11 +90,21 @@ $opacity-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
     border-radius: 5px;
   }
 
+  &__channelTitle {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 3px;
+    background: var(--yt-spec-10-percent-layer);
+    width: 50%;
+    height: 1.5rem;
+    border-radius: 5px;
+  }
+
 
   &__footer {
     background: var(--yt-spec-10-percent-layer);
     width: 30%;
-    height: 1.8rem;
+    height: 1.5rem;
     border-radius: 5px;
   }
 }

@@ -8,6 +8,10 @@
   &__player {
     height: var(--ytd-watch-flexy-player-height);
   }
+  
+  &__secondary-info {
+    padding-top: 1.6rem;
+  }
 }
 
 .video-details {

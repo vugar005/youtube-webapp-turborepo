@@ -33,9 +33,17 @@ import { ROOT_REDUCERS } from './reducers';
 import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { VideoSecondaryInfoComponent } from './video-card/video-secondary-info/video-secondary-info.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [AppComponent, WatchVideoComponent, VideoCardComponent, RelatedVideosComponent],
+  declarations: [
+    AppComponent,
+    WatchVideoComponent,
+    VideoCardComponent,
+    RelatedVideosComponent,
+    VideoSecondaryInfoComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -47,6 +55,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ShareVideoDialogModule,
     ToastModule,
     MatIconModule,
+    MatButtonModule,
     MatSnackBarModule,
     MatDialogModule,
     MatDividerModule,

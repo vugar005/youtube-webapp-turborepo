@@ -16,6 +16,10 @@
     <div class="thumbnail-details-content">
       <div class="thumbnail-details-content">
         <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="searchItem?.snippet?.title"></h3>
+        <h4
+          class="thumbnail-details-content__channelTitle mat-subheading-1"
+          [innerHtml]="searchItem?.snippet?.channelTitle"
+        ></h4>
         <p class="thumbnail-details-content__footer mat-h4">
           <span *ngIf="videoItem?.statistics?.viewCount as viewsCount">{{ viewsCount | number: '1.0-0' }} views •</span>
           {{ searchItem?.snippet?.publishedAt | ytdTimeAgo }}
