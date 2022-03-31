@@ -18,6 +18,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public videoWidth?: number;
   public items = new Array(18);
   public isLoading = false;
+  public hasError = false;
   public isServer!: boolean;
 
   private readonly onDestroy$ = new Subject<void>();
@@ -68,7 +69,10 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
     this.videoStore
       .selectSearchQuery()
       .pipe(
-        tap(() => this.setLoading(true)),
+        tap(() => {
+          this.setLoading(true);
+          this.setHasError(false);
+        }),
         switchMap((query: string) => this.getSearchRequest(query)),
         takeUntil(this.onDestroy$)
       )
@@ -84,7 +88,18 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
+  private setHasError(value: boolean): void {
+    this.hasError = value;
+    this.cdr.detectChanges();
+  }
+
   private getSearchRequest(query: string): Observable<IYoutubeSearchResult> {
-    return this.youtubeService.searchList({ query }).pipe(catchError(() => EMPTY));
+    return this.youtubeService.searchList({ query }).pipe(
+      catchError(() => {
+        this.setHasError(true);
+        this.cdr.detectChanges();
+        return EMPTY;
+      })
+    );
   }
 }
