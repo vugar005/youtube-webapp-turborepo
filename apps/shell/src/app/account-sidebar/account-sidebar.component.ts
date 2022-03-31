@@ -4,6 +4,7 @@ import { AppTheme } from '../core/services/theme-service/theme.constants';
 import { ThemeService } from '../core/services/theme-service/theme.service';
 import { KeyEventsDialogComponent } from '../key-events-dialog/key-events-dialog.component';
 import { LocalStorageEnum, WebApiService, YoutubeApiServiceType } from '@youtube/common-ui';
+import { API_SELECT_OPTIONS } from './account-sidebar.constants';
 @Component({
   selector: 'yt-account-sidebar',
   templateUrl: './account-sidebar.component.html',
@@ -13,6 +14,7 @@ import { LocalStorageEnum, WebApiService, YoutubeApiServiceType } from '@youtube
 export class AccountSidebarComponent implements OnInit {
   public readonly version = VERSION.full;
   public readonly appTheme = AppTheme;
+  public readonly apiSelectOptions = API_SELECT_OPTIONS;
   public readonly youtubeApiServiceType = YoutubeApiServiceType;
   public selectedApiService!: YoutubeApiServiceType;
 

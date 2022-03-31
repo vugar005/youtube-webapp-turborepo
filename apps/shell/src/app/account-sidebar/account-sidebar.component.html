@@ -50,26 +50,12 @@
         <button
           mat-menu-item
           class="menu-btn"
-          [ngClass]="{ 'menu-btn--active': selectedApiService === youtubeApiServiceType.EXTERNAL_API_V1 }"
-          (click)="onChangeAPIService(youtubeApiServiceType.EXTERNAL_API_V1)"
+          *ngFor="let item of apiSelectOptions"
+          [ngClass]="{ 'menu-btn--active': selectedApiService === item.value }"
+          (click)="onChangeAPIService(item.value)"
+          [disabled]="item.disabled"
         >
-          External API V1 (Slow)
-        </button>
-        <button
-          mat-menu-item
-          class="menu-btn"
-          [ngClass]="{ 'menu-btn--active': selectedApiService === youtubeApiServiceType.EXTERNAL_API_V2 }"
-          (click)="onChangeAPIService(youtubeApiServiceType.EXTERNAL_API_V2)"
-        >
-          External API v2 (Slow)
-        </button>
-        <button
-          mat-menu-item
-          class="menu-btn"
-          [ngClass]="{ 'menu-btn--active': selectedApiService === youtubeApiServiceType.DATA_API_V3 }"
-          (click)="onChangeAPIService(youtubeApiServiceType.DATA_API_V3)"
-        >
-          Youtube Data API v3 (Fast)
+          {{ item.label }}
         </button>
       </mat-menu>
     </div>
