@@ -1,5 +1,6 @@
+import { isPlatformServer } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Injector } from '@angular/core';
+import { Injector, PLATFORM_ID } from '@angular/core';
 import { LocalStorageEnum } from '../../constants/local-storage.constants';
 import { IYoutubeService } from '../../models';
 import { APP_CONFIG, YOUTUBE_API_KEY } from '../../tokens';
@@ -9,7 +10,8 @@ import { YoutubeService } from '../youtube-v3';
 import { YoutubeApiServiceType } from './youtube-api-service-type';
 
 export const youtubeApiServiceFactory = (injector: Injector): IYoutubeService => {
-  if (sessionStorage) {
+  const platformId = injector.get(PLATFORM_ID);
+  if (!isPlatformServer(platformId)) {
     const selectedService = sessionStorage.getItem(LocalStorageEnum.SELECTED_API_SERVICE);
     switch (selectedService) {
       case YoutubeApiServiceType.EXTERNAL_API_V1:
