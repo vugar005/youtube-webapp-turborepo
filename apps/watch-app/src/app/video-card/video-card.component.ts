@@ -109,7 +109,6 @@ export class VideoCardComponent implements OnInit, OnDestroy {
   }
 
   public onVideoReady(player: YT.Player): void {
-    console.log(player);
     this.setMetaTags(player);
   }
 

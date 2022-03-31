@@ -46,7 +46,6 @@ export class AccountSidebarComponent implements OnInit {
   private setSelectedApiService(): void {
     const sessionStorageRef = this.webapiService.sessionStorage;
     const savedApiService = sessionStorageRef?.getItem(LocalStorageEnum.SELECTED_API_SERVICE) as YoutubeApiServiceType;
-    console.log(savedApiService);
     this.selectedApiService = savedApiService || YoutubeApiServiceType.EXTERNAL_API_V2;
   }
 }

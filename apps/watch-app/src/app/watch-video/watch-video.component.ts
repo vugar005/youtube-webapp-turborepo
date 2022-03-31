@@ -60,7 +60,6 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
       )
       .subscribe((results: IYoutubeVideoResult) => {
         this.videoInfo = results && results?.items?.find((result: IYoutubeVideoItem) => result.id === this.videoId);
-        console.log(this.videoInfo);
         if (this.videoInfo) {
           this.fallBackVideoInfo = this.videoInfo;
         } else {
