@@ -4,11 +4,12 @@ import {
   CustomEventConfig,
   EventDispatcherService,
   GlobalCustomEvent,
-  IYoutubeSearchResult,
   IYoutubeService,
   ToastService,
   YOUTUBE_SERVICE,
   WebApiService,
+  IYoutubeVideoItem,
+  IYoutubeVideoResult,
 } from '@youtube/common-ui';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -22,9 +23,9 @@ import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
 export class WatchVideoComponent implements OnInit, OnDestroy {
   public videoId!: string;
   public startSeconds?: number;
-  public videoInfo?: IYoutubeSearchResult;
+  public videoInfo?: IYoutubeVideoItem;
   // fallback video in case api v2 fails.
-  public fallBackVideoInfo?: IYoutubeSearchResult;
+  public fallBackVideoInfo?: IYoutubeVideoItem;
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -57,8 +58,8 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
         }),
         switchMap(() => this.getVideoInfo())
       )
-      .subscribe((results: IYoutubeSearchResult[]) => {
-        this.videoInfo = results && results?.find((result) => result.id?.videoId === this.videoId);
+      .subscribe((results: IYoutubeVideoResult) => {
+        this.videoInfo = results && results?.items?.find((result: IYoutubeVideoItem) => result.id === this.videoId);
         if (this.videoInfo) {
           this.fallBackVideoInfo = this.videoInfo;
         } else {
@@ -75,15 +76,15 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
       });
   }
 
-  private getVideoInfo(): Observable<IYoutubeSearchResult[]> {
-    return this.youtubeService.searchVideoResults({ query: this.videoId }).pipe(catchError(() => EMPTY));
+  private getVideoInfo(): Observable<IYoutubeVideoResult> {
+    return this.youtubeService.videoList({ query: this.videoId }).pipe(catchError(() => EMPTY));
   }
 
   private handleCaseVideoNotFound(): void {
     this.showVideoNotFoundToast();
     if (this.fallBackVideoInfo) {
       this.videoInfo = this.fallBackVideoInfo;
-      this.videoId = this.fallBackVideoInfo.id.videoId;
+      this.videoId = this.fallBackVideoInfo.id;
       this.startSeconds = 0;
     } else {
       this.navigateToHome();

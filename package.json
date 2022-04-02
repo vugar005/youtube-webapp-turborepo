@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "serve": "concurrently \"turbo run pack-lib\"  \"turbo run serve --no-cache  --continue\"",
+    "serve": "concurrently \"turbo run pack-lib\"  \"turbo run serve  --no-cache  --continue\"",
     "serve:prod": "concurrently \"turbo run pack-lib:prod\"  \"turbo run serve:prod --no-cache --continue\"",
     "build": "turbo run build --no-cache",
     "lint": "turbo run lint",
@@ -93,6 +93,7 @@
     "rxjs": "7.4.0",
     "tslib": "^2.3.0",
     "youtube-search-without-api-key": "1.0.7",
+    "youtube-sr": "4.1.15",
     "zone.js": "~0.11.4"
   }
 }

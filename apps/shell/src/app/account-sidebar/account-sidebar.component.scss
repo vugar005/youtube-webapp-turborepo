@@ -64,6 +64,9 @@
 
 .menu-btn {
   width: 200px;
+  &--active {
+    background: rgba(255, 255, 255, 0.04);
+  }
 }
 
 @media (min-width: 350px) {

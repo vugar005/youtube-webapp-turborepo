@@ -74,6 +74,7 @@ $opacity-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
       right: 4px;
       bottom: 4px;
       background: #000;
+      color: #fff;
       padding: 3px 4px;
       border-radius: 2px;
       font-size: 1.2rem;
@@ -109,6 +110,7 @@ $opacity-transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 
   &__channelTitle {
     color: var(--yt-endpoint-color);
+    margin: 0;
   }
 
   &__footer {

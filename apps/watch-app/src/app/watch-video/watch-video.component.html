@@ -7,6 +7,9 @@
     ></watch-app-video-card>
   </div>
   <div class="related-videos-wrapper">
-    <watch-app-related-videos *ngIf="videoInfo?.title as videoTitle" [query]="videoTitle"></watch-app-related-videos>
+    <watch-app-related-videos
+      *ngIf="videoInfo?.snippet?.title as videoTitle"
+      [query]="videoTitle"
+    ></watch-app-related-videos>
   </div>
 </div>
