@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from '@youtube/common-ui';
-import { HistoryAppWrapperComponent } from './history-app-wrapper/history-app-wrapper.component';
-import { HomeComponent } from './home/home.component';
-import { LikesAppWrapperComponent } from './likes-app-wrapper/likes-app-wrapper.component';
-import { WatchAppWrapperComponent } from './watch-app-wrapper/watch-app-wrapper.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   {
     path: 'watch',
-    component: WatchAppWrapperComponent,
+    loadChildren: () => import('./watch-app-wrapper/watch-app-wrapper.module').then((m) => m.WatchAppWrapperModule),
     data: { importName: 'watchApp', elementName: 'watch-app-element' },
   },
   {
     path: 'liked',
-    component: LikesAppWrapperComponent,
+    loadChildren: () => import('./likes-app-wrapper/likes-app-wrapper.module').then((m) => m.LikesAppWrapperModule),
     data: { importName: 'likesApp', elementName: 'likes-app-element' },
   },
   {
     path: 'history',
-    component: HistoryAppWrapperComponent,
+    loadChildren: () =>
+      import('./history-app-wrapper/history-app-wrapper.module').then((m) => m.HistoryAppWrapperModule),
     data: { importName: 'historyApp', elementName: 'history-app-element' },
   },
   {
@@ -33,6 +31,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabledBlocking',
+      preloadingStrategy: PreloadAllModules,
     }),
   ],
   exports: [RouterModule],
