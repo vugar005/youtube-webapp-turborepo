@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowseVideosComponent } from './browse-videos.component';
 import { MatIconModule } from '@angular/material/icon';
 import { VideoThumbnailLoaderModule } from '@youtube/common-ui';
-import { MiniSidebarModule } from '../mini-sidebar/mini-sidebar.module';
+import { MiniSidebarModule } from '../components/mini-sidebar/mini-sidebar.module';
 import { VideoThumbnailModule } from '@youtube/common-ui';
 
 @NgModule({

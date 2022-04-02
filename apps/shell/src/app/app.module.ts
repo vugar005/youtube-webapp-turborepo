@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app.routing';
 import { YOUTUBE_SERVICE, APP_CONFIG, youtubeApiServiceFactory, NotFoundPageModule } from '@youtube/common-ui';
 import { StoreModule } from '@ngrx/store';
@@ -13,13 +13,13 @@ import { ROOT_REDUCERS } from './reducers';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
-import { KeyEventsDialogComponent } from './key-events-dialog/key-events-dialog.component';
+import { KeyEventsDialogComponent } from './components/key-events-dialog/key-events-dialog.component';
 import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
-import { HeaderModule } from './header/header.module';
-import { SidebarModule } from './sidebar/sidebar.module';
-import { MiniSidebarModule } from './mini-sidebar/mini-sidebar.module';
-import { AccountSidebarModule } from './account-sidebar/account-sidebar.module';
-import { MiniPlayerModule } from './mini-player/mini-player.module';
+import { HeaderModule } from './components/header/header.module';
+import { SidebarModule } from './components/sidebar/sidebar.module';
+import { MiniSidebarModule } from './components/mini-sidebar/mini-sidebar.module';
+import { AccountSidebarModule } from './components/account-sidebar/account-sidebar.module';
+import { MiniPlayerModule } from './components/mini-player/mini-player.module';
 import { BrowseVideosModule } from './browse-videos/browse-videos.module';
 
 @NgModule({
@@ -43,7 +43,6 @@ import { BrowseVideosModule } from './browse-videos/browse-videos.module';
     NotFoundPageModule,
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
-        // strictStateImmutability and strictActionImmutability are enabled by default
         strictStateSerializability: true,
         strictActionSerializability: true,
         strictActionWithinNgZone: true,

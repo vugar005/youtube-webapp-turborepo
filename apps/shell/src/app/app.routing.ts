@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from '@youtube/common-ui';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -31,6 +31,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabledBlocking',
+      preloadingStrategy: PreloadAllModules,
     }),
   ],
   exports: [RouterModule],
