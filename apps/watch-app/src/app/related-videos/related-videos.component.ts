@@ -7,7 +7,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { IYoutubeSearchResult, IYoutubeService, YOUTUBE_SERVICE } from '@youtube/common-ui';
+import { IYoutubeSearchResult, IYoutubeSearchItem, IYoutubeService, YOUTUBE_SERVICE } from '@youtube/common-ui';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -18,7 +18,7 @@ import { filter } from 'rxjs/operators';
 })
 export class RelatedVideosComponent implements OnChanges {
   @Input() query!: string;
-  @Input() relatedVideos?: IYoutubeSearchResult[];
+  @Input() relatedVideos?: IYoutubeSearchItem[];
   public items = new Array(5);
   constructor(@Inject(YOUTUBE_SERVICE) private youtubeService: IYoutubeService, private cdr: ChangeDetectorRef) {}
 
@@ -31,10 +31,10 @@ export class RelatedVideosComponent implements OnChanges {
 
   private getRelatedVideos(): void {
     this.youtubeService
-      .searchVideoResults({ query: this.query?.slice(0, 10) })
-      .pipe(filter((results) => !!results?.length))
-      .subscribe((results: IYoutubeSearchResult[]) => {
-        this.relatedVideos = results;
+      .searchList({ query: this.query?.slice(0, 10) })
+      .pipe(filter((results) => !!results?.items?.length))
+      .subscribe((results: IYoutubeSearchResult) => {
+        this.relatedVideos = results?.items;
         this.cdr.detectChanges();
       });
   }

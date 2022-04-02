@@ -12,7 +12,6 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   CustomEventConfig,
   EventDispatcherService,
-  IYoutubeSearchResult,
   ShareVideoDialogComponent,
   VideoPlayerComponent,
   WatchAPPEvents,
@@ -21,6 +20,7 @@ import {
   GlobalCustomEvent,
   MetaTagService,
   ICommonMetaTagConfig,
+  IYoutubeVideoItem,
 } from '@youtube/common-ui';
 import { Subject, takeUntil } from 'rxjs';
 import { UIStoreService } from '../core/services/ui-store/ui-store.service';
@@ -35,7 +35,7 @@ export class VideoCardComponent implements OnInit, OnDestroy {
   @ViewChild(VideoPlayerComponent) videoPlayer?: VideoPlayerComponent;
   @Input() videoId!: string;
   @Input() startSeconds: number | undefined;
-  @Input() videoResult?: IYoutubeSearchResult;
+  @Input() videoResult?: IYoutubeVideoItem;
   public likedVideos: string[] = [];
   public dislikedVideos: string[] = [];
 

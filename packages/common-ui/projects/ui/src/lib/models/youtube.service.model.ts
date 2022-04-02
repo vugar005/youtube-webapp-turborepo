@@ -1,12 +1,20 @@
 import { Observable } from 'rxjs';
-import { IYoutubeSearchResult } from '.';
+import { IYoutubeSearchResult } from './youtube-search-list.model';
+import { IYoutubeVideoResult } from './youtube-video-list.model';
 
 export interface IYoutubeService {
-  searchVideoResults: (params: IYoutubeSearchParams) => Observable<IYoutubeSearchResult[]>;
+  searchList: (params: IYoutubeSearchParams) => Observable<IYoutubeSearchResult>;
+  videoList: (params: IYoutubeVideoListParams) => Observable<IYoutubeVideoResult>;
 }
 
 export interface IYoutubeSearchParams {
   query: string;
   maxResults?: number;
   safeSearch?: 'none' | 'moderate' | 'strict';
+}
+
+export interface IYoutubeVideoListParams {
+  query: string;
+  part?: string;
+  id?: string;
 }

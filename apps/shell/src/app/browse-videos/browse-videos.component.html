@@ -3,11 +3,13 @@
     <yt-mini-sidebar class="mini-sidebar-wrapper"></yt-mini-sidebar>
   </div>
   <div class="browse-videos-list">
-    <ng-container *ngIf="!isLoading && !isServer; else loadingTemplate">
-      <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
-        <div class="video-player" *ngFor="let video of videoLinks" (click)="onSelectVideo(video.id.videoId)">
-          <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'horizontal'"></ytd-video-thumbnail>
-        </div>
+    <ng-container *ngIf="!hasError; else errorTemplate">
+      <ng-container *ngIf="!isLoading && !isServer; else loadingTemplate">
+        <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
+          <div class="video-player" *ngFor="let video of videoLinks" (click)="onSelectVideo(video.id.videoId)">
+            <ytd-video-thumbnail [searchItem]="video" [direction]="'horizontal'"></ytd-video-thumbnail>
+          </div>
+        </ng-container>
       </ng-container>
     </ng-container>
   </div>
@@ -31,6 +33,18 @@
 
     <div class="emptyTemplate__text">
       <h1 class="mat-h1">No results found</h1>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <div class="errorTemplate">
+    <div class="errorTemplate__header">
+      <mat-icon class="errorTemplate-icon">report_problem</mat-icon>
+    </div>
+
+    <div class="errorTemplate__text">
+      <h1 class="mat-h1">Oops... Someting went wrong.</h1>
     </div>
   </div>
 </ng-template>

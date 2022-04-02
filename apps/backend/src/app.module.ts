@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { YoutubeApiModule } from './youtube/youtube-api.module';
+import { YoutubeApiModuleV1 } from './v1/youtube/youtube-api.v1.module';
+import { YoutubeApiModuleV2 } from './v2/youtube/youtube-api.v2.module';
 
 @Module({
-  imports: [YoutubeApiModule],
+  imports: [YoutubeApiModuleV1, YoutubeApiModuleV2],
   controllers: [AppController],
   providers: [AppService],
 })

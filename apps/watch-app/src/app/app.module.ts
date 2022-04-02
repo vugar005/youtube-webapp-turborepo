@@ -19,11 +19,12 @@ import {
   VideoPlayerModule,
   VideoThumbnailLoaderModule,
   VideoThumbnailModule,
-  YoutubeServiceV2,
   YOUTUBE_SERVICE,
   ShareVideoDialogModule,
   APP_CONFIG,
   ToastModule,
+  AbbreviateNumberPipeModule,
+  youtubeApiServiceFactory,
 } from '@youtube/common-ui';
 import { RelatedVideosComponent } from './related-videos/related-videos.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,9 +34,17 @@ import { ROOT_REDUCERS } from './reducers';
 import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { VideoSecondaryInfoComponent } from './video-card/video-secondary-info/video-secondary-info.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [AppComponent, WatchVideoComponent, VideoCardComponent, RelatedVideosComponent],
+  declarations: [
+    AppComponent,
+    WatchVideoComponent,
+    VideoCardComponent,
+    RelatedVideosComponent,
+    VideoSecondaryInfoComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -45,8 +54,10 @@ import { MatDividerModule } from '@angular/material/divider';
     VideoThumbnailModule,
     VideoThumbnailLoaderModule,
     ShareVideoDialogModule,
+    AbbreviateNumberPipeModule,
     ToastModule,
     MatIconModule,
+    MatButtonModule,
     MatSnackBarModule,
     MatDialogModule,
     MatDividerModule,
@@ -69,7 +80,8 @@ import { MatDividerModule } from '@angular/material/divider';
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useFactory: youtubeApiServiceFactory,
+      deps: [Injector],
     },
     {
       provide: APP_API_KEY,

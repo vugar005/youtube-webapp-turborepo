@@ -8,6 +8,10 @@
   &__player {
     height: var(--ytd-watch-flexy-player-height);
   }
+  
+  &__secondary-info {
+    padding-top: 1.6rem;
+  }
 }
 
 .video-details {
@@ -76,6 +80,17 @@
   position: relative;
 }
 
+.video-details-tags {
+  display: flex;
+  height: 1.8rem;
+  overflow: hidden;
+  .video-details-tag {
+    margin: 0;
+    margin-right: 3px;
+    color: var(--yt-primary-50);
+  }
+}
+
 
 @media (min-width: 576px) {
   
@@ -85,7 +100,7 @@
     &__item {
       flex-direction: row;
       margin-top: 0;
-      margin-right: 2.5rem;
+      margin-right: 1.5rem;
      &__icon {
       margin-bottom: 0;
       margin-right: 0.5rem;
@@ -101,6 +116,11 @@
       align-items: center;
       justify-content: space-between;
     }
+  }
+
+  .video-details-actions {
+    flex: 1 0 430px;
+    justify-content: flex-end;
   }
   
 }

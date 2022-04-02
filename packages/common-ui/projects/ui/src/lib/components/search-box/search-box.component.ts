@@ -14,7 +14,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { catchError, debounceTime, EMPTY, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { IYoutubeService } from '../../models';
-import { IYoutubeSearchResult } from '../../models/youtube-search-list.model';
+import { IYoutubeSearchItem, IYoutubeSearchResult } from '../../models/youtube-search-list.model';
 import { YOUTUBE_SERVICE } from '../../tokens';
 
 @Component({
@@ -37,7 +37,7 @@ export class SearchBoxComponent implements OnInit, OnDestroy, ControlValueAccess
   @Input() placeholder = 'Search';
   @Input() debounceTime = 200;
   public searchControl = new FormControl();
-  public searchOptions: IYoutubeSearchResult[] = [];
+  public searchOptions?: IYoutubeSearchItem[] = [];
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -117,13 +117,13 @@ export class SearchBoxComponent implements OnInit, OnDestroy, ControlValueAccess
         switchMap((text: string) => this.getSearchRequest({ query: text })),
         takeUntil(this.onDestroy$)
       )
-      .subscribe((results: IYoutubeSearchResult[]) => {
-        this.searchOptions = results;
+      .subscribe((results: IYoutubeSearchResult) => {
+        this.searchOptions = results?.items;
         this.cdr.detectChanges();
       });
   }
 
-  private getSearchRequest(payload: { query: string }): Observable<IYoutubeSearchResult[]> {
-    return this.youtubeService.searchVideoResults(payload).pipe(catchError(() => EMPTY));
+  private getSearchRequest(payload: { query: string }): Observable<IYoutubeSearchResult> {
+    return this.youtubeService.searchList(payload).pipe(catchError(() => EMPTY));
   }
 }

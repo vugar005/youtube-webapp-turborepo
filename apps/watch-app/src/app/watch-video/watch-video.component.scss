@@ -22,7 +22,7 @@
   margin-left: var(--ytd-margin-6x);
   margin-top: var(--ytd-margin-6x);
   flex: 1;
-  width: calc(100% - 16px);
+  width: calc(100% - var(--ytd-margin-6x));
 }
 
 @media (min-width: 992px) {
