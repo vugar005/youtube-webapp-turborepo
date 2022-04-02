@@ -8,7 +8,7 @@ jobs:
   - checkout
   - run:
      name: install-dependencies
-     command: npm ci && npm install turbo@1.1.4 -g
+     command: npm ci
   - run:
      name: angular-build
      command: npm run build
