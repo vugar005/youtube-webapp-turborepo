@@ -1,0 +1,17 @@
+ version: 2.1
+    jobs:
+      build:
+    working_directory: ~/youtube-webapp-turborepo
+    docker:
+      - image: circleci/node:16-browsers
+    steps:
+      - checkout
+      - run:
+          name: install-dependencies
+          command: npm ci && npm install turbo@1.1.4 -g
+      - run:
+          name: angular-build
+          command: npm run build
+      - run:
+          name: angular-lint
+          command: npm run lint
