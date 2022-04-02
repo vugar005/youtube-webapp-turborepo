@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, VERSION, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AppTheme } from '../core/services/theme-service/theme.constants';
-import { ThemeService } from '../core/services/theme-service/theme.service';
+import { AppTheme } from '../../core/services/theme-service/theme.constants';
+import { ThemeService } from '../../core/services/theme-service/theme.service';
 import { KeyEventsDialogComponent } from '../key-events-dialog/key-events-dialog.component';
 import { LocalStorageEnum, WebApiService, YoutubeApiServiceType } from '@youtube/common-ui';
 import { API_SELECT_OPTIONS } from './account-sidebar.constants';

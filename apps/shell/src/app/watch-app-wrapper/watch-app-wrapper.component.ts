@@ -40,6 +40,7 @@ export class WatchAppWrapperComponent implements OnInit, OnDestroy {
   }
 
   public loadElement(): void {
+    console.log(this.route);
     const elementName = this.route.snapshot.data['elementName'];
     const importName = this.route.snapshot.data['importName'];
 
