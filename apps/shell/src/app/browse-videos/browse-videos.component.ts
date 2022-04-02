@@ -2,7 +2,7 @@ import { isPlatformServer } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IYoutubeService, IYoutubeSearchResult, YOUTUBE_SERVICE } from '@youtube/common-ui';
+import { IYoutubeService, IYoutubeSearchResult, IYoutubeSearchItem, YOUTUBE_SERVICE } from '@youtube/common-ui';
 import { catchError, EMPTY, Observable, Subject, switchMap, take, takeUntil, tap, withLatestFrom } from 'rxjs';
 import { AccountStoreService } from '../core/services/account-store/account-store.service';
 import { VideoStoreService } from '../core/services/video-store/video-store.service';
@@ -14,10 +14,11 @@ import { VideoStoreService } from '../core/services/video-store/video-store.serv
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrowseVideosComponent implements OnInit, OnDestroy {
-  public videoLinks: IYoutubeSearchResult[] = [];
+  public videoLinks?: IYoutubeSearchItem[] = [];
   public videoWidth?: number;
   public items = new Array(18);
   public isLoading = false;
+  public hasError = false;
   public isServer!: boolean;
 
   private readonly onDestroy$ = new Subject<void>();
@@ -68,12 +69,15 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
     this.videoStore
       .selectSearchQuery()
       .pipe(
-        tap(() => this.setLoading(true)),
+        tap(() => {
+          this.setLoading(true);
+          this.setHasError(false);
+        }),
         switchMap((query: string) => this.getSearchRequest(query)),
         takeUntil(this.onDestroy$)
       )
-      .subscribe((items: IYoutubeSearchResult[]) => {
-        this.videoLinks = items;
+      .subscribe((result: IYoutubeSearchResult) => {
+        this.videoLinks = result?.items;
         this.setLoading(false);
         this.cdr.detectChanges();
       });
@@ -83,7 +87,19 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
     this.isLoading = isLoading;
     this.cdr.detectChanges();
   }
-  private getSearchRequest(query: string): Observable<IYoutubeSearchResult[]> {
-    return this.youtubeService.searchVideoResults({ query }).pipe(catchError(() => EMPTY));
+
+  private setHasError(value: boolean): void {
+    this.hasError = value;
+    this.cdr.detectChanges();
+  }
+
+  private getSearchRequest(query: string): Observable<IYoutubeSearchResult> {
+    return this.youtubeService.searchList({ query }).pipe(
+      catchError(() => {
+        this.setHasError(true);
+        this.cdr.detectChanges();
+        return EMPTY;
+      })
+    );
   }
 }

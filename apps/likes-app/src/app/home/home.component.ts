@@ -3,12 +3,12 @@ import {
   CustomEventConfig,
   EventDispatcherService,
   GlobalCustomEvent,
-  IYoutubeSearchResult,
+  IYoutubeSearchItem,
   IYoutubeService,
   YOUTUBE_SERVICE,
 } from '@youtube/common-ui';
 import { EMPTY, forkJoin, Observable, Subject } from 'rxjs';
-import { catchError, map, takeUntil } from 'rxjs/operators';
+import { catchError, filter, map, takeUntil } from 'rxjs/operators';
 import { UIStoreService } from '../core/services/ui-store/ui-store.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { UIStoreService } from '../core/services/ui-store/ui-store.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public likedVideos: IYoutubeSearchResult[] = [];
+  public likedVideos?: IYoutubeSearchItem[] = [];
   public videoIds: string[] = [];
   public isLoading!: boolean;
 
@@ -65,15 +65,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private getLikedVideosInfo(videoIds: string[]): void {
-    const reqArray: Observable<IYoutubeSearchResult>[] = [];
+    const reqArray: Observable<IYoutubeSearchItem>[] = [];
     videoIds?.forEach((id: string) => {
-      const videoRequest = this.youtubeService.searchVideoResults({ query: id }).pipe(map((data) => data[0]));
+      const videoRequest = this.youtubeService.searchList({ query: id }).pipe(
+        map((data) => data.items?.[0]),
+        filter(Boolean)
+      );
       reqArray.push(videoRequest);
     });
 
     forkJoin(reqArray)
       .pipe(catchError(() => EMPTY))
-      .subscribe((data: IYoutubeSearchResult[]) => {
+      .subscribe((data: IYoutubeSearchItem[]) => {
         this.likedVideos = data;
         this.isLoading = false;
         this.cdr.detectChanges();

@@ -4,11 +4,11 @@ import {
   EventDispatcherService,
   GlobalCustomEvent,
   HistoryAppEvent,
-  IYoutubeSearchResult,
+  IYoutubeSearchItem,
   IYoutubeService,
   YOUTUBE_SERVICE,
 } from '@youtube/common-ui';
-import { finalize, forkJoin, map, Observable, Subject, takeUntil } from 'rxjs';
+import { filter, finalize, forkJoin, map, Observable, Subject, takeUntil } from 'rxjs';
 import { UIStoreService } from '../core/services/ui-store/ui-store.service';
 
 @Component({
@@ -19,7 +19,7 @@ import { UIStoreService } from '../core/services/ui-store/ui-store.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   @Input() watchedVideoIds?: string[];
-  public watchedVideos: IYoutubeSearchResult[] = [];
+  public watchedVideos: IYoutubeSearchItem[] = [];
   public isWatchHistoryEnabled?: boolean;
   public isLoading?: boolean;
 
@@ -91,20 +91,24 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     this.cdr.detectChanges();
 
-    const reqArray: Observable<IYoutubeSearchResult>[] = [];
+    const reqArray: Observable<IYoutubeSearchItem>[] = [];
     videoIds?.forEach((id: string) => {
-      const videoRequest = this.youtubeService.searchVideoResults({ query: id }).pipe(map((data) => data[0]));
+      const videoRequest = this.youtubeService.searchList({ query: id }).pipe(
+        map((data) => data.items?.[0]),
+        filter(Boolean)
+      );
       reqArray.push(videoRequest);
     });
 
     forkJoin(reqArray)
       .pipe(
+        takeUntil(this.onDestroy$),
         finalize(() => {
           this.isLoading = false;
           this.cdr.detectChanges();
         })
       )
-      .subscribe((data: IYoutubeSearchResult[]) => {
+      .subscribe((data: IYoutubeSearchItem[]) => {
         this.watchedVideos = data;
         this.cdr.detectChanges();
       });

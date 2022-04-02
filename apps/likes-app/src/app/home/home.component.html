@@ -5,7 +5,7 @@
         <ng-container *ngIf="likedVideos?.[0] as primaryVideo else primaryLoadingTemplate">
           <ytd-video-thumbnail
             (click)="onWatchVideo(primaryVideo.id?.videoId)"
-            [snippet]="primaryVideo.snippet"
+            [searchItem]="primaryVideo"
             [direction]="'horizontal'"
           ></ytd-video-thumbnail>
         </ng-container>
@@ -24,7 +24,7 @@
           <div class="video-item__index">{{ videoIndex + 1 }}</div>
 
           <div class="video-item__thumbnail">
-            <ytd-video-thumbnail [snippet]="video.snippet" [direction]="'vertical'"></ytd-video-thumbnail>
+            <ytd-video-thumbnail [searchItem]="video" [direction]="'vertical'"></ytd-video-thumbnail>
           </div>
         </div>
       </ng-container>

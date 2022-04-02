@@ -15,10 +15,10 @@ import { Router } from '@angular/router';
 import { CountryApiService } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { SettingsStore } from '../core/services/settings-store/settings-store.service';
-import { AppTheme } from '../core/services/theme-service/theme.constants';
-import { ThemeService } from '../core/services/theme-service/theme.service';
-import { VideoStoreService } from '../core/services/video-store/video-store.service';
+import { SettingsStore } from '../../core/services/settings-store/settings-store.service';
+import { AppTheme } from '../../core/services/theme-service/theme.constants';
+import { ThemeService } from '../../core/services/theme-service/theme.service';
+import { VideoStoreService } from '../../core/services/video-store/video-store.service';
 
 @Component({
   selector: 'yt-header',

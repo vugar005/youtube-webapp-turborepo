@@ -1,44 +1,39 @@
-interface VideoId {
+import { IYoutubePageInfo, IYoutubeThumbnailDetail } from './youtube-common.model';
+
+export interface IYoutubeSearchResult {
+  kind?: string;
+  etag?: string;
+  nextPageToken?: string;
+  regionCode?: string;
+  pageInfo?: IYoutubePageInfo;
+  items?: IYoutubeSearchItem[];
+}
+
+export interface IYoutubeSearchItem {
+  kind?: string;
+  etag?: string;
+  id: IYoutubeSearchId;
+  snippet: IYoutubeSearchSnippet;
+}
+
+export interface IYoutubeSearchId {
+  kind?: string;
   videoId: string;
 }
 
-interface Default {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface High {
-  url: string;
-  width: number;
-  height: number;
-}
-
-interface Thumbnails {
-  id: string;
-  url: string;
-  default: Default;
-  high: High;
-  height: number;
-  width: number;
-}
-
-export interface VideoSnippet {
-  url: string;
-  duration: string;
-  publishedAt: string;
-  thumbnails: Thumbnails;
-  title: string;
-  views: string;
-}
-
-export interface IYoutubeSearchResult {
-  id: VideoId;
-  url: string;
+export interface IYoutubeSearchSnippet {
+  publishedAt: Date;
+  channelId?: string;
   title: string;
   description: string;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  duration_raw: string;
-  snippet: VideoSnippet;
-  views: string;
+  thumbnails: IYoutubeSearchThumbnail;
+  channelTitle?: string;
+  liveBroadcastContent?: string;
+  publishTime?: Date;
+}
+
+export interface IYoutubeSearchThumbnail {
+  default: IYoutubeThumbnailDetail;
+  medium: IYoutubeThumbnailDetail;
+  high: IYoutubeThumbnailDetail;
 }

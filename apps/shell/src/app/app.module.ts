@@ -1,86 +1,48 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatMenuModule } from '@angular/material/menu';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app.routing';
-import {
-  SearchBoxModule,
-  VideoPlayerModule,
-  VideoThumbnailLoaderModule,
-  VideoThumbnailModule,
-  YoutubeServiceV2,
-  YOUTUBE_SERVICE,
-  BrandIconModule,
-  NotFoundPageModule,
-  APP_CONFIG,
-  SearchBoxMobileModule,
-} from '@youtube/common-ui';
+import { YOUTUBE_SERVICE, APP_CONFIG, youtubeApiServiceFactory, NotFoundPageModule } from '@youtube/common-ui';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS } from './reducers';
-import { BrowseVideosComponent } from './browse-videos/browse-videos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MiniSidebarComponent } from './mini-sidebar/mini-sidebar.component';
-import { WatchAppWrapperComponent } from './watch-app-wrapper/watch-app-wrapper.component';
-import { LikesAppWrapperComponent } from './likes-app-wrapper/likes-app-wrapper.component';
-import { AccountSidebarComponent } from './account-sidebar/account-sidebar.component';
-import { MiniPlayerComponent } from './mini-player/mini-player.component';
-import { HistoryAppWrapperComponent } from './history-app-wrapper/history-app-wrapper.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { KeyEventsDialogComponent } from './key-events-dialog/key-events-dialog.component';
+import { KeyEventsDialogComponent } from './components/key-events-dialog/key-events-dialog.component';
 import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
+import { HeaderModule } from './components/header/header.module';
+import { SidebarModule } from './components/sidebar/sidebar.module';
+import { MiniSidebarModule } from './components/mini-sidebar/mini-sidebar.module';
+import { AccountSidebarModule } from './components/account-sidebar/account-sidebar.module';
+import { MiniPlayerModule } from './components/mini-player/mini-player.module';
+import { BrowseVideosModule } from './browse-videos/browse-videos.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-    HomeComponent,
-    BrowseVideosComponent,
-    MiniSidebarComponent,
-    WatchAppWrapperComponent,
-    LikesAppWrapperComponent,
-    AccountSidebarComponent,
-    MiniPlayerComponent,
-    HistoryAppWrapperComponent,
-    KeyEventsDialogComponent,
-    KeyEventsListenerComponent,
-  ],
+  declarations: [AppComponent, HomeComponent, KeyEventsDialogComponent, KeyEventsListenerComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatTooltipModule,
-    BrandIconModule,
-    VideoPlayerModule,
-    VideoThumbnailModule,
-    NotFoundPageModule,
-    MatDialogModule,
-    SearchBoxModule,
-    MatMenuModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    VideoThumbnailLoaderModule,
-    SearchBoxMobileModule,
+
+    HeaderModule,
+    SidebarModule,
+    MiniSidebarModule,
+    AccountSidebarModule,
+    MiniPlayerModule,
+    BrowseVideosModule,
+
+    MatSidenavModule,
+    MatDialogModule,
+
+    NotFoundPageModule,
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
-        // strictStateImmutability and strictActionImmutability are enabled by default
         strictStateSerializability: true,
         strictActionSerializability: true,
         strictActionWithinNgZone: true,
@@ -96,7 +58,8 @@ import { KeyEventsListenerComponent } from './key-events-listener/key-events-lis
   providers: [
     {
       provide: YOUTUBE_SERVICE,
-      useClass: YoutubeServiceV2,
+      useFactory: youtubeApiServiceFactory,
+      deps: [Injector],
     },
     { provide: APP_CONFIG, useValue: environment },
   ],

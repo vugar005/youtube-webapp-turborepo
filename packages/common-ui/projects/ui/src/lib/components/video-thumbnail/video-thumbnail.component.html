@@ -3,10 +3,10 @@
   [ngClass]="{ 'thumbnail--vertical': direction === 'vertical', 'thumbnail--horizontal': direction === 'horizontal' }"
 >
   <div class="thumbnail__image">
-    <img [src]="snippet?.thumbnails?.high?.url" alt="Video image" />
+    <img [src]="searchItem?.snippet?.thumbnails?.high?.url" alt="Video image" />
 
-    <div class="thumbnail__image__duration">
-      {{ snippet?.duration }}
+    <div class="thumbnail__image__duration" *ngIf="videoItem?.contentDetails?.duration">
+      {{ videoItem?.contentDetails?.duration }}
     </div>
     <div class="image-backdrop"></div>
   </div>
@@ -15,10 +15,16 @@
     <div class="thumbnail-details__icon"></div>
     <div class="thumbnail-details-content">
       <div class="thumbnail-details-content">
-        <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="snippet?.title"></h3>
+        <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="searchItem?.snippet?.title"></h3>
+        <h4
+          class="thumbnail-details-content__channelTitle mat-subheading-1"
+          [innerHtml]="searchItem?.snippet?.channelTitle"
+        ></h4>
         <p class="thumbnail-details-content__footer mat-h4">
-          <span *ngIf="snippet?.views">{{ snippet?.views | number: '1.0-0' }} views •</span>
-          {{ snippet?.publishedAt | ytdTimeAgo }}
+          <span *ngIf="videoItem?.statistics?.viewCount as viewsCount"
+            >{{ viewsCount | ytdAbbreviateNumber: 0 }} views •</span
+          >
+          {{ searchItem?.snippet?.publishedAt | ytdTimeAgo }}
         </p>
       </div>
     </div>
