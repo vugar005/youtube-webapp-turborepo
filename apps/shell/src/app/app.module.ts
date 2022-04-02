@@ -33,11 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MiniSidebarComponent } from './mini-sidebar/mini-sidebar.component';
-import { WatchAppWrapperComponent } from './watch-app-wrapper/watch-app-wrapper.component';
-import { LikesAppWrapperComponent } from './likes-app-wrapper/likes-app-wrapper.component';
 import { AccountSidebarComponent } from './account-sidebar/account-sidebar.component';
 import { MiniPlayerComponent } from './mini-player/mini-player.component';
-import { HistoryAppWrapperComponent } from './history-app-wrapper/history-app-wrapper.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { KeyEventsDialogComponent } from './key-events-dialog/key-events-dialog.component';
 import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
@@ -50,11 +47,8 @@ import { KeyEventsListenerComponent } from './key-events-listener/key-events-lis
     HomeComponent,
     BrowseVideosComponent,
     MiniSidebarComponent,
-    WatchAppWrapperComponent,
-    LikesAppWrapperComponent,
     AccountSidebarComponent,
     MiniPlayerComponent,
-    HistoryAppWrapperComponent,
     KeyEventsDialogComponent,
     KeyEventsListenerComponent,
   ],
