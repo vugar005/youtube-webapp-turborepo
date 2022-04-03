@@ -22,6 +22,10 @@ const routes: Routes = [
     data: { importName: 'historyApp', elementName: 'history-app-element' },
   },
   {
+    path: 'policy-terms',
+    loadChildren: () => import('./components/policy-terms/policy-terms.module').then((m) => m.PolicyTermsModule),
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },
