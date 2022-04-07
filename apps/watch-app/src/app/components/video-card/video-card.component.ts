@@ -23,7 +23,7 @@ import {
   IYoutubeVideoItem,
 } from '@youtube/common-ui';
 import { Subject, takeUntil } from 'rxjs';
-import { UIStoreService } from '../core/services/ui-store/ui-store.service';
+import { UIStoreService } from 'src/app/core/services/ui-store/ui-store.service';
 
 @Component({
   selector: 'watch-app-video-card',

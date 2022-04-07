@@ -3,65 +3,37 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createCustomElement } from '@angular/elements';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { WatchVideoComponent } from './watch-video/watch-video.component';
-import { VideoCardComponent } from './video-card/video-card.component';
 import {
   APP_API_KEY,
   EventDispatcherService,
-  VideoPlayerModule,
-  VideoThumbnailLoaderModule,
-  VideoThumbnailModule,
   YOUTUBE_SERVICE,
-  ShareVideoDialogModule,
   APP_CONFIG,
-  ToastModule,
-  AbbreviateNumberPipeModule,
   youtubeApiServiceFactory,
 } from '@youtube/common-ui';
-import { RelatedVideosComponent } from './related-videos/related-videos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_KEY } from './app.constants';
 
 import { ROOT_REDUCERS } from './reducers';
 import { environment } from '../environments/environment';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { VideoSecondaryInfoComponent } from './video-card/video-secondary-info/video-secondary-info.component';
-import { MatButtonModule } from '@angular/material/button';
+import { WatchVideoModule } from './watch-video/watch-video.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WatchVideoComponent,
-    VideoCardComponent,
-    RelatedVideosComponent,
-    VideoSecondaryInfoComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    VideoPlayerModule,
-    VideoThumbnailModule,
-    VideoThumbnailLoaderModule,
-    ShareVideoDialogModule,
-    AbbreviateNumberPipeModule,
-    ToastModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    MatDividerModule,
     AppRoutingModule,
+
+    WatchVideoModule,
+
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
         // strictStateImmutability and strictActionImmutability are enabled by default
