@@ -117,5 +117,10 @@ Want to contribute to improve community app? Looking forward for pull requests. 
 ## Supporting guide
 Found repo useful? :) Let's star it ⭐
 
+## References
+Book: https://www.angulararchitects.io/en/book/   
+My blog: https://medium.com/p/258f331bc11e   
+Big thanks to https://github.com/manfredsteyer for his contribution for a lot of useful blogs + book for building microfrontend.
+
 ## About me 🌴🏌️
 Xtreme Junior Front end developer focused on nice architecture and long term webapps.
