@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { MatIconModule } from '@angular/material/icon';
-import { BrandIconModule } from '@youtube/common-ui';
+import { BrandIconModule, MaxWidthDirectiveModule, MinWidthDirectiveModule } from '@youtube/common-ui';
 import { SearchBoxMobileModule } from '@youtube/common-ui';
 import { SearchBoxModule } from '@youtube/common-ui';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     MatIconModule,
     BrandIconModule,
+    MinWidthDirectiveModule,
+    MaxWidthDirectiveModule,
     SearchBoxModule,
     SearchBoxMobileModule,
     ReactiveFormsModule,

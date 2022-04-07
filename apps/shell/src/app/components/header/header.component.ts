@@ -1,3 +1,4 @@
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { isPlatformServer } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -14,6 +15,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountryApiService } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
+import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
 import { environment } from 'src/environments/environment';
 import { SettingsStore } from '../../core/services/settings-store/settings-store.service';
 import { AppTheme } from '../../core/services/theme-service/theme.constants';
@@ -41,6 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private settingsStore: SettingsStore,
     private themeService: ThemeService,
     private countryApiService: CountryApiService,
+    public breakpointObserver: BreakpointObserver,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -81,7 +84,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private listenToSearchInput(): void {
     this.searchControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe((value: string) => {
-      this.videoStore.setSearchQuery(value);
+      const searchValue = value || DEFAULT_SEARCH_VALUE;
+      this.videoStore.setSearchQuery(searchValue);
       this.router.navigate(['']);
     });
   }
@@ -98,5 +102,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.countryCode = data;
         this.cdr.detectChanges();
       });
+  }
+
+  private initBreakpointObserver(): void {
+    this.breakpointObserver.observe(['(min-width: 400px)']).subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        console.log('Viewport width is 500px or greater!');
+      } else {
+        console.log('Viewport width is less than 500px!');
+      }
+    });
   }
 }

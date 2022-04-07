@@ -11,8 +11,8 @@
     </div>
   </div>
   <div class="header__center">
-    <ytd-search-box class="searchbox-desktop" [formControl]="searchControl"></ytd-search-box>
-    <ytd-search-box-mobile class="searchbox-mobile" [formControl]="searchControl"></ytd-search-box-mobile>
+    <ytd-search-box *ytdMinWidth="'576px'" [formControl]="searchControl"></ytd-search-box>
+    <ytd-search-box-mobile *ytdMaxWidth="'575px'" [formControl]="searchControl"></ytd-search-box-mobile>
   </div>
   <div class="header__end">
     <div class="header-feature header-feature--community">

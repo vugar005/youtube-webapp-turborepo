@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
 import { VideoActions } from '../actions';
 
 export const featureKey = 'video';
@@ -14,7 +15,7 @@ export interface VideoState {
 }
 
 const initialState: VideoState = {
-  searchQuery: 'jay aliyev roudeep',
+  searchQuery: DEFAULT_SEARCH_VALUE,
   isMiniPlayerEnabled: false,
   miniPlayerVideo: {
     videoId: null,

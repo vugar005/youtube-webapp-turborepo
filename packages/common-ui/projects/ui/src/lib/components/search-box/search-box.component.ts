@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { catchError, debounceTime, EMPTY, Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { catchError, debounceTime, EMPTY, filter, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { IYoutubeService } from '../../models';
 import { IYoutubeSearchItem, IYoutubeSearchResult } from '../../models/youtube-search-list.model';
 import { YOUTUBE_SERVICE } from '../../tokens';
@@ -114,6 +114,7 @@ export class SearchBoxComponent implements OnInit, OnDestroy, ControlValueAccess
     this.searchControl.valueChanges
       .pipe(
         debounceTime(this.debounceTime),
+        filter((text: string) => !!text),
         switchMap((text: string) => this.getSearchRequest({ query: text })),
         takeUntil(this.onDestroy$)
       )
