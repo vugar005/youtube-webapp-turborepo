@@ -108,21 +108,6 @@
   }
 }
 
-.searchbox-desktop {
-  display: none;
-}
-.searchbox-mobile {
-  display: block;
-}
-
-@media (min-width: 576px) {
-  .searchbox-desktop {
-    display: block;
-  }
-  .searchbox-mobile {
-    display: none;
-  }
-}
 
 @media (min-width: 768px) {
   .header-feature {

@@ -14,6 +14,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountryApiService } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
+import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
 import { environment } from 'src/environments/environment';
 import { SettingsStore } from '../../core/services/settings-store/settings-store.service';
 import { AppTheme } from '../../core/services/theme-service/theme.constants';
@@ -81,7 +82,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private listenToSearchInput(): void {
     this.searchControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe((value: string) => {
-      this.videoStore.setSearchQuery(value);
+      const searchValue = value || DEFAULT_SEARCH_VALUE;
+      this.videoStore.setSearchQuery(searchValue);
       this.router.navigate(['']);
     });
   }
