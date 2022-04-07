@@ -1,4 +1,3 @@
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { isPlatformServer } from '@angular/common';
 import {
   ChangeDetectionStrategy,
