@@ -43,7 +43,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private settingsStore: SettingsStore,
     private themeService: ThemeService,
     private countryApiService: CountryApiService,
-    public breakpointObserver: BreakpointObserver,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -102,15 +101,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.countryCode = data;
         this.cdr.detectChanges();
       });
-  }
-
-  private initBreakpointObserver(): void {
-    this.breakpointObserver.observe(['(min-width: 400px)']).subscribe((state: BreakpointState) => {
-      if (state.matches) {
-        console.log('Viewport width is 500px or greater!');
-      } else {
-        console.log('Viewport width is less than 500px!');
-      }
-    });
   }
 }

@@ -62,6 +62,8 @@ module.exports = {
         '@angular/material/dialog': { requiredVersion: deps['@angular/material'] },
         '@angular/material/menu': { requiredVersion: deps['@angular/material'] },
         '@angular/material/snack-bar': { requiredVersion: deps['@angular/material'] },
+        '@angular/cdk/layout': { requiredVersion: deps['@angular/material'] },
+        
         // Ngrx
         '@ngrx/store': { requiredVersion: deps['@ngrx/store'] },
         ...sharedMappings.getDescriptors(),
