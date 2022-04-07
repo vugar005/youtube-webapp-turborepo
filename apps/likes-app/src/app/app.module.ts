@@ -3,34 +3,25 @@ import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { MatDividerModule } from '@angular/material/divider';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {
-  APP_CONFIG,
-  VideoThumbnailLoaderModule,
-  VideoThumbnailModule,
-  youtubeApiServiceFactory,
-  YOUTUBE_SERVICE,
-} from '@youtube/common-ui';
+import { APP_CONFIG, youtubeApiServiceFactory, YOUTUBE_SERVICE } from '@youtube/common-ui';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { HomeComponent } from './home/home.component';
 import { ROOT_REDUCERS } from './reducers';
 import { environment } from '../environments/environment';
-import { MatIconModule } from '@angular/material/icon';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    VideoThumbnailModule,
-    VideoThumbnailLoaderModule,
-    MatDividerModule,
-    MatIconModule,
+
+    HomeModule,
+
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
         // strictStateImmutability and strictActionImmutability are enabled by default
