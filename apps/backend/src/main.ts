@@ -5,13 +5,23 @@
 
 import { Logger, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { WHITE_LIST_URLS } from './app.constants';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors();
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (WHITE_LIST_URLS.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log('blocked cors for:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  });
   app.enableVersioning({
     type: VersioningType.URI,
     defaultVersion: '1',
