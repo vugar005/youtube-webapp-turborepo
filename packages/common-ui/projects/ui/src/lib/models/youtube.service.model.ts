@@ -4,7 +4,7 @@ import { IYoutubeVideoResult } from './youtube-video-list.model';
 
 export interface IYoutubeService {
   searchList: (params: IYoutubeSearchParams) => Observable<IYoutubeSearchResult>;
-  videoList: (params: IYoutubeVideoListParams) => Observable<IYoutubeVideoResult>;
+  videoList: (params: IYoutubeVideoListParams) => Observable<IYoutubeVideoResult[]>;
 }
 
 export interface IYoutubeSearchParams {
@@ -14,7 +14,7 @@ export interface IYoutubeSearchParams {
 }
 
 export interface IYoutubeVideoListParams {
-  query: string;
+  query?: string;
   part?: string;
   id?: string;
 }

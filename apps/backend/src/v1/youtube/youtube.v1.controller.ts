@@ -16,8 +16,11 @@ export class YoutubeControllerV1 {
   }
 
   @Get('videolist')
-  async videolist(@Query() query): Promise<IYoutubeVideoResult> {
-    const { q } = query;
-    return firstValueFrom(this.youtubeApiService.videolist(q.trim()));
+  async videolist(@Query() query): Promise<IYoutubeVideoResult[]> {
+    if (!query) {
+      return null;
+    }
+    const { id } = query;
+    return firstValueFrom(this.youtubeApiService.videolist(id));
   }
 }

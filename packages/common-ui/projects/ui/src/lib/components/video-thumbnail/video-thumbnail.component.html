@@ -5,8 +5,8 @@
   <div class="thumbnail__image">
     <img [src]="searchItem?.snippet?.thumbnails?.high?.url" alt="Video image" />
 
-    <div class="thumbnail__image__duration" *ngIf="videoItem?.contentDetails?.duration">
-      {{ videoItem?.contentDetails?.duration }}
+    <div class="thumbnail__image__duration" *ngIf="videoDetail?.contentDetails?.duration">
+      {{ videoDetail?.contentDetails?.duration }}
     </div>
     <div class="image-backdrop"></div>
   </div>
@@ -21,7 +21,7 @@
           [innerHtml]="searchItem?.snippet?.channelTitle"
         ></h4>
         <p class="thumbnail-details-content__footer mat-h4">
-          <span *ngIf="videoItem?.statistics?.viewCount as viewsCount"
+          <span *ngIf="videoDetail?.statistics?.viewCount as viewsCount"
             >{{ viewsCount | ytdAbbreviateNumber: 0 }} views •</span
           >
           {{ searchItem?.snippet?.publishedAt | ytdTimeAgo }}

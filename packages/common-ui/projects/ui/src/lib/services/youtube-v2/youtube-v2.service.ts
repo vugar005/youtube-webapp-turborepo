@@ -20,10 +20,9 @@ export class YoutubeServiceV2 implements IYoutubeService {
     return this.http.get<IYoutubeSearchResult>(url);
   }
 
-  public videoList(params: IYoutubeVideoListParams): Observable<IYoutubeVideoResult> {
-    const { query } = params;
-    const videoUrl = `https://www.youtube.com/watch?v=${query}`;
-    const url = `${this.appConfig.backendUrl}/api/v2/youtube/videolist?q=${videoUrl}`;
-    return this.http.get<IYoutubeVideoResult>(url);
+  public videoList(params: IYoutubeVideoListParams): Observable<IYoutubeVideoResult[]> {
+    const { id } = params;
+    const url = `${this.appConfig.backendUrl}/api/v2/youtube/videolist?id=${id}`;
+    return this.http.get<IYoutubeVideoResult[]>(url);
   }
 }
