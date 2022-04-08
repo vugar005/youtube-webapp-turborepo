@@ -42,8 +42,10 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.listenToEvents();
     this.isServer = isPlatformServer(this.platformId);
+    if (!this.isServer) {
+      this.listenToEvents();
+    }
   }
 
   public ngOnDestroy(): void {
