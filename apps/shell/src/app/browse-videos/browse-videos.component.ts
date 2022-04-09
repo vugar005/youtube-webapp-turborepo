@@ -27,9 +27,9 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public isLoading = false;
   public hasError = false;
   public isServer!: boolean;
+  public currentPlayingId$!: Observable<string | null>;
 
   private videoDetails?: IYoutubeVideoResult[];
-
   private readonly onDestroy$ = new Subject<void>();
 
   constructor(
@@ -42,6 +42,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
+    this.initStoreData();
     this.isServer = isPlatformServer(this.platformId);
     if (!this.isServer) {
       this.listenToEvents();
@@ -131,5 +132,9 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
         this.videoDetails = result;
         this.cdr.detectChanges();
       });
+  }
+
+  private initStoreData(): void {
+    this.currentPlayingId$ = this.videoStore.selectCurrentVideoId();
   }
 }

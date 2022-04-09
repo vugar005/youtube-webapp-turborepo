@@ -45,3 +45,4 @@ export const reducer = createReducer(
 export const selectSearchQuery = (state: VideoState): string => state.searchQuery;
 export const selectVideoIsMiniPlayerMode = (state: VideoState): boolean => state.isMiniPlayerEnabled;
 export const selectVideoMiniPlayerVideo = (state: VideoState): IMiniPlayerVideo => state.miniPlayerVideo;
+export const selectCurrentVideoId = (state: VideoState): string | null => state.miniPlayerVideo.videoId;

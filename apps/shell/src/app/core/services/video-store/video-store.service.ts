@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MiniVideoPayload, WebApiService, LocalStorageEnum } from '@youtube/common-ui';
 import { Observable } from 'rxjs';
-import { selectIsMiniPlayerMode, selectMiniPlayerVideo, selectVideoSearchQuery } from '../../../reducers';
+import {
+  selectCurrentVideoId,
+  selectIsMiniPlayerMode,
+  selectMiniPlayerVideo,
+  selectVideoSearchQuery,
+} from '../../../reducers';
 import { VideoActions } from '../../actions';
 
 @Injectable({ providedIn: 'root' })
@@ -32,6 +37,10 @@ export class VideoStoreService {
 
   public selectMiniPlayerVideo(): Observable<MiniVideoPayload> {
     return this.store.select(selectMiniPlayerVideo);
+  }
+
+  public selectCurrentVideoId(): Observable<string | null> {
+    return this.store.select(selectCurrentVideoId);
   }
 
   // save mini video settings so on page reload to show it again
