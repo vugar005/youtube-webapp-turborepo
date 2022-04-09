@@ -1,6 +1,6 @@
-version: 2.1
+version: 2
 jobs:
- build:
+ lint:
   working_directory: ~/youtube-webapp-turborepo
   docker:
    - image: circleci/node:16-browsers
@@ -10,14 +10,21 @@ jobs:
      name: install-dependencies
      command: npm ci
   - run:
-     name: angular-build
-     command: npm run build
- lint:
+      name: angular-lint
+      command: npm run lint
+ build:
   working_directory: ~/youtube-webapp-turborepo
   docker:
    - image: circleci/node:16-browsers
   steps:
-   - run:
-      name: angular-lint
-      command: npm run lint
-      
+  - run:
+     name: angular-build
+     command: npm run build
+
+workflows:
+  version: 2
+  lint_and_build:
+    jobs:
+      - build
+      - lint
+
