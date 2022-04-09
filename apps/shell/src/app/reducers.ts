@@ -24,6 +24,7 @@ export const selectVideoState = createFeatureSelector<fromVideo.VideoState>(from
 export const selectVideoSearchQuery = createSelector(selectVideoState, fromVideo.selectSearchQuery);
 export const selectIsMiniPlayerMode = createSelector(selectVideoState, fromVideo.selectVideoIsMiniPlayerMode);
 export const selectMiniPlayerVideo = createSelector(selectVideoState, fromVideo.selectVideoMiniPlayerVideo);
+export const selectCurrentVideoId = createSelector(selectVideoState, fromVideo.selectCurrentVideoId);
 
 // Account state selectors
 export const selectAccountState = createFeatureSelector<fromAccount.AccountState>(fromAccount.featureKey);

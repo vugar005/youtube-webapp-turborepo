@@ -11,4 +11,5 @@ export class VideoThumbnailComponent {
   @Input() searchItem?: IYoutubeSearchItem;
   @Input() videoDetail?: IYoutubeVideoItem;
   @Input() direction?: 'vertical' | 'horizontal' = 'horizontal';
+  @Input() isNowPlaying?: boolean;
 }

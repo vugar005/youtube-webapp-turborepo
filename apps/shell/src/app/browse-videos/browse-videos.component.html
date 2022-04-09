@@ -11,6 +11,7 @@
               [searchItem]="video"
               [videoDetail]="getVideoDetail(video.id?.videoId)"
               [direction]="'horizontal'"
+              [isNowPlaying]="(currentPlayingId$ | async) === video.id?.videoId"
             ></ytd-video-thumbnail>
           </div>
         </ng-container>
