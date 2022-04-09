@@ -25,6 +25,9 @@ workflows:
   version: 2
   lint_and_build:
     jobs:
-      - build
       - lint
+      - build:
+         requires:
+          - lint
+
 
