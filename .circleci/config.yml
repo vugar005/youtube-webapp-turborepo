@@ -1,14 +1,27 @@
 version: 2
 jobs:
+ setup:
+  working_directory: ~/youtube-webapp-turborepo
+  docker:
+   - image: circleci/node:16-browsers    
+  steps:
+  - checkout
+  - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}  
+  - run:
+     name: install-dependencies
+     command: npm ci
  lint:
   working_directory: ~/youtube-webapp-turborepo
   docker:
    - image: circleci/node:16-browsers
   steps:
   - checkout
+  - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}  
   - run:
      name: install-dependencies
-     command: npm ci
+     command: npm ci  
   - run:
       name: angular-lint
       command: npm run lint
@@ -18,9 +31,8 @@ jobs:
    - image: circleci/node:16-browsers
   steps:
   - checkout
-  - run:
-     name: install-dependencies
-     command: npm ci    
+  - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}    
   - run:
      name: angular-build
      command: npm run build
@@ -29,10 +41,11 @@ workflows:
   version: 2
   lint_and_build:
     jobs:
-      - lint
+      - setup 
+      - lint:
+         requires:
+          - setup
       - build:
          requires:
-          - lint
-
-
+          - setup
 
