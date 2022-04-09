@@ -11,6 +11,10 @@ jobs:
   - run:
      name: install-dependencies
      command: npm ci
+  - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths: 
+            - node_modules     
  lint:
   working_directory: ~/youtube-webapp-turborepo
   docker:
