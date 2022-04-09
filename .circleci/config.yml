@@ -17,10 +17,6 @@ jobs:
   docker:
    - image: circleci/node:16-browsers
   steps:
-   - checkout
-   - run:
-      name: install-dependencies
-      command: npm ci
    - run:
       name: angular-lint
       command: npm run lint
