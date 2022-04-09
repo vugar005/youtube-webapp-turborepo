@@ -58,8 +58,8 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
         }),
         switchMap(() => this.getVideoInfo())
       )
-      .subscribe((results: IYoutubeVideoResult) => {
-        this.videoInfo = results && results?.items?.find((result: IYoutubeVideoItem) => result.id === this.videoId);
+      .subscribe((results: IYoutubeVideoResult[]) => {
+        this.videoInfo = results?.[0].items?.find((result: IYoutubeVideoItem) => result.id === this.videoId);
         if (this.videoInfo) {
           this.fallBackVideoInfo = this.videoInfo;
         } else {
@@ -76,8 +76,8 @@ export class WatchVideoComponent implements OnInit, OnDestroy {
       });
   }
 
-  private getVideoInfo(): Observable<IYoutubeVideoResult> {
-    return this.youtubeService.videoList({ query: this.videoId }).pipe(catchError(() => EMPTY));
+  private getVideoInfo(): Observable<IYoutubeVideoResult[]> {
+    return this.youtubeService.videoList({ id: this.videoId }).pipe(catchError(() => EMPTY));
   }
 
   private handleCaseVideoNotFound(): void {

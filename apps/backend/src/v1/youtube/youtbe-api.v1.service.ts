@@ -9,7 +9,7 @@ import {
   IYoutubeVideoResult,
   IYoutubeVideoSnippet,
 } from '@youtube/common-ui';
-import { from, map, Observable } from 'rxjs';
+import { catchError, forkJoin, from, map, Observable, of } from 'rxjs';
 import * as yt from 'youtube-search-without-api-key';
 
 @Injectable()
@@ -18,8 +18,20 @@ export class YoutubeApiServiceV1 {
     return from(yt.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
   }
 
-  public videolist(query: string): Observable<IYoutubeVideoResult> {
-    return from(yt.search(query)).pipe(map((res) => this.mapToYoutubeVideoResult(res)));
+  public videolist(id: string): Observable<IYoutubeVideoResult[]> {
+    if (!id) {
+      return of([]);
+    }
+    const transformedId = id.split(',');
+    const requests: Observable<IYoutubeVideoResult>[] = transformedId.map((query) => this.getVideoListRequest(query));
+    return forkJoin(requests).pipe(map((result: IYoutubeVideoResult[]) => result.filter(Boolean)));
+  }
+
+  private getVideoListRequest(id: string): Observable<IYoutubeVideoResult> {
+    return from(yt.search(id)).pipe(
+      catchError(() => of(null)),
+      map((res) => this.mapToYoutubeVideoResult(res))
+    );
   }
 
   private mapToYoutubeSearchResult(results): IYoutubeSearchResult {

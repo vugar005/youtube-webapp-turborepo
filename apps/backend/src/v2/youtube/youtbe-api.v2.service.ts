@@ -9,7 +9,7 @@ import {
   IYoutubeSearchResult,
   IYoutubeSearchSnippet,
 } from '@youtube/common-ui';
-import { from, map, Observable } from 'rxjs';
+import { catchError, forkJoin, from, map, Observable, of } from 'rxjs';
 import * as yts from 'youtube-sr';
 
 @Injectable()
@@ -18,8 +18,21 @@ export class YoutubeApiServiceV2 {
     return from(yts.default.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
   }
 
-  public videoList(query: string): Observable<IYoutubeVideoResult> {
-    return from(yts.default.getVideo(query)).pipe(map((res) => this.mapToYoutubeVideoResult(res)));
+  public videoList(id: string): Observable<IYoutubeVideoResult[]> {
+    if (!id) {
+      return of([]);
+    }
+    const transformedId = id.split(',');
+    const requests: Observable<IYoutubeVideoResult>[] = transformedId.map((query) => this.getVideoListRequest(query));
+    return forkJoin(requests).pipe(map((result: IYoutubeVideoResult[]) => result.filter(Boolean)));
+  }
+
+  private getVideoListRequest(id: string): Observable<IYoutubeVideoResult> {
+    const query = `https://www.youtube.com/watch?v=${id}`;
+    return from(yts.default.getVideo(query)).pipe(
+      catchError(() => of(null)),
+      map((res) => this.mapToYoutubeVideoResult(res))
+    );
   }
 
   private mapToYoutubeSearchResult(results): IYoutubeSearchResult {

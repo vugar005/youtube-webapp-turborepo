@@ -2,7 +2,14 @@ import { isPlatformServer } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IYoutubeService, IYoutubeSearchResult, IYoutubeSearchItem, YOUTUBE_SERVICE } from '@youtube/common-ui';
+import {
+  IYoutubeService,
+  IYoutubeSearchResult,
+  IYoutubeSearchItem,
+  YOUTUBE_SERVICE,
+  IYoutubeVideoResult,
+  IYoutubeVideoItem,
+} from '@youtube/common-ui';
 import { catchError, EMPTY, Observable, Subject, switchMap, take, takeUntil, tap, withLatestFrom } from 'rxjs';
 import { AccountStoreService } from '../core/services/account-store/account-store.service';
 import { VideoStoreService } from '../core/services/video-store/video-store.service';
@@ -21,6 +28,8 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public hasError = false;
   public isServer!: boolean;
 
+  private videoDetails?: IYoutubeVideoResult[];
+
   private readonly onDestroy$ = new Subject<void>();
 
   constructor(
@@ -33,8 +42,10 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.listenToEvents();
     this.isServer = isPlatformServer(this.platformId);
+    if (!this.isServer) {
+      this.listenToEvents();
+    }
   }
 
   public ngOnDestroy(): void {
@@ -61,6 +72,10 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
       });
   }
 
+  public getVideoDetail(id: string | undefined): IYoutubeVideoItem | undefined {
+    return this.videoDetails?.find((item) => item.items[0].id === id)?.items?.[0];
+  }
+
   private listenToEvents(): void {
     this.listenToSearchQuery();
   }
@@ -78,6 +93,8 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
       )
       .subscribe((result: IYoutubeSearchResult) => {
         this.videoLinks = result?.items;
+        const ids = result?.items?.map((item) => item.id.videoId).join(',');
+        this.getVideoDetails(ids);
         this.setLoading(false);
         this.cdr.detectChanges();
       });
@@ -101,5 +118,18 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
         return EMPTY;
       })
     );
+  }
+
+  private getVideoDetails(ids: string | undefined): void {
+    if (!ids) {
+      return;
+    }
+    this.youtubeService
+      .videoList({ id: ids })
+      .pipe(catchError(() => EMPTY))
+      .subscribe((result: IYoutubeVideoResult[]) => {
+        this.videoDetails = result;
+        this.cdr.detectChanges();
+      });
   }
 }

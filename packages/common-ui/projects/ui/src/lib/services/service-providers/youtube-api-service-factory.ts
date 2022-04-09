@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injector, PLATFORM_ID } from '@angular/core';
 import { LocalStorageEnum } from '../../constants/local-storage.constants';
 import { IYoutubeService } from '../../models';
-import { APP_CONFIG, YOUTUBE_API_KEY } from '../../tokens';
+import { APP_CONFIG } from '../../tokens';
 import { YoutubeServiceV1 } from '../youtube-v1';
 import { YoutubeServiceV2 } from '../youtube-v2';
 import { YoutubeService } from '../youtube-v3';
@@ -21,7 +21,7 @@ export const youtubeApiServiceFactory = (injector: Injector): IYoutubeService =>
         return new YoutubeServiceV2(injector.get(APP_CONFIG), injector.get(HttpClient));
 
       case YoutubeApiServiceType.DATA_API_V3:
-        return new YoutubeService(injector.get(YOUTUBE_API_KEY), injector.get(HttpClient));
+        return new YoutubeService(injector.get(HttpClient));
       default:
         return new YoutubeServiceV2(injector.get(APP_CONFIG), injector.get(HttpClient));
     }
