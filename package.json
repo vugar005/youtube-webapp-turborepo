@@ -9,14 +9,14 @@
     ]
   },
   "scripts": {
-    "serve": "concurrently \"turbo run pack-lib\"  \"turbo run serve  --no-cache  --continue\"",
-    "serve:prod": "concurrently \"turbo run pack-lib:prod\"  \"turbo run serve:prod --no-cache --continue\"",
+    "serve": "turbo run serve  --no-cache  --continue",
+    "serve:prod": "turbo run serve:prod --no-cache --continue",
     "build": "turbo run build --no-cache",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "clean": "turbo run clean && rimraf node_modules --continue",
     "clean:cache": "turbo run clean",
-    "deploy:fe": "turbo run build --no-cache --concurrency=85% --stream --filter=!backend && turbo run deploy --filter=!backend --concurrency=1 --stream",
+    "deploy:fe": "turbo run build --no-cache --concurrency=85% --filter=!backend && turbo run deploy --filter=!backend --concurrency=1",
     "prepare": "husky install"
   },
   "devDependencies": {

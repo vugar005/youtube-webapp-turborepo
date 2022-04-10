@@ -7,10 +7,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "pack-lib": "ng build ui --configuration=development --watch ",
-    "pack-lib:prod": "ng build ui --configuration=production --watch ",
+    "serve": "ng build ui --watch",
+    "serve:prod": "ng build ui --watch",
     "build": "ng build ui",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
