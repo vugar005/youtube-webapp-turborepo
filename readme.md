@@ -49,7 +49,7 @@ Since workspaces are available from npm v7, you should have <b>NodeJs 16+</b> in
 
 1- Install turbo globally:
 ```bash 
-npm install turbo@1.1.4 -g
+npm install turbo@1.2.1 -g
 ```  
 2- On root project install dependencies:
 ```bash
@@ -64,7 +64,7 @@ Other commands: please see ```package.json``` for other commands.
 ---
 **NOTE**:
 
-*In case of error that components are not exported from youtube/common-ui, on project root run command ```npm run clean``` and then ```npm install```*
+*In case of error that components are not exported from youtube/common-ui, on project root run command ```npm run clean:cache``` and then ```npm run serve```*
 
 ---
 
