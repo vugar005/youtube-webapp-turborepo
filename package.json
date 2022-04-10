@@ -16,7 +16,7 @@
     "lint:fix": "turbo run lint:fix",
     "clean": "turbo run clean && rimraf node_modules --continue",
     "clean:cache": "turbo run clean",
-    "deploy:fe": "turbo run build --no-cache --concurrency=1 --stream --ignore=*backend* && turbo run deploy --ignore=*backend* --concurrency=1 --stream",
+    "deploy:fe": "turbo run build --no-cache --concurrency=85% --stream --filter=!backend && turbo run deploy --filter=!backend --concurrency=1 --stream",
     "prepare": "husky install"
   },
   "devDependencies": {
