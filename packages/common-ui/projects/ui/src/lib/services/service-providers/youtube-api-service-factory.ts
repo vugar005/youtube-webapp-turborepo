@@ -21,7 +21,7 @@ export const youtubeApiServiceFactory = (injector: Injector): IYoutubeService =>
         return new YoutubeServiceV2(injector.get(APP_CONFIG), injector.get(HttpClient));
 
       case YoutubeApiServiceType.DATA_API_V3:
-        return new YoutubeService(injector.get(HttpClient));
+        return new YoutubeService(injector.get(APP_CONFIG), injector.get(HttpClient));
       default:
         return new YoutubeServiceV2(injector.get(APP_CONFIG), injector.get(HttpClient));
     }

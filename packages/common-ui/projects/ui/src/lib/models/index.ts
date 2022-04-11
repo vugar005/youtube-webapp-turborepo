@@ -7,3 +7,4 @@ export * from './country-code';
 export * from './meta-tag-config';
 export * from './script-config';
 export * from './select-options.model';
+export * from './app-config';

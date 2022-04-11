@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
+  IAppConfig,
   IYoutubeSearchParams,
   IYoutubeSearchResult,
   IYoutubeService,
@@ -12,7 +13,7 @@ import { APP_CONFIG } from '../../tokens';
 
 @Injectable({ providedIn: 'root' })
 export class YoutubeServiceV1 implements IYoutubeService {
-  constructor(@Inject(APP_CONFIG) private readonly appConfig: any, private http: HttpClient) {}
+  constructor(@Inject(APP_CONFIG) private readonly appConfig: IAppConfig, private http: HttpClient) {}
 
   public searchList(params: IYoutubeSearchParams): Observable<IYoutubeSearchResult> {
     const { query } = params;
