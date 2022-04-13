@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { SampleService } from '@youtube/common-ui';
 import { UIStoreService } from './core/services/ui-store/ui-store.service';
 
 @Component({
@@ -11,10 +12,11 @@ export class AppComponent implements OnInit, OnChanges {
   @Input() likedVideoList?: string[];
   @Input() dislikedVideosList?: string[];
 
-  constructor(private router: Router, private uiStore: UIStoreService) {}
+  constructor(private router: Router, private uiStore: UIStoreService, private sampleService: SampleService) {}
 
   public ngOnInit(): void {
     this.connectRouter();
+    console.log('testVar', this.sampleService.testVar);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

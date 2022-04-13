@@ -8,6 +8,7 @@ import {
   MiniVideoPayload,
   WebApiService,
   LocalStorageEnum,
+  SampleService,
 } from '@youtube/common-ui';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
@@ -33,10 +34,13 @@ export class AppComponent implements OnInit, OnDestroy {
     private eventDispatcher: EventDispatcherService,
     private webApiService: WebApiService,
     private themeService: ThemeService,
-    private title: Title
+    private title: Title,
+    private sampleService: SampleService
   ) {}
 
   public ngOnInit(): void {
+    this.sampleService.testVar = 20;
+    console.log('Set TestVar to 20');
     this.selectStoreData();
     this.initGlobalEventListeners();
     this.setMetaTags();

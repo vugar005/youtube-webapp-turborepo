@@ -7,4 +7,5 @@ export * from './toast';
 export * from './country-api';
 export * from './meta-tag';
 export * from './script-utils';
+export * from './sample.service';
 export * from './service-providers';
