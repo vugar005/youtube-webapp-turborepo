@@ -24,6 +24,9 @@
     },
     "./styles/_theme": {
       "sass": "./lib/styles/_theme.scss"
+    },
+    "./styles/utils/generate-material-colors": {
+      "sass": "./lib/styles/utils/generate-material-colors.scss"
     }
   }
 }

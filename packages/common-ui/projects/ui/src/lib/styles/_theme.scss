@@ -3,6 +3,7 @@
 
 @import './_palette';
 @import './_typography';
+@import './utils/generate-material-colors';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -89,4 +90,6 @@ html[theme='light-theme'] {
   @include mat.all-component-colors($youtube-light-theme);
   @include custom-components-theme($youtube-light-theme);
 }
+
 @include mat.core($youtube-typography);
+@include generate-material-classes();
