@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, PLATFORM
 import { NavigationEnd, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { isPlatformServer } from '@angular/common';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 import {
   EventDispatcherService,
@@ -9,6 +10,7 @@ import {
   MiniVideoPayload,
   WebApiService,
   LocalStorageEnum,
+  SessionStorageEnum,
 } from '@youtube/common-ui';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
@@ -128,10 +130,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private openPolicyTermsDialog(): void {
-    if (!environment.production || this.isServer) {
+    const sessionStorage = this.webApiService.sessionStorage;
+    const isAppPolicyAgreedItem: string | null = sessionStorage?.getItem(SessionStorageEnum.IS_APP_POLICY_AGREED);
+    const isAppPolicyAgreed: boolean = coerceBooleanProperty(isAppPolicyAgreedItem);
+    if (!environment.production || this.isServer || isAppPolicyAgreed) {
       return;
     }
-    this.dialog.open(PolicyTermsDialogComponent, {
+
+    const dialogRef = this.dialog.open(PolicyTermsDialogComponent, {
       maxWidth: '90vw',
       width: '670px',
       maxHeight: '90vh',
@@ -141,6 +147,11 @@ export class AppComponent implements OnInit, OnDestroy {
         top: '56px',
         bottom: '56px',
       },
+    });
+    dialogRef.afterClosed().subscribe((consent: boolean) => {
+      if (consent) {
+        sessionStorage.setItem(SessionStorageEnum.IS_APP_POLICY_AGREED, 'true');
+      }
     });
   }
 }
