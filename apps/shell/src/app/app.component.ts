@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { isPlatformServer } from '@angular/common';
 
 import {
   EventDispatcherService,
@@ -14,6 +15,9 @@ import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { VideoStoreService } from './core/services/video-store/video-store.service';
 import { SHELL_META_TAGS } from 'src/app.constants';
 import { ThemeService } from './core/services/theme-service/theme.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PolicyTermsDialogComponent } from './components/policy-terms/policy-terms-dialog/policy-terms-dialog.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'yt-root',
@@ -24,24 +28,29 @@ import { ThemeService } from './core/services/theme-service/theme.service';
 export class AppComponent implements OnInit, OnDestroy {
   public miniVideo$?: Observable<MiniVideoPayload>;
   public isMiniPlayerMode$?: Observable<boolean>;
+  public isServer!: boolean;
 
   private readonly onDestroy$ = new Subject<void>();
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object, //eslint-disable-line
     private videoStore: VideoStoreService,
     private router: Router,
     private eventDispatcher: EventDispatcherService,
     private webApiService: WebApiService,
     private themeService: ThemeService,
+    private dialog: MatDialog,
     private title: Title
   ) {}
 
   public ngOnInit(): void {
+    this.isServer = isPlatformServer(this.platformId);
     this.selectStoreData();
     this.initGlobalEventListeners();
     this.setMetaTags();
     this.tryRestoreMiniVideoSetings();
     this.tryRestoreTheme();
+    this.openPolicyTermsDialog();
   }
 
   public ngOnDestroy(): void {
@@ -116,5 +125,22 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
     this.themeService.setTheme(JSON.parse(theme));
+  }
+
+  private openPolicyTermsDialog(): void {
+    if (!environment.production || this.isServer) {
+      return;
+    }
+    this.dialog.open(PolicyTermsDialogComponent, {
+      maxWidth: '90vw',
+      width: '670px',
+      maxHeight: '90vh',
+      autoFocus: false,
+      disableClose: true,
+      position: {
+        top: '56px',
+        bottom: '56px',
+      },
+    });
   }
 }
