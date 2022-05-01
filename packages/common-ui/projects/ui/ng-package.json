@@ -8,6 +8,7 @@
     "./src/lib/styles/_palette.scss",
     "./src/lib/styles/_typography.scss",
     "./src/lib/styles/_variables.scss",
-    "./src/lib/styles/_theme.scss"
+    "./src/lib/styles/_theme.scss",
+    "./src/lib/styles/utils/generate-material-colors.scss"
   ]
 }
