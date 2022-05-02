@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { WebApiService } from '@youtube/common-ui';
 import { UIStoreService } from './core/services/ui-store/ui-store.service';
 
 @Component({
@@ -11,7 +12,12 @@ import { UIStoreService } from './core/services/ui-store/ui-store.service';
 export class AppComponent implements OnInit, OnChanges {
   @Input() likedVideoList?: string[];
 
-  constructor(private router: Router, private uiStore: UIStoreService, private title: Title) {}
+  constructor(
+    private router: Router,
+    private uiStore: UIStoreService,
+    private title: Title,
+    private webApiService: WebApiService
+  ) {}
 
   public ngOnInit(): void {
     this.connectRouter();
@@ -28,9 +34,11 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   private connectRouter(): void {
-    const url = `${location.pathname.substr(1)}${location.search}`;
+    const locationRef: Location = this.webApiService.location;
+    const windowRef: Window = this.webApiService.window;
+    const url = `${locationRef.pathname.substr(1)}${locationRef.search}`;
     this.router.navigateByUrl(url);
-    window.addEventListener('popstate', () => {
+    windowRef.addEventListener('popstate', () => {
       this.router.navigateByUrl(url);
     });
   }

@@ -12,7 +12,11 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "deploy": "firebase deploy",
-    "clean": "rimraf .angular && rimraf dist"
+    "clean": "rimraf .angular && rimraf dist",
+    "dev:ssr": "ng run likes-app:serve-ssr",
+    "serve:ssr": "node dist/likes-app/server/main.js",
+    "build:ssr": "ng build && ng run likes-app:server",
+    "prerender": "ng run likes-app:prerender"
   },
   "private": true,
   "dependencies": {

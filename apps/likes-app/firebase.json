@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/likes-app",
+    "public": "dist/likes-app/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
