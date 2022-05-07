@@ -1,16 +1,16 @@
 # Youtube microfrontend using Angular, Module Federation. Turborepo edition.
 
 <img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo.webp" alt="Youtube Angular brand" width="100%"  height="400px">
-  
-- [About project](#about-project)
-- [Features](#features)   
-- [The Mission](#mission)   
-- [Demo](#demo)   
-- [Getting Started](#demo)   
-- [Upgrade Guide](#upgrade-guide)   
-- [Contribution Guide](#contribution-guide)   
-- [About Author](#about-author)   
 
+ [![](https://img.shields.io/badge/about%20Project-blue?style=for-the-badge)](#about-project)
+ [![](https://img.shields.io/badge/features-blue?style=for-the-badge)](#features)
+ [![](https://img.shields.io/badge/demo-blue?style=for-the-badge)](#demo)
+ [![](https://img.shields.io/badge/getting%20started-blue?style=for-the-badge)](#getting-started)
+ [![](https://img.shields.io/badge/upgrade%20guide-blue?style=for-the-badge)](#upgrade-guide)
+ [![](https://img.shields.io/badge/Contribution%20guide-blue?style=for-the-badge)](#contribution-guide)
+ [![](https://img.shields.io/badge/the%20Mission-blue?style=for-the-badge)](#mission)
+ [![](https://img.shields.io/badge/about%20author-blue?style=for-the-badge)](#about-author)
+ 
 
 <a id="about-project"></a>
 ## About Project
