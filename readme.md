@@ -1,7 +1,19 @@
 # Youtube microfrontend using Angular, Module Federation. Turborepo edition.
 
 <img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo.webp" alt="Youtube Angular brand" width="100%"  height="400px">
+  
+- [About project](#about-project)
+- [Features](#features)   
+- [The Mission](#mission)   
+- [Demo](#demo)   
+- [Getting Started](#demo)   
+- [Upgrade Guide](#upgrade-guide)   
+- [Contribution Guide](#contribution-guide)   
+- [About Author](#about-author)   
 
+
+<a id="about-project"></a>
+## About Project
 ---
 **Disclaimer**:
 
@@ -23,6 +35,7 @@
 
 ---
 
+<a id="features"></a>
 ## Features:   
 ☑ Multiple Angular applications on different domains   
 ☑ Shared UI components and utils  
@@ -31,9 +44,11 @@
 ☑ Routing between applications     
 ☑ Server Side Rendering   
 
+<a id="mission"></a>
 ## Mission:
 My mission is to make complex microfrontend app as much as possible to have many cases for developers.
 
+<a id="demo"></a>
 ## Demo: ▶
 https://youtube.vugar.app
 ---
@@ -43,6 +58,7 @@ https://youtube.vugar.app
 
 ---
 
+<a id="getting-started"></a>
 ## Getting Started 🚀
 ### Prerequisites
 Since workspaces are available from npm v7, you should have <b>NodeJs 16+</b> installed.
@@ -68,6 +84,7 @@ Other commands: please see ```package.json``` for other commands.
 
 ---
 
+<a id="tech-stack"></a>
 ## Tech Stack:   
 <div style="display:flex;">
 <img src="https://github.com/vugar005/vg-common/blob/main/icons/brands/angular.svg" title="Angular" alt="Angular" height="120"/>
@@ -79,7 +96,7 @@ Other commands: please see ```package.json``` for other commands.
 <img src="https://github.com/vugar005/vg-common/blob/main/icons/brands/turborepo.svg" title="Turborepo"  alt="Turborepo" height="120"/>
 </div>
 
-
+<a id="compate-nx-turborepo-lerna"></a>
 ## Pros and cons of Nx, Turborepo and Lerna tools
 Below are just my experiences working in those tools. They can be inaccurate.   
 ### Lerna
@@ -104,6 +121,7 @@ Below are just my experiences working in those tools. They can be inaccurate.
 ✅ Fast development efficiency   
 ✅ Dependency graph  
 
+<a id="upgrade-guide"></a>
 ## Upgrade Guide
 To upgrade angular applications. Example:
 
@@ -122,20 +140,24 @@ npx update @angular/core@13 --migrate-only --from=13 --to=13
 ## What is next?
 Currently, the unit tests were not aded since the project was focused on main features such as module federation, managing state, intercommucation and so on. It can be started soon.   
 
+<a id="backlog"></a>
 ### Backlog 
 1) Add I18n translations
-2) Add Authorization with Auth0 to enable faster api fetcing and more features.   
+2) Add secondary entry points for common-ui  
 
+<a id="contribution-guide"></a>
 ## Contribution guide 🌴
 Want to contribute to improve community app? Looking forward for pull requests. Let's get started :)
 
 ## Supporting guide
 Found repo useful? :) Let's star it ⭐
 
+<a id="references"></a>
 ## References
 Book: https://www.angulararchitects.io/en/book/   
 My blog: https://medium.com/p/258f331bc11e   
 Big thanks to https://github.com/manfredsteyer for his contribution for a lot of useful blogs + book for building microfrontend.
 
-## About me 🌴🏌️
+<a id="about-author"></a>
+## About author 🌴🏌️
 Xtreme Junior Front end developer focused on nice architecture and long term webapps.
