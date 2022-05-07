@@ -18,7 +18,7 @@
     "clean:cache": "turbo run clean",
     "deploy:fe": "turbo run build --no-cache --concurrency=85% --filter=!backend && turbo run deploy --filter=!backend --concurrency=1",
     "prepare": "husky install",
-    "analyze": "turbo run analyze"
+    "analyze": "turbo run analyze --filter=shell"
   },
   "dependencies": {
     "@angular-architects/module-federation": "14.2.3",
