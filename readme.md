@@ -3,7 +3,7 @@
 <img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo.webp" alt="Youtube Angular brand" width="100%"  height="400px">
 
 ---
-**NOTE**:
+**Disclaimer**:
 
 *This is project is for education purpose only and was made to illustrate example of building microfrontend using Angular, Module Federation.*   
 
@@ -103,6 +103,21 @@ Below are just my experiences working in those tools. They can be inaccurate.
 ❌ Configuration of applications required a change to `angular.json` to make it work. Switched to `ngx-build-plus` builders to support custom webpack config.   
 ✅ Fast development efficiency   
 ✅ Dependency graph  
+
+## Upgrade Guide
+To upgrade angular applications. Example:
+
+**On root:**
+
+```
+npx @angular/cli@13 update @angular/core@13 @angular/cli@13 --force
+```
+
+**On each remote app:**
+
+``` 
+npx update @angular/core@13 --migrate-only --from=13 --to=13
+```
 
 ## What is next?
 Currently, the unit tests were not aded since the project was focused on main features such as module federation, managing state, intercommucation and so on. It can be started soon.   
