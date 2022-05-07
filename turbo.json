@@ -28,7 +28,10 @@
       "pack-lib:prod": {
         "cache": false
       },
-      "deploy": {}
+      "deploy": {},
+      "analyze": {
+        "dependsOn": ["^build"]
+      }
     }
   }
   

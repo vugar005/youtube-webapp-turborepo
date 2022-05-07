@@ -11,6 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
+    "analyze": "ng build --stats-json --named-chunks && webpack-bundle-analyzer dist/history-app/stats.json",
     "deploy": "firebase deploy",
     "clean": "rimraf .angular && rimraf dist"
   },
