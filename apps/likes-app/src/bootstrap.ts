@@ -14,10 +14,11 @@ import { environment } from './environments/environment';
 platformBrowser().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-/** Use below code to support multiple versions of Angular
+/** You can use below code to support multiple versions of Angular
  *  Each different version Angular app should have different plattform instance
  *  In our case we use monorepo(same angular version) so no need to check plattform.
 */
+
 // const ngVersion = VERSION.full;
 // (window as any).plattform = (window as any).plattform || {};
 // let platform = (window as any).plattform[ngVersion];
@@ -26,3 +27,7 @@ platformBrowser().bootstrapModule(AppModule)
 //   (window as any).plattform[ngVersion] = platform;
 // }
 // platform.bootstrapModule(AppModule).catch((err: any) => console.error(err));
+
+/** Or use ready bootstrap util function from @angular-architects/module-federation-tools package
+ *  LINK: https://www.npmjs.com/package/@angular-architects/module-federation-tools#helper-for-angular
+*/ 
