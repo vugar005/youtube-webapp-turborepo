@@ -20,7 +20,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@angular-architects/module-federation": "14.0.1",
+    "@angular-architects/module-federation": "14.2.3",
+    "@angular-architects/module-federation-tools": "14.2.3",
     "@angular/animations": "13.3.6",
     "@angular/cdk": "13.3.6",
     "@angular/common": "13.3.6",
@@ -86,6 +87,7 @@
     "lerna": "4.0.0",
     "minimist": "1.2.5",
     "ng-packagr": "13.3.1",
+    "ngx-build-plus": "13.0.1",
     "prettier": "2.5.1",
     "rimraf": "3.0.2",
     "source-map-support": "^0.5.20",
