@@ -75,8 +75,15 @@ $youtube-light-theme: define-light-theme(
   }
 }
 
+@mixin drawer-theme($theme) {
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background: var(--yt-drawer-backdrop-background);
+  }
+}
+
 @mixin custom-components-theme($theme) {
   @include fields-theme($theme);
+  @include drawer-theme($theme);
 }
 
 // default

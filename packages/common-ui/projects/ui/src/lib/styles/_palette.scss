@@ -103,9 +103,9 @@ $light-dividers: var(--yt-spec-10-percent-layer);
 $dark-theme-background-palette: (
   status-bar: black,
   app-bar: map.get($grey-palette, 900),
-  background: var(--yt-spec-general-background-a),
+  background: #181818,
   hover: rgba(#fff, 0.04),
-  card: var(--yt-spec-general-background-a),
+  card: #181818,
   dialog: var(--yt-spec-background-solid),
   disabled-button: rgba(#fff, 0.12),
   raised-button: map.get($grey-palette, 800),
@@ -139,9 +139,9 @@ $dark-theme-foreground-palette: (
 $light-theme-background-palette: (
   status-bar: map.get($grey-palette, 300),
   app-bar: map.get($grey-palette, 100),
-  background: var(--yt-spec-general-background-a),
+  background: #f5f5f5,
   hover: rgba(black, 0.04),
-  card: var(--yt-spec-general-background-a),
+  card: #f5f5f5,
   dialog: var(--yt-spec-background-solid),
   disabled-button: rgba(black, 0.12),
   raised-button: white,
