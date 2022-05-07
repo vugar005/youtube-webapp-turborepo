@@ -33,7 +33,7 @@
     "@angular/platform-browser-dynamic": "13.3.6",
     "@angular/platform-server": "13.3.6",
     "@angular/router": "13.3.6",
-    "@angular/youtube-player": "13.2.2",
+    "@angular/youtube-player": "13.3.6",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
