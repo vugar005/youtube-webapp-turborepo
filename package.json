@@ -13,6 +13,7 @@
     "serve:prod": "turbo run serve:prod --no-cache --continue",
     "build": "turbo run build --no-cache",
     "lint": "turbo run lint",
+    "lint:changed": "turbo run lint:fix --filter=[HEAD]",
     "lint:fix": "turbo run lint:fix",
     "clean": "turbo run clean && rimraf node_modules --continue",
     "clean:cache": "turbo run clean",
