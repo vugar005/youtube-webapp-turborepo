@@ -61,7 +61,8 @@
                 }
               ],
               "outputHashing": "all",
-              "extraWebpackConfig": "webpack.prod.config.js"
+              "extraWebpackConfig": "webpack.prod.config.js",
+              "namedChunks": true
             },
             "development": {
               "buildOptimizer": false,
@@ -129,6 +130,7 @@
           "configurations": {
             "production": {
               "outputHashing": "media",
+              "namedChunks": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
