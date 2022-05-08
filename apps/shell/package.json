@@ -14,6 +14,7 @@
     "prerender": "ng run shell:prerender",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
+    "analyze": "ng build --stats-json --named-chunks && webpack-bundle-analyzer dist/shell/browser/stats.json",
     "deploy": "firebase deploy",
     "clean": "rimraf .angular && rimraf dist"
   },
