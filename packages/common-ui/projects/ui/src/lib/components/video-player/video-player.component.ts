@@ -84,7 +84,7 @@ export class VideoPlayerComponent implements OnInit, OnChanges, AfterViewInit, O
       this.playerRef?.seekTo(this.startSeconds || 1, true);
       this.videoLoaded.next(this.playerRef!);
       // eslint-disable-next-line
-      const frameId = (this.playerRef as any)?.h?.id;
+      const frameId = (this.playerRef as any)?.i?.id;
       // eslint-disable-next-line
       (this.webApi.window as any)[WindowEnum.CURRENT_VIDEO_FRAME_ID] = frameId;
     }
