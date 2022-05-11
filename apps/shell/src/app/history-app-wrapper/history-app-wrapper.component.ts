@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnDestroy,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventDispatcherService, HistoryAppEvent } from '@youtube/common-ui';
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -6,10 +14,13 @@ import { AccountStoreService } from '../core/services/account-store/account-stor
 import { registry } from '../registry';
 
 @Component({
+  standalone: true,
   selector: 'yt-history-app-wrapper',
   templateUrl: './history-app-wrapper.component.html',
   styleUrls: ['./history-app-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HistoryAppWrapperComponent implements OnInit, OnDestroy {
   public isElementLoaded?: boolean;

@@ -15,12 +15,12 @@ import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
 import { KeyEventsDialogComponent } from './components/key-events-dialog/key-events-dialog.component';
 import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
-import { SidebarModule } from './components/sidebar/sidebar.module';
 import { AccountSidebarComponent } from './components/account-sidebar/account-sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MiniPlayerComponent } from './components/mini-player/mini-player.component';
 import { MiniSidebarComponent } from './components/mini-sidebar/mini-sidebar.component';
 import { BrowseVideosComponent } from './browse-videos/browse-videos.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, KeyEventsDialogComponent, KeyEventsListenerComponent],
@@ -32,16 +32,16 @@ import { BrowseVideosComponent } from './browse-videos/browse-videos.component';
 
     // standalone
     HeaderComponent,
-    SidebarModule,
+    SidebarComponent,
     MiniSidebarComponent,
     AccountSidebarComponent,
     MiniPlayerComponent,
     BrowseVideosComponent,
+    NotFoundPageComponent,
 
     MatSidenavModule,
     MatDialogModule,
 
-    NotFoundPageComponent,
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
         strictStateSerializability: true,
