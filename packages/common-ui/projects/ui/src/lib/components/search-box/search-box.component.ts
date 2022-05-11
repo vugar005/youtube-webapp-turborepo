@@ -10,7 +10,7 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { catchError, debounceTime, EMPTY, filter, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { IYoutubeService } from '../../models';
@@ -36,7 +36,7 @@ export class SearchBoxComponent implements OnInit, OnDestroy, ControlValueAccess
 
   @Input() placeholder = 'Search';
   @Input() debounceTime = 200;
-  public searchControl = new FormControl();
+  public searchControl = new UntypedFormControl();
   public searchOptions?: IYoutubeSearchItem[] = [];
 
   private readonly onDestroy$ = new Subject<void>();

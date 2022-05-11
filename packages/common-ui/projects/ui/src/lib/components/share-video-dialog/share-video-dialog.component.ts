@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Clipboard } from '@angular/cdk/clipboard';
 
@@ -14,8 +14,8 @@ import { Subject, takeUntil } from 'rxjs';
 export class ShareVideoDialogComponent implements OnInit, OnDestroy {
   public currenVideoTime?: any;
   public videoUrl?: string;
-  public videoUrlControl = new FormControl();
-  public startTimeControl = new FormControl();
+  public videoUrlControl = new UntypedFormControl();
+  public startTimeControl = new UntypedFormControl();
 
   private readonly onDestroy$ = new Subject<void>();
 
@@ -43,9 +43,9 @@ export class ShareVideoDialogComponent implements OnInit, OnDestroy {
     const { currenVideoTime, videoUrl } = this.data;
     this.currenVideoTime = currenVideoTime;
     this.videoUrl = videoUrl;
-    this.videoUrlControl = new FormControl(videoUrl);
+    this.videoUrlControl = new UntypedFormControl(videoUrl);
     this.videoUrlControl.disable();
-    this.startTimeControl = new FormControl(false);
+    this.startTimeControl = new UntypedFormControl(false);
   }
 
   private initFormListeners(): void {
