@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -7,14 +8,24 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { IYoutubeSearchResult, IYoutubeSearchItem, IYoutubeService, YOUTUBE_SERVICE } from '@youtube/common-ui';
+import { RouterModule } from '@angular/router';
+import {
+  IYoutubeSearchResult,
+  IYoutubeSearchItem,
+  IYoutubeService,
+  YOUTUBE_SERVICE,
+  VideoThumbnailComponent,
+  VideoThumbnailLoaderComponent,
+} from '@youtube/common-ui';
 import { filter } from 'rxjs/operators';
 
 @Component({
+  standalone: true,
   selector: 'watch-app-related-videos',
   templateUrl: './related-videos.component.html',
   styleUrls: ['./related-videos.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, VideoThumbnailComponent, VideoThumbnailLoaderComponent, RouterModule],
 })
 export class RelatedVideosComponent implements OnChanges {
   @Input() query!: string;

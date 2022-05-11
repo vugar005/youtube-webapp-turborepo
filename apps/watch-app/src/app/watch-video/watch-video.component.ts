@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, Inject } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ActivatedRoute, Params, RouterModule } from '@angular/router';
 import {
   CustomEventConfig,
   EventDispatcherService,
@@ -10,15 +13,28 @@ import {
   WebApiService,
   IYoutubeVideoItem,
   IYoutubeVideoResult,
+  ToastModule,
 } from '@youtube/common-ui';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { RelatedVideosComponent } from '../components/related-videos/related-videos.component';
+import { VideoCardComponent } from '../components/video-card/video-card.component';
 
 @Component({
+  standalone: true,
   selector: 'watch-app-watch-video',
   templateUrl: './watch-video.component.html',
   styleUrls: ['./watch-video.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    RelatedVideosComponent,
+    VideoCardComponent,
+    CommonModule,
+    ToastModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    RouterModule,
+  ],
 })
 export class WatchVideoComponent implements OnInit, OnDestroy {
   public videoId!: string;
