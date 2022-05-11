@@ -10,7 +10,7 @@ import {
   Output,
   PLATFORM_ID,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountryApiService } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
@@ -30,7 +30,7 @@ import { VideoStoreService } from '../../core/services/video-store/video-store.s
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() readonly toggleMenu = new EventEmitter<void>();
   @Output() readonly toggleAccountMenu = new EventEmitter<void>();
-  public searchControl = new FormControl();
+  public searchControl = new UntypedFormControl();
   public countryCode?: string;
 
   private readonly onDestroy$ = new Subject<void>();
