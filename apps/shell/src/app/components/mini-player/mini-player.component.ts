@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -7,12 +8,16 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MiniVideoPayload, VideoPlayerComponent } from '@youtube/common-ui';
 @Component({
+  standalone: true,
   selector: 'yt-mini-player',
   templateUrl: './mini-player.component.html',
   styleUrls: ['./mini-player.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, MatIconModule, MatTooltipModule, VideoPlayerComponent],
 })
 export class MiniPlayerComponent {
   @Output() readonly closeVideo = new EventEmitter<void>();

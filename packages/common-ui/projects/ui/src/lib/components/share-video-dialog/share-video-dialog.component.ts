@@ -1,15 +1,37 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, OnDestroy } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Clipboard } from '@angular/cdk/clipboard';
+import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Clipboard, ClipboardModule } from '@angular/cdk/clipboard';
 
 import { Subject, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { SecondsToTimePipe } from '../../pipes';
 
 @Component({
+  standalone: true,
   selector: 'ytd-share-video-dialog',
   templateUrl: './share-video-dialog.component.html',
   styleUrls: ['./share-video-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatCheckboxModule,
+    MatIconModule,
+    ClipboardModule,
+    SecondsToTimePipe,
+    ReactiveFormsModule,
+  ],
 })
 export class ShareVideoDialogComponent implements OnInit, OnDestroy {
   public currenVideoTime?: any;

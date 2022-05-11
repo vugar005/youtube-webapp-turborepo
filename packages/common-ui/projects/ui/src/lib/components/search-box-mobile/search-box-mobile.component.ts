@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -10,14 +11,18 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { catchError, debounceTime, EMPTY, filter, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { IYoutubeService } from '../../models';
 import { IYoutubeSearchItem, IYoutubeSearchResult } from '../../models/youtube-search-list.model';
 import { YOUTUBE_SERVICE } from '../../tokens';
 
 @Component({
+  standalone: true,
   selector: 'ytd-search-box-mobile',
   templateUrl: './search-box-mobile.component.html',
   styleUrls: ['./search-box-mobile.component.scss'],
@@ -28,6 +33,14 @@ import { YOUTUBE_SERVICE } from '../../tokens';
       useExisting: forwardRef(() => SearchBoxMobileComponent),
       multi: true,
     },
+  ],
+  imports: [
+    CommonModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    ReactiveFormsModule,
   ],
 })
 export class SearchBoxMobileComponent implements OnInit, OnDestroy, ControlValueAccessor {

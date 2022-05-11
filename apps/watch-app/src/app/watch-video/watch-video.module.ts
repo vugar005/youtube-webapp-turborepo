@@ -7,12 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import {
-  VideoPlayerModule,
-  VideoThumbnailModule,
-  VideoThumbnailLoaderModule,
-  ShareVideoDialogModule,
-  AbbreviateNumberPipeModule,
+  VideoThumbnailComponent,
+  VideoThumbnailLoaderComponent,
+  AbbreviateNumberPipe,
   ToastModule,
+  ShareVideoDialogComponent,
+  VideoPlayerComponent,
 } from '@youtube/common-ui';
 import { RelatedVideosComponent } from '../components/related-videos/related-videos.component';
 import { VideoCardComponent } from '../components/video-card/video-card.component';
@@ -23,11 +23,11 @@ import { WatchVideoComponent } from './watch-video.component';
   declarations: [WatchVideoComponent, VideoCardComponent, RelatedVideosComponent, VideoSecondaryInfoComponent],
   imports: [
     CommonModule,
-    VideoPlayerModule,
-    VideoThumbnailModule,
-    VideoThumbnailLoaderModule,
-    ShareVideoDialogModule,
-    AbbreviateNumberPipeModule,
+    VideoPlayerComponent,
+    VideoThumbnailComponent,
+    VideoThumbnailLoaderComponent,
+    ShareVideoDialogComponent,
+    AbbreviateNumberPipe,
     ToastModule,
     MatIconModule,
     MatButtonModule,

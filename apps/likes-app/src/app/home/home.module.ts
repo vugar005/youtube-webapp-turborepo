@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { VideoThumbnailModule, VideoThumbnailLoaderModule } from '@youtube/common-ui';
+import { VideoThumbnailComponent, VideoThumbnailLoaderComponent } from '@youtube/common-ui';
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -11,8 +11,8 @@ import { HomeComponent } from './home.component';
   imports: [
     CommonModule,
     RouterModule,
-    VideoThumbnailModule,
-    VideoThumbnailLoaderModule,
+    VideoThumbnailComponent,
+    VideoThumbnailLoaderComponent,
     MatDividerModule,
     MatIconModule,
   ],
