@@ -65,7 +65,7 @@ Since workspaces are available from npm v7, you should have <b>NodeJs 16+</b> in
 
 1- Install turbo globally:
 ```bash 
-npm install turbo@1.2.1 -g
+npm install turbo@1.2.8 -g
 ```  
 2- On root project install dependencies:
 ```bash
