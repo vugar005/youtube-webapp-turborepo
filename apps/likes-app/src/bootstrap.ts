@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { enableProdMode, VERSION } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app.module';
+import { bootstrapApplication, platformBrowser } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
 /** Do NOT enable production mode on remote apps.
@@ -11,7 +11,12 @@ import { environment } from './environments/environment';
 //   enableProdMode();
 // }
 
-platformBrowser().bootstrapModule(AppModule)
+// ngModule MODE
+// platformBrowser().bootstrapModule(AppModule)
+//   .catch(err => console.error(err));
+
+// STANDALONE MODE
+bootstrapApplication(AppComponent)
   .catch(err => console.error(err));
 
 /** You can use below code to support multiple versions of Angular

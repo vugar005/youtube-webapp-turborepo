@@ -53,6 +53,5 @@ export class AppModule implements DoBootstrap {
   public ngDoBootstrap(): void {
     const ce = createCustomElement(AppComponent, { injector: this.injector });
     customElements.define('likes-app-element', ce);
-    // <watch-app-element></watch-app-element>
   }
 }
