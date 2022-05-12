@@ -27,6 +27,7 @@ import { StoreModuleProvider } from './store.module';
     StoreModuleProvider,
   ],
   providers: [
+    UIStoreService,
     {
       provide: YOUTUBE_SERVICE,
       useFactory: youtubeApiServiceFactory,
@@ -35,7 +36,7 @@ import { StoreModuleProvider } from './store.module';
     { provide: APP_CONFIG, useValue: environment },
   ],
 })
-export class AppComponent implements OnInit, OnChanges, DoBootstrap {
+export class AppComponent implements OnInit, OnChanges {
   @Input() likedVideoList?: string[];
 
   constructor(
