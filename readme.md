@@ -134,7 +134,7 @@ npx @angular/cli@13 update @angular/core@13 @angular/cli@13 --force
 **On each remote app:**
 
 ``` 
-npx update @angular/core@13 --migrate-only --from=13 --to=13
+ng update @angular/core --migrate-only=true --from=13 --to=14
 ```
 
 ## What is next?
