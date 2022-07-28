@@ -12,7 +12,7 @@ export interface IYoutubeSearchResult {
 export interface IYoutubeSearchItem {
   kind?: string;
   etag?: string;
-  id: IYoutubeSearchId;
+  id?: IYoutubeSearchId;
   snippet: IYoutubeSearchSnippet;
 }
 

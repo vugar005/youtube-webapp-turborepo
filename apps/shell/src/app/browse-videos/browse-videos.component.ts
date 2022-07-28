@@ -100,7 +100,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
       )
       .subscribe((result: IYoutubeSearchResult) => {
         this.videoLinks = result?.items;
-        const ids = result?.items?.map((item) => item.id.videoId).join(',');
+        const ids = result?.items?.map((item) => item.id?.videoId).join(',');
         this.getVideoDetails(ids);
         this.setLoading(false);
         this.cdr.detectChanges();
