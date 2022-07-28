@@ -135,6 +135,7 @@ npx @angular/cli@13 update @angular/core@13 @angular/cli@13 --force
 
 ``` 
 ng update @angular/core --migrate-only=true --from=13 --to=14
+ng update @angular/cli --migrate-only=true --from=13 --to=14
 ```
 
 ## What is next?
