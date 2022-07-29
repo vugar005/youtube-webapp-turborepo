@@ -28,7 +28,7 @@ import { filter } from 'rxjs/operators';
   imports: [CommonModule, VideoThumbnailComponent, VideoThumbnailLoaderComponent, RouterModule],
 })
 export class RelatedVideosComponent implements OnChanges {
-  @Input() query!: string;
+  @Input() query!: string | undefined;
   @Input() relatedVideos?: IYoutubeSearchItem[];
   public items = new Array(5);
   constructor(@Inject(YOUTUBE_SERVICE) private youtubeService: IYoutubeService, private cdr: ChangeDetectorRef) {}
@@ -41,8 +41,11 @@ export class RelatedVideosComponent implements OnChanges {
   }
 
   private getRelatedVideos(): void {
+    if (!this.query) {
+      return;
+    }
     this.youtubeService
-      .searchList({ query: this.query?.slice(0, 10) })
+      .searchList({ query: this.query })
       .pipe(filter((results) => !!results?.items?.length))
       .subscribe((results: IYoutubeSearchResult) => {
         this.relatedVideos = results?.items;
