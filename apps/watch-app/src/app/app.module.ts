@@ -21,7 +21,7 @@ import { APP_KEY } from './app.constants';
 
 import { ROOT_REDUCERS } from './reducers';
 import { environment } from '../environments/environment';
-import { WatchVideoModule } from './watch-video/watch-video.module';
+import { WatchVideoComponent } from './watch-video/watch-video.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +32,7 @@ import { WatchVideoModule } from './watch-video/watch-video.module';
     HttpClientModule,
     AppRoutingModule,
 
-    WatchVideoModule,
+    WatchVideoComponent,
 
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {

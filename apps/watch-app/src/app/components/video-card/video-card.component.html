@@ -9,16 +9,16 @@
 
   <div class="video-details" *ngIf="videoResult">
     <div class="video-details-tags" *ngIf="videoResult?.snippet?.tags?.length">
-      <div class="video-details-tag mat-subheading-1" *ngFor="let tag of videoResult?.snippet?.tags?.slice(0, 3)">
+      <div class="video-details-tag mat-subheading-1" *ngFor="let tag of videoResult.snippet?.tags?.slice(0, 3)">
         #{{ tag }}
       </div>
     </div>
 
-    <div class="video-details__title mat-h1">{{ videoResult?.snippet?.title }}</div>
+    <div class="video-details__title mat-h1">{{ videoResult.snippet?.title }}</div>
     <div class="video-details__footer">
       <div class="video-details__footer__views mat-h3">
-        <span> {{ videoResult?.statistics?.viewCount | number: '1.0-0' }} views </span>
-        <span> • {{ videoResult?.snippet?.publishedAt }} </span>
+        <span> {{ videoResult.statistics?.viewCount | number: '1.0-0' }} views </span>
+        <span> • {{ videoResult.snippet?.publishedAt }} </span>
       </div>
       <div class="video-details-actions">
         <button class="video-details-actions__item" (click)="onToggleLike()">
@@ -30,9 +30,9 @@
 
           <p
             class="video-details-actions__item__text mat-h3"
-            *ngIf="videoResult?.statistics?.likeCount; else emptyLikesCount"
+            *ngIf="videoResult.statistics?.likeCount; else emptyLikesCount"
           >
-            {{ +videoResult.statistics.likeCount | ytdAbbreviateNumber: 0 }}
+            {{ +videoResult.statistics?.likeCount! | ytdAbbreviateNumber: 0 }}
           </p>
 
           <ng-template #emptyLikesCount> LIKES </ng-template>

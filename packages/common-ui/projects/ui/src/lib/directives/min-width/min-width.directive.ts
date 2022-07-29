@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Directive, Input, OnInit, TemplateRef, ViewContainer
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Directive({
+  standalone: true,
   selector: '[ytdMinWidth]',
 })
 export class MinWidthDirective implements OnInit {

@@ -1,4 +1,9 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy, Inject, ChangeDetectorRef, Input, OnInit, OnDestroy } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import {
   CustomEventConfig,
   EventDispatcherService,
@@ -6,16 +11,28 @@ import {
   HistoryAppEvent,
   IYoutubeSearchItem,
   IYoutubeService,
+  VideoThumbnailComponent,
+  VideoThumbnailLoaderComponent,
   YOUTUBE_SERVICE,
 } from '@youtube/common-ui';
 import { filter, finalize, forkJoin, map, Observable, Subject, takeUntil } from 'rxjs';
 import { UIStoreService } from '../core/services/ui-store/ui-store.service';
 
 @Component({
+  standalone: true,
   selector: 'history-app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    RouterModule,
+    HttpClientModule,
+    MatIconModule,
+    VideoThumbnailComponent,
+    VideoThumbnailLoaderComponent,
+    MatDividerModule,
+  ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   @Input() watchedVideoIds?: string[];

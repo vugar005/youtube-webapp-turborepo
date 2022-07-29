@@ -5,11 +5,18 @@ import { ThemeService } from '../../core/services/theme-service/theme.service';
 import { KeyEventsDialogComponent } from '../key-events-dialog/key-events-dialog.component';
 import { LocalStorageEnum, WebApiService, YoutubeApiServiceType } from '@youtube/common-ui';
 import { API_SELECT_OPTIONS } from './account-sidebar.constants';
+import { CommonModule } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 @Component({
+  standalone: true,
   selector: 'yt-account-sidebar',
   templateUrl: './account-sidebar.component.html',
   styleUrls: ['./account-sidebar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, MatMenuModule, MatIconModule, MatDividerModule, RouterModule],
 })
 export class AccountSidebarComponent implements OnInit {
   public readonly version = VERSION.full;

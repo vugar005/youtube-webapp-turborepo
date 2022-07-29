@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { environment } from '../environments/environment';
 import { ROOT_REDUCERS } from './reducers';
-import { HomeModule } from './home/home.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +21,7 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     HttpClientModule,
 
-    HomeModule,
+    HomeComponent,
 
     StoreModule.forRoot(ROOT_REDUCERS, {
       runtimeChecks: {
