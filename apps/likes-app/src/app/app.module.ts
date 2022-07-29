@@ -13,15 +13,7 @@ import { StoreModuleProvider } from './store.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-
-    HomeComponent,
-
-    StoreModuleProvider
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, HomeComponent, StoreModuleProvider],
   providers: [
     {
       provide: YOUTUBE_SERVICE,

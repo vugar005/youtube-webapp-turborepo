@@ -1,20 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-
 import { Router } from '@angular/router';
 import { UIStoreService } from './core/services/ui-store/ui-store.service';
 @Component({
   selector: 'likes-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit, OnChanges {
   @Input() likedVideoList?: string[];
 
-  constructor(
-    private router: Router, private uiStore: UIStoreService, private title: Title) {}
+  constructor(private router: Router, private uiStore: UIStoreService, private title: Title) {}
 
   public ngOnInit(): void {
     this.connectRouter();
