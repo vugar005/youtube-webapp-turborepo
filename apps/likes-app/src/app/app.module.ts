@@ -3,15 +3,13 @@ import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { APP_CONFIG, youtubeApiServiceFactory, YOUTUBE_SERVICE } from '@youtube/common-ui';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
-import { ROOT_REDUCERS } from './reducers';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { StoreModuleProvider } from './store.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,20 +20,7 @@ import { HomeComponent } from './home/home.component';
 
     HomeComponent,
 
-    StoreModule.forRoot(ROOT_REDUCERS, {
-      runtimeChecks: {
-        // strictStateImmutability and strictActionImmutability are enabled by default
-        strictStateSerializability: true,
-        strictActionSerializability: true,
-        strictActionWithinNgZone: true,
-        strictActionTypeUniqueness: true,
-      },
-    }),
-    !environment.production
-      ? StoreDevtoolsModule.instrument({
-          name: 'Youtube Likes App Store',
-        })
-      : [],
+    StoreModuleProvider
   ],
   providers: [
     {

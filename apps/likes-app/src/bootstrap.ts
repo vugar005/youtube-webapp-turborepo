@@ -1,8 +1,6 @@
 /* eslint-disable */
-import { enableProdMode, VERSION } from '@angular/core';
-import { bootstrapApplication, platformBrowser } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { environment } from './environments/environment';
+import { platformBrowser } from '@angular/platform-browser';
+import { AppModule } from './app/app.module';
 
 /** Do NOT enable production mode on remote apps.
  * Because it is already going to be enabled on SHELL
@@ -12,12 +10,12 @@ import { environment } from './environments/environment';
 // }
 
 // ngModule MODE
-// platformBrowser().bootstrapModule(AppModule)
-//   .catch(err => console.error(err));
+platformBrowser().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
 
 // STANDALONE MODE
-bootstrapApplication(AppComponent)
-  .catch(err => console.error(err));
+// bootstrapApplication(AppComponent)
+//   .catch(err => console.error(err));
 
 /** You can use below code to support multiple versions of Angular
  *  Each different version Angular app should have different plattform instance
@@ -35,4 +33,4 @@ bootstrapApplication(AppComponent)
 
 /** Or use ready bootstrap util function from @angular-architects/module-federation-tools package
  *  LINK: https://www.npmjs.com/package/@angular-architects/module-federation-tools#helper-for-angular
-*/ 
+*/
