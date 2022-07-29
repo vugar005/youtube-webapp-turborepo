@@ -1,6 +1,6 @@
 # Youtube microfrontend using Angular, Module Federation. Turborepo edition.
 
-<img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo.webp" alt="Youtube Angular brand" width="100%"  height="400px">
+<img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo-v2.webp" alt="Youtube Angular brand" width="100%"  height="518px">
 
  [![](https://img.shields.io/badge/about%20Project-blue?style=for-the-badge)](#about-project)
  [![](https://img.shields.io/badge/features-blue?style=for-the-badge)](#features)
