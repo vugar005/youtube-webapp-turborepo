@@ -1,15 +1,19 @@
 /* eslint-disable */
-import { importProvidersFrom } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { importProvidersFrom, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { createApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { YOUTUBE_SERVICE, youtubeApiServiceFactory, APP_CONFIG, APP_API_KEY, EventDispatcherService } from '@youtube/common-ui';
 
 import { AppComponent } from './app/app.component';
+import { APP_KEY } from './app/app.constants';
 import { AppRoutingModule } from './app/app.routing';
 import { ROOT_REDUCERS } from './app/reducers';
+import { environment } from './environments/environment';
 
 /** Do NOT enable production mode on remote apps.
  * Because it is already going to be enabled on SHELL
@@ -24,19 +28,31 @@ import { ROOT_REDUCERS } from './app/reducers';
 
 // STANDALONE MODE
 
-(async function() {
+(async function () {
   const envInjector = await createApplication({
-      providers: [
+    providers: [
       importProvidersFrom(
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      StoreModule.forRoot(ROOT_REDUCERS),
-      StoreDevtoolsModule.instrument(),
-      MatSnackBarModule
-    )
-  ]
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        StoreModule.forRoot(ROOT_REDUCERS),
+        StoreDevtoolsModule.instrument(),
+        MatSnackBarModule
+      ),
+      {
+        provide: YOUTUBE_SERVICE,
+        useFactory: youtubeApiServiceFactory,
+        deps: [Injector],
+      },
+      { provide: APP_CONFIG, useValue: environment },
+      {
+        provide: APP_API_KEY,
+        useValue: APP_KEY,
+      },
+      EventDispatcherService,
+    ]
   });
-  const ce = createCustomElement(AppComponent, {injector: envInjector.injector});
+  const ce = createCustomElement(AppComponent, { injector: envInjector.injector });
   customElements.define('watch-app-element', ce);
 })();
 

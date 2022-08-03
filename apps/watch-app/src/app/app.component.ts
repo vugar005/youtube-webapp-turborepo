@@ -1,17 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Component, Injector, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {
-  YOUTUBE_SERVICE,
-  youtubeApiServiceFactory,
-  APP_CONFIG,
-  EventDispatcherService,
-  APP_API_KEY,
-} from '@youtube/common-ui';
-import { environment } from 'src/environments/environment';
-import { APP_KEY } from './app.constants';
 import { UIStoreService } from './core/services/ui-store/ui-store.service';
 import { WatchVideoComponent } from './watch-video/watch-video.component';
 
@@ -20,21 +9,7 @@ import { WatchVideoComponent } from './watch-video/watch-video.component';
   selector: 'watch-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [CommonModule, RouterModule, HttpClientModule, WatchVideoComponent],
-  providers: [
-    {
-      provide: YOUTUBE_SERVICE,
-      useFactory: youtubeApiServiceFactory,
-      deps: [Injector],
-    },
-    { provide: APP_CONFIG, useValue: environment },
-    {
-      provide: APP_API_KEY,
-      useValue: APP_KEY,
-    },
-    EventDispatcherService,
-    MatSnackBarModule,
-  ],
+  imports: [CommonModule, RouterModule, WatchVideoComponent],
 })
 export class AppComponent implements OnInit, OnChanges {
   @Input() likedVideoList?: string[];
