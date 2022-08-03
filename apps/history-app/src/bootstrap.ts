@@ -1,7 +1,12 @@
 /* eslint-disable */
-import { VERSION } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app.module';
+import { importProvidersFrom, VERSION } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { createApplication, platformBrowser } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppComponent } from './app/app.component';
+import { AppRoutingModule } from './app/app.routing';
+import { ROOT_REDUCERS } from './app/reducers';
 
 /** Do NOT enable production mode on remote apps.
  * Because it is already going to be enabled on SHELL
@@ -10,8 +15,25 @@ import { AppModule } from './app/app.module';
 //   enableProdMode();
 // }
 
-platformBrowser().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+// ngModule MODE
+// platformBrowser().bootstrapModule(AppModule)
+//   .catch(err => console.error(err));
+
+// STANDALONE MODE
+
+(async function() {
+  const envInjector = await createApplication({
+      providers: [
+      importProvidersFrom(
+      AppRoutingModule,
+      StoreModule.forRoot(ROOT_REDUCERS),
+      StoreDevtoolsModule.instrument(),
+    )
+  ]
+  });
+  const ce = createCustomElement(AppComponent, {injector: envInjector.injector});
+  customElements.define('history-app-element', ce);
+})();
 
 /** You can use below code to support multiple versions of Angular
  *  Each different version Angular app should have different plattform instance
@@ -29,4 +51,4 @@ platformBrowser().bootstrapModule(AppModule)
 
 /** Or use ready bootstrap util function from @angular-architects/module-federation-tools package
  *  LINK: https://www.npmjs.com/package/@angular-architects/module-federation-tools#helper-for-angular
-*/ 
+*/

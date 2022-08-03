@@ -1,13 +1,28 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, Injector, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { YOUTUBE_SERVICE, youtubeApiServiceFactory, APP_CONFIG } from '@youtube/common-ui';
+import { environment } from 'src/environments/environment';
 import { UIStoreService } from './core/services/ui-store/ui-store.service';
+import { HomeComponent } from './home/home.component';
 
 @Component({
+  standalone: true,
   selector: 'history-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  imports: [CommonModule, RouterModule, HttpClientModule, HomeComponent],
+  providers: [
+    {
+      provide: YOUTUBE_SERVICE,
+      useFactory: youtubeApiServiceFactory,
+      deps: [Injector],
+    },
+    { provide: APP_CONFIG, useValue: environment },
+  ],
 })
 export class AppComponent implements OnInit, OnChanges {
   @Input() watchedVideoList?: string[];
