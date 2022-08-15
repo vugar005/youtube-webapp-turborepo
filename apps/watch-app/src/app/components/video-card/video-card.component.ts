@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -8,6 +9,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 import {
   CustomEventConfig,
@@ -21,15 +24,29 @@ import {
   MetaTagService,
   ICommonMetaTagConfig,
   IYoutubeVideoItem,
+  VideoThumbnailLoaderComponent,
+  AbbreviateNumberPipe,
 } from '@youtube/common-ui';
 import { Subject, takeUntil } from 'rxjs';
 import { UIStoreService } from 'src/app/core/services/ui-store/ui-store.service';
+import { VideoSecondaryInfoComponent } from './video-secondary-info/video-secondary-info.component';
 
 @Component({
+  standalone: true,
   selector: 'watch-app-video-card',
   templateUrl: './video-card.component.html',
   styleUrls: ['./video-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    VideoPlayerComponent,
+    VideoThumbnailLoaderComponent,
+    MatIconModule,
+    MatDividerModule,
+    VideoSecondaryInfoComponent,
+    AbbreviateNumberPipe,
+    ShareVideoDialogComponent,
+  ],
 })
 export class VideoCardComponent implements OnInit, OnDestroy {
   @ViewChild(VideoPlayerComponent) videoPlayer?: VideoPlayerComponent;

@@ -1,11 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UIStoreService } from './core/services/ui-store/ui-store.service';
+import { WatchVideoComponent } from './watch-video/watch-video.component';
 
 @Component({
+  standalone: true,
   selector: 'watch-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  imports: [CommonModule, RouterModule, WatchVideoComponent],
 })
 export class AppComponent implements OnInit, OnChanges {
   @Input() likedVideoList?: string[];

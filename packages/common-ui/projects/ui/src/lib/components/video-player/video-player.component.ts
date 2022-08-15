@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -12,15 +13,18 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 import { catchError, debounceTime, EMPTY, filter, fromEvent, Subject, takeUntil } from 'rxjs';
 import { WindowEnum } from '../../constants';
 import { ScriptUtilsService, WebApiService } from '../../services';
 
 @Component({
+  standalone: true,
   selector: 'ytd-video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, YouTubePlayerModule],
 })
 export class VideoPlayerComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   @Output() readonly stateChange = new EventEmitter<YT.PlayerState>();

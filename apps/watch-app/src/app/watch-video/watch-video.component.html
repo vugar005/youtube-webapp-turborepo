@@ -9,7 +9,7 @@
   <div class="related-videos-wrapper">
     <watch-app-related-videos
       *ngIf="videoInfo?.snippet?.title as videoTitle"
-      [query]="videoTitle"
+      [query]="videoInfo?.snippet?.channelTitle"
     ></watch-app-related-videos>
   </div>
 </div>

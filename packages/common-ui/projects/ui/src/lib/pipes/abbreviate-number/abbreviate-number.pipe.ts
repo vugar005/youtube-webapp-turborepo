@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
+  standalone: true,
   name: 'ytdAbbreviateNumber',
 })
-export class AbbreviateNumber implements PipeTransform {
+export class AbbreviateNumberPipe implements PipeTransform {
   public transform(value: number | string, digits = 0): string | undefined {
     if (!value) {
       return;
