@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnDestroy,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventDispatcherService, GlobalCustomEvent, WatchAPPEvents } from '@youtube/common-ui';
 import { Observable, Subject, takeUntil, withLatestFrom } from 'rxjs';
@@ -7,10 +15,13 @@ import { VideoStoreService } from '../core/services/video-store/video-store.serv
 import { registry } from '../registry';
 
 @Component({
+  standalone: true,
   selector: 'yt-watch-app-wrapper',
   templateUrl: './watch-app-wrapper.component.html',
   styleUrls: ['./watch-app-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WatchAppWrapperComponent implements OnInit, OnDestroy {
   public isElementLoaded?: boolean;

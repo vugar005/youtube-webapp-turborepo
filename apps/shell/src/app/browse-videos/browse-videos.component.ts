@@ -1,6 +1,7 @@
-import { isPlatformServer } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import {
   IYoutubeService,
@@ -9,16 +10,21 @@ import {
   YOUTUBE_SERVICE,
   IYoutubeVideoResult,
   IYoutubeVideoItem,
+  VideoThumbnailLoaderComponent,
+  VideoThumbnailComponent,
 } from '@youtube/common-ui';
 import { catchError, EMPTY, Observable, Subject, switchMap, take, takeUntil, tap, withLatestFrom } from 'rxjs';
+import { MiniSidebarComponent } from '../components/mini-sidebar/mini-sidebar.component';
 import { AccountStoreService } from '../core/services/account-store/account-store.service';
 import { VideoStoreService } from '../core/services/video-store/video-store.service';
 
 @Component({
+  standalone: true,
   selector: 'yt-browse-videos',
   templateUrl: './browse-videos.component.html',
   styleUrls: ['./browse-videos.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, MiniSidebarComponent, MatIconModule, VideoThumbnailComponent, VideoThumbnailLoaderComponent],
 })
 export class BrowseVideosComponent implements OnInit, OnDestroy {
   public videoLinks?: IYoutubeSearchItem[] = [];
@@ -94,7 +100,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
       )
       .subscribe((result: IYoutubeSearchResult) => {
         this.videoLinks = result?.items;
-        const ids = result?.items?.map((item) => item.id.videoId).join(',');
+        const ids = result?.items?.map((item) => item.id?.videoId).join(',');
         this.getVideoDetails(ids);
         this.setLoading(false);
         this.cdr.detectChanges();

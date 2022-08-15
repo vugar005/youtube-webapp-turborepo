@@ -7,18 +7,20 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   {
     path: 'watch',
-    loadChildren: () => import('./watch-app-wrapper/watch-app-wrapper.module').then((m) => m.WatchAppWrapperModule),
+    loadComponent: () =>
+      import('./watch-app-wrapper/watch-app-wrapper.component').then((m) => m.WatchAppWrapperComponent),
     data: { importName: 'watchApp', elementName: 'watch-app-element' },
   },
   {
     path: 'liked',
-    loadChildren: () => import('./likes-app-wrapper/likes-app-wrapper.module').then((m) => m.LikesAppWrapperModule),
+    loadComponent: () =>
+      import('./likes-app-wrapper/likes-app-wrapper.component').then((m) => m.LikesAppWrapperComponent),
     data: { importName: 'likesApp', elementName: 'likes-app-element' },
   },
   {
     path: 'history',
-    loadChildren: () =>
-      import('./history-app-wrapper/history-app-wrapper.module').then((m) => m.HistoryAppWrapperModule),
+    loadComponent: () =>
+      import('./history-app-wrapper/history-app-wrapper.component').then((m) => m.HistoryAppWrapperComponent),
     data: { importName: 'historyApp', elementName: 'history-app-element' },
   },
   {

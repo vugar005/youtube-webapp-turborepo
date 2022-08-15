@@ -1,4 +1,4 @@
-import { isPlatformServer } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -10,9 +10,20 @@ import {
   Output,
   PLATFORM_ID,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { CountryApiService } from '@youtube/common-ui';
+import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router, RouterModule } from '@angular/router';
+import {
+  BrandIconComponent,
+  CountryApiService,
+  MaxWidthDirective,
+  MinWidthDirective,
+  SearchBoxComponent,
+  SearchBoxMobileComponent,
+} from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
 import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
 import { environment } from 'src/environments/environment';
@@ -22,15 +33,30 @@ import { ThemeService } from '../../core/services/theme-service/theme.service';
 import { VideoStoreService } from '../../core/services/video-store/video-store.service';
 
 @Component({
+  standalone: true,
   selector: 'yt-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatIconModule,
+    BrandIconComponent,
+    MinWidthDirective,
+    MaxWidthDirective,
+    SearchBoxComponent,
+    SearchBoxMobileComponent,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatButtonModule,
+  ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Output() readonly toggleMenu = new EventEmitter<void>();
   @Output() readonly toggleAccountMenu = new EventEmitter<void>();
-  public searchControl = new FormControl();
+  public searchControl = new UntypedFormControl();
   public countryCode?: string;
 
   private readonly onDestroy$ = new Subject<void>();

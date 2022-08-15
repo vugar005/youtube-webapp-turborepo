@@ -11,9 +11,9 @@ export interface IYoutubeVideoItem {
   kind: string;
   etag: string;
   id: string;
-  snippet: IYoutubeVideoSnippet;
+  snippet?: IYoutubeVideoSnippet;
   contentDetails: IYoutubeContentDetails;
-  statistics: IYoutubeStatistics;
+  statistics?: IYoutubeStatistics;
 }
 
 export interface IYoutubeVideoThumbnail {

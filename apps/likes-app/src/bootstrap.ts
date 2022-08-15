@@ -1,8 +1,15 @@
 /* eslint-disable */
-import { enableProdMode, VERSION } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app.module';
+import { importProvidersFrom, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppComponent } from './app/app.component';
+import { AppRoutingModule } from './app/app.routing';
+import { ROOT_REDUCERS } from './app/reducers';
+import { createApplication } from '@angular/platform-browser';
+import { YOUTUBE_SERVICE, youtubeApiServiceFactory, APP_CONFIG } from '@youtube/common-ui';
 import { environment } from './environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 /** Do NOT enable production mode on remote apps.
  * Because it is already going to be enabled on SHELL
@@ -11,8 +18,33 @@ import { environment } from './environments/environment';
 //   enableProdMode();
 // }
 
-platformBrowser().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+// ngModule MODE
+// platformBrowser().bootstrapModule(AppModule)
+//   .catch(err => console.error(err));
+
+// STANDALONE MODE
+
+(async function () {
+  const envInjector = await createApplication({
+    providers: [
+      importProvidersFrom(
+        AppRoutingModule,
+        HttpClientModule,
+        StoreModule.forRoot(ROOT_REDUCERS),
+        StoreDevtoolsModule.instrument(),
+      ),
+      {
+        provide: YOUTUBE_SERVICE,
+        useFactory: youtubeApiServiceFactory,
+        deps: [Injector],
+      },
+      { provide: APP_CONFIG, useValue: environment },
+    ]
+  });
+  const ce = createCustomElement(AppComponent, { injector: envInjector.injector });
+  customElements.define('likes-app-element', ce);
+})();
+
 
 /** You can use below code to support multiple versions of Angular
  *  Each different version Angular app should have different plattform instance
@@ -30,4 +62,4 @@ platformBrowser().bootstrapModule(AppModule)
 
 /** Or use ready bootstrap util function from @angular-architects/module-federation-tools package
  *  LINK: https://www.npmjs.com/package/@angular-architects/module-federation-tools#helper-for-angular
-*/ 
+*/

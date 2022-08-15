@@ -1,14 +1,25 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnDestroy,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { AccountStoreService } from '../core/services/account-store/account-store.service';
 import { registry } from '../registry';
 
 @Component({
+  standalone: true,
   selector: 'yt-likes-app-wrapper',
   templateUrl: './likes-app-wrapper.component.html',
   styleUrls: ['./likes-app-wrapper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LikesAppWrapperComponent implements OnInit, OnDestroy {
   public isElementLoaded?: boolean;
