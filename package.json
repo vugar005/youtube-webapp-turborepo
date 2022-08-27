@@ -22,8 +22,8 @@
     "analyze": "turbo run analyze --filter=shell"
   },
   "dependencies": {
-    "@angular-architects/module-federation": "14.2.3",
-    "@angular-architects/module-federation-tools": "14.2.3",
+    "@angular-architects/module-federation": "14.3.10",
+    "@angular-architects/module-federation-tools": "14.3.10",
     "@angular/animations": "14.2.0",
     "@angular/cdk": "14.2.0",
     "@angular/common": "14.2.0",
