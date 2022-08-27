@@ -44,7 +44,6 @@
     "@ngrx/store": "14.3.0",
     "@ngrx/store-devtools": "14.3.0",
     "@nguniversal/express-engine": "14.0.3",
-    "@nguniversal/module-map-ngfactory-loader": "8.2.6",
     "express": "4.17.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "7.5.6",
