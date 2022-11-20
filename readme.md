@@ -1,6 +1,6 @@
 # Youtube microfrontend using Angular, Module Federation. Turborepo edition.
 
-<img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo.webp" alt="Youtube Angular brand" width="100%"  height="400px">
+<img src="https://github.com/vugar005/vg-common/blob/main/images/Youtube-logo-v2.webp" alt="Youtube Angular brand" width="100%"  height="518px">
 
  [![](https://img.shields.io/badge/about%20Project-blue?style=for-the-badge)](#about-project)
  [![](https://img.shields.io/badge/features-blue?style=for-the-badge)](#features)
@@ -21,12 +21,18 @@
 
 ---
 
+**NOTE**:
+
+For version 14 using standalone components use [14.x branch](https://github.com/vugar005/youtube-webapp-turborepo/tree/14.x)   
+For version 13 without standalone components use [13.x branch](https://github.com/vugar005/youtube-webapp-turborepo/tree/13.x)
+
+
 **There is 1 host (shell) and 3 remote apps (watch-app, likes-app, history-app). Each app is deployed to different hosting storage.**     
 
 **There are 3 versions of source codes available:**   
-[Turborepo (Current Repo)](https://github.com/vugar005/youtube-webapp-turborepo)   
-[Nx](https://github.com/vugar005/youtube-webapp-nx)   
-[Lerna](https://github.com/vugar005/youtube-webapp-lerna)  
+🏄 [Turborepo (Current Repo)](https://github.com/vugar005/youtube-webapp-turborepo)   
+🏄[Nx](https://github.com/vugar005/youtube-webapp-nx)   
+🏄[Lerna](https://github.com/vugar005/youtube-webapp-lerna)  
 
 ---
 **NOTE**:
