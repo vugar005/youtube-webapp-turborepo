@@ -12,10 +12,13 @@ import {
   ElementRef,
 } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatLegacyAutocompleteModule as MatAutocompleteModule,
+  MatLegacyAutocompleteTrigger as MatAutocompleteTrigger,
+} from '@angular/material/legacy-autocomplete';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { catchError, debounceTime, EMPTY, filter, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { IYoutubeService } from '../../models';
 import { IYoutubeSearchItem, IYoutubeSearchResult } from '../../models/youtube-search-list.model';

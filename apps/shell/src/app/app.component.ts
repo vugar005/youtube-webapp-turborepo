@@ -17,7 +17,7 @@ import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { VideoStoreService } from './core/services/video-store/video-store.service';
 import { SHELL_META_TAGS } from 'src/app.constants';
 import { ThemeService } from './core/services/theme-service/theme.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { PolicyTermsDialogComponent } from './components/policy-terms/policy-terms-dialog/policy-terms-dialog.component';
 import { environment } from 'src/environments/environment';
 
