@@ -59,11 +59,11 @@ module.exports = {
         '@angular/material/input': { requiredVersion: deps['@angular/material'] },
         '@angular/material/form-field': { requiredVersion: deps['@angular/material'] },
         '@angular/material/autocomplete': { requiredVersion: deps['@angular/material'] },
-        '@angular/material/dialog': { requiredVersion: deps['@angular/material'] },
-        '@angular/material/menu': { requiredVersion: deps['@angular/material'] },
-        '@angular/material/snack-bar': { requiredVersion: deps['@angular/material'] },
+        '@angular/material/legacy-dialog': { requiredVersion: deps['@angular/material'] },
+        '@angular/material/legacy-menu': { requiredVersion: deps['@angular/material'] },
+        '@angular/material/legacy-snack-bar': { requiredVersion: deps['@angular/material'] },
         '@angular/cdk/layout': { requiredVersion: deps['@angular/material'] },
-        
+
         // Ngrx
         '@ngrx/store': { requiredVersion: deps['@ngrx/store'] },
         ...sharedMappings.getDescriptors(),
