@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { IYoutubeSearchItem, IYoutubeVideoItem } from '../../models';
 import { TimeAgoPipe, AbbreviateNumberPipe } from '../../pipes';
@@ -9,7 +9,7 @@ import { TimeAgoPipe, AbbreviateNumberPipe } from '../../pipes';
   templateUrl: './video-thumbnail.component.html',
   styleUrls: ['./video-thumbnail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, TimeAgoPipe, AbbreviateNumberPipe],
+  imports: [CommonModule, TimeAgoPipe, AbbreviateNumberPipe, NgOptimizedImage],
 })
 export class VideoThumbnailComponent {
   @Input() searchItem?: IYoutubeSearchItem;
