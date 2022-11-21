@@ -25,7 +25,7 @@ import {
   SearchBoxMobileComponent,
 } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
-import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
+import { DEFAULT_SEARCH_VALUE } from 'src/app/app.constants';
 import { environment } from 'src/environments/environment';
 import { SettingsStore } from '../../core/services/settings-store/settings-store.service';
 import { AppTheme } from '../../core/services/theme-service/theme.constants';

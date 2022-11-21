@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
+import { DEFAULT_SEARCH_VALUE } from 'src/app/app.constants';
 import { VideoActions } from '../actions';
 
 export const featureKey = 'video';

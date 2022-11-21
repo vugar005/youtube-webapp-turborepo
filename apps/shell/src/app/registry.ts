@@ -1,5 +1,5 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { APP_VERSION } from 'src/app.constants';
+import { APP_VERSION } from 'src/app/app.constants';
 import { environment } from '../environments/environment';
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
