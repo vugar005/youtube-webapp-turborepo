@@ -2,11 +2,11 @@
   "name": "@youtube/common-ui",
   "version": "0.0.0",
   "peerDependencies": {
-    "@angular/common": "^13.2.0",
-    "@angular/core": "^13.2.0",
-    "@angular/material": "^13.2.0",
-    "@angular/cdk": "^13.2.0",
-    "@angular/youtube-player": "^13.2.0",
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/material": "^15.0.0",
+    "@angular/cdk": "^15.0.0",
+    "@angular/youtube-player": "^15.0.0",
     "@ng-web-apis/common": "^2.0.0"
   },
   "dependencies": {
