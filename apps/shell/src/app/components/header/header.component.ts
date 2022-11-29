@@ -11,10 +11,10 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { Router, RouterModule } from '@angular/router';
 import {
   BrandIconComponent,
@@ -25,7 +25,7 @@ import {
   SearchBoxMobileComponent,
 } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
-import { DEFAULT_SEARCH_VALUE } from 'src/app.constants';
+import { DEFAULT_SEARCH_VALUE } from 'src/app/app.constants';
 import { environment } from 'src/environments/environment';
 import { SettingsStore } from '../../core/services/settings-store/settings-store.service';
 import { AppTheme } from '../../core/services/theme-service/theme.constants';

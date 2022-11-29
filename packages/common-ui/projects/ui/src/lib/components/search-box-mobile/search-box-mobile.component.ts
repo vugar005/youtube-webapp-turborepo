@@ -103,9 +103,9 @@ export class SearchBoxMobileComponent implements OnInit, OnDestroy, ControlValue
   // Implemented as part of ControlValueAccessor
   public setDisabledState?(isDisabled: boolean): void {
     if (isDisabled === false) {
-      this.searchControl.disable({ emitEvent: false });
-    } else if (isDisabled) {
       this.searchControl.enable({ emitEvent: false });
+    } else if (isDisabled) {
+      this.searchControl.disable({ emitEvent: false });
     }
   }
 

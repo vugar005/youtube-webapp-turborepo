@@ -3,7 +3,9 @@
   [ngClass]="{ 'thumbnail--vertical': direction === 'vertical', 'thumbnail--horizontal': direction === 'horizontal' }"
 >
   <div class="thumbnail__image">
-    <img [src]="searchItem?.snippet?.thumbnails?.high?.url" alt="Video image" />
+    <ng-container *ngIf="searchItem?.snippet?.thumbnails?.high?.url as imageSrc">
+      <img [ngSrc]="imageSrc" [fill]="true" [priority]="true" alt="Video image" />
+    </ng-container>
 
     <div class="thumbnail__image__duration" *ngIf="videoDetail?.contentDetails?.duration">
       {{ videoDetail?.contentDetails?.duration }}

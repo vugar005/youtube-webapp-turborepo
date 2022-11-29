@@ -1,16 +1,16 @@
-version: 2
+version: 2.1
 jobs:
  setup:
   working_directory: ~/youtube-webapp-turborepo
   docker:
-   - image: circleci/node:16-browsers
+   - image: cimg/node:16.13.0
   steps:
   - checkout
   - restore_cache:
           key: v1-deps-{{ checksum "package-lock.json" }}
   - run:
      name: install-dependencies
-     command: npm install --no-package-lock
+     command: npm install --no-package-lock --force
   - save_cache:
           key: v1-deps-{{ checksum "package-lock.json" }}
           paths:
@@ -18,7 +18,7 @@ jobs:
  lint:
   working_directory: ~/youtube-webapp-turborepo
   docker:
-   - image: circleci/node:16-browsers
+   - image: cimg/node:16.13.0
   steps:
   - checkout
   - restore_cache:
@@ -32,7 +32,7 @@ jobs:
  build:
   working_directory: ~/youtube-webapp-turborepo
   docker:
-   - image: circleci/node:16-browsers
+   - image: cimg/node:16.13.0
   steps:
   - checkout
   - restore_cache:
