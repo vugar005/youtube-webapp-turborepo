@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './account-sidebar.component.html',
   styleUrls: ['./account-sidebar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MatMenuModule, MatIconModule, MatDividerModule, RouterModule],
+  imports: [CommonModule, MatMenuModule, MatIconModule, MatDividerModule, RouterModule, KeyEventsDialogComponent],
 })
 export class AccountSidebarComponent implements OnInit {
   public readonly version = VERSION.full;

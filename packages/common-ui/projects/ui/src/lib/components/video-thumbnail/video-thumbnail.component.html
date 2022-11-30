@@ -13,7 +13,7 @@
     <div class="image-backdrop"></div>
 
     <div class="now-playing-overlay" *ngIf="isNowPlaying">
-      <div class="now-playing-overlay__text mat-subheading-2">Now Playing</div>
+      <div class="now-playing-overlay__text mat-subtitle-1">Now Playing</div>
       <div class="now-playing-overlay__equalizer">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <rect class="eq-bar eq-bar--1" x="0" y="4" width="4" height="8" />
@@ -30,10 +30,10 @@
       <div class="thumbnail-details-content">
         <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="searchItem?.snippet?.title"></h3>
         <h4
-          class="thumbnail-details-content__channelTitle mat-subheading-1"
+          class="thumbnail-details-content__channelTitle mat-subtitle-2"
           [innerHtml]="searchItem?.snippet?.channelTitle"
         ></h4>
-        <p class="thumbnail-details-content__footer mat-h4">
+        <p class="thumbnail-details-content__footer mat-h5">
           <span *ngIf="videoDetail?.statistics?.viewCount as viewsCount"
             >{{ viewsCount | ytdAbbreviateNumber: 0 }} views •</span
           >
