@@ -1,12 +1,12 @@
 import { Component, ChangeDetectionStrategy, VERSION, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AppTheme } from '../../core/services/theme-service/theme.constants';
 import { ThemeService } from '../../core/services/theme-service/theme.service';
 import { KeyEventsDialogComponent } from '../key-events-dialog/key-events-dialog.component';
 import { LocalStorageEnum, WebApiService, YoutubeApiServiceType } from '@youtube/common-ui';
 import { API_SELECT_OPTIONS } from './account-sidebar.constants';
 import { CommonModule } from '@angular/common';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';

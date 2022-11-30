@@ -12,7 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS } from './reducers';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { KeyEventsDialogComponent } from './components/key-events-dialog/key-events-dialog.component';
 import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
 import { AccountSidebarComponent } from './components/account-sidebar/account-sidebar.component';
