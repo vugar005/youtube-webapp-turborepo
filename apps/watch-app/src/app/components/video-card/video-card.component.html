@@ -9,12 +9,12 @@
 
   <div class="video-details" *ngIf="videoResult">
     <div class="video-details-tags" *ngIf="videoResult?.snippet?.tags?.length">
-      <div class="video-details-tag mat-subheading-1" *ngFor="let tag of videoResult.snippet?.tags?.slice(0, 3)">
+      <div class="video-details-tag mat-subtitle-2" *ngFor="let tag of videoResult.snippet?.tags?.slice(0, 3)">
         #{{ tag }}
       </div>
     </div>
 
-    <div class="video-details__title mat-h1">{{ videoResult.snippet?.title }}</div>
+    <div class="video-details__title mat-h2">{{ videoResult.snippet?.title }}</div>
     <div class="video-details__footer">
       <div class="video-details__footer__views mat-h3">
         <span> {{ videoResult.statistics?.viewCount | number: '1.0-0' }} views </span>

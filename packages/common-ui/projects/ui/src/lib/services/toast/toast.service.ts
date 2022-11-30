@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  MatLegacySnackBar as MatSnackBar,
-  MatLegacySnackBarRef as MatSnackBarRef,
-} from '@angular/material/legacy-snack-bar';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { ToastConfig } from './toast.service.models';
 
 @Injectable({ providedIn: 'root' })

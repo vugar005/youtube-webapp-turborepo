@@ -1,6 +1,6 @@
 <div class="home">
   <div class="home-primary">
-    <h1 class="home-primary__title mat-h1" *ngIf="watchedVideos?.length">Watch History</h1>
+    <h2 class="home-primary__title mat-h2" *ngIf="watchedVideos?.length">Watch History</h2>
 
     <ng-container *ngIf="!isLoading; else loadingTemplate">
       <ng-container *ngIf="watchedVideos?.length; else noItemsTemplate">
@@ -51,7 +51,7 @@
       <mat-icon class="emptyTemplate-icon">delete_outline</mat-icon>
     </div>
     <div class="emptyTemplate__text">
-      <h1 class="mat-h1">Empty Watch History</h1>
+      <h2 class="mat-h2">Empty Watch History</h2>
       <a class="mat-h3" (click)="onBrowseVideos()"> Watch some videos </a>
     </div>
   </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="emptyTemplate__text">
-      <h1 class="mat-h1">Watch History is Paused</h1>
+      <h2 class="mat-h2">Watch History is Paused</h2>
       <h3 class="mat-h3" (click)="onToggleWatchHistoryEnable()">Enable Watch History</h3>
     </div>
   </div>

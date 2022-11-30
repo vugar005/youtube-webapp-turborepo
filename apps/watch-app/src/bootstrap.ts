@@ -2,7 +2,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { createApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
