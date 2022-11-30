@@ -23,7 +23,7 @@
 
 **NOTE**:
 
-For version 14 using standalone components use [14.x branch](https://github.com/vugar005/youtube-webapp-turborepo/tree/14.x)   
+For version 14 with standalone components use [14.x branch](https://github.com/vugar005/youtube-webapp-turborepo/tree/14.x)   
 For version 13 without standalone components use [13.x branch](https://github.com/vugar005/youtube-webapp-turborepo/tree/13.x)
 
 
