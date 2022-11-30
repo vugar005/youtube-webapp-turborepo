@@ -5,19 +5,8 @@
 @import './_typography';
 @import './utils/generate-material-colors';
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
+@include mat.all-component-typographies();
+@include mat.core();
 
 $youtube-theme-primary: mat.define-palette($youtube-primary, 50, 10, 70);
 $youtube-theme-accent: mat.define-palette($youtube-accent, 50, 10, 70);
@@ -64,6 +53,7 @@ $youtube-dark-theme: define-dark-theme(
       primary: $youtube-theme-primary,
       accent: $youtube-theme-accent,
     ),
+    density: 0
   )
 );
 
@@ -73,13 +63,14 @@ $youtube-light-theme: define-light-theme(
       primary: $youtube-theme-primary,
       accent: $youtube-theme-accent,
     ),
+    density: 0
   )
 );
 
 @mixin fields-theme($theme) {
   $warn: map-get($theme, warn);
 
-  .mat-input-element {
+  .mat-mdc-input-element {
     background: var(--yt-spec-general-background-a);
   }
 }
@@ -90,31 +81,28 @@ $youtube-light-theme: define-light-theme(
   }
 }
 
+@mixin dialog-theme($theme) {
+
+}
+
 @mixin custom-components-theme($theme) {
   @include fields-theme($theme);
   @include drawer-theme($theme);
 }
 
 // default
-@include mat.all-legacy-component-themes($youtube-dark-theme);
+@include mat.all-component-themes($youtube-dark-theme);
 
 html[theme='dark-theme'] {
   @include custom-components-theme($youtube-dark-theme);
 }
 
 html[theme='light-theme'] {
-  @include mat.all-legacy-component-colors($youtube-light-theme);
+  @include mat.all-component-colors($youtube-light-theme);
   @include custom-components-theme($youtube-light-theme);
 }
 
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy($youtube-typography);`
-@include mat.all-legacy-component-typographies($youtube-typography);
-@include mat.legacy-core();
+
+@include mat.all-component-typographies($youtube-typography);
+@include mat.core();
 @include generate-material-classes();

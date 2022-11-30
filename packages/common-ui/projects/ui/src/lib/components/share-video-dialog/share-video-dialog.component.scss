@@ -1,6 +1,7 @@
 :host {
   display: block;
   width: auto;
+  padding: 24px;
 }
 
 .share-dialog-header {
@@ -13,6 +14,7 @@
 
   &__close {
     cursor: pointer;
+    color: var(--yt-spec-text-primary);
   }
 }
 

@@ -8,7 +8,7 @@
   &__player {
     height: var(--ytd-watch-flexy-player-height);
   }
-  
+
   &__secondary-info {
     padding-top: 1.6rem;
   }
@@ -20,7 +20,7 @@
   padding: 20px 0 8px 0;
   &__title {
     display: block;
-    max-height: 5.2rem;
+    max-height: 6.4rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
@@ -93,7 +93,7 @@
 
 
 @media (min-width: 576px) {
-  
+
   .video-details-actions {
     width: unset;
     justify-content: flex-start;
@@ -122,5 +122,5 @@
     flex: 1 0 430px;
     justify-content: flex-end;
   }
-  
+
 }
