@@ -82,7 +82,7 @@ npm install
 npm run serve
 ```  
 
-4- To Start in SSR mode:
+Or you can start in SSR mode:
 ```  
 npm run serve:ssr
 ```
