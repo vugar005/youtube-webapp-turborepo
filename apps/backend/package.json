@@ -10,6 +10,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "serve": "nest start --watch",
+    "serve:ssr": "nest start --watch",
     "clean": "rimraf node_modules && rimraf dist",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

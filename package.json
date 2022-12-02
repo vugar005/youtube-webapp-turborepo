@@ -10,6 +10,7 @@
   },
   "scripts": {
     "serve": "turbo run serve  --no-cache  --continue",
+    "serve:ssr": "turbo run serve:ssr --no-cache --continue",
     "serve:prod": "turbo run serve:prod --no-cache --continue",
     "build": "turbo run build --no-cache",
     "lint": "turbo run lint",

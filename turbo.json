@@ -16,6 +16,11 @@
         "dependsOn": ["^build"],
         "outputs": ["dist/**"]
       },
+      "serve:ssr": {
+        "cache": false,
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
       "serve:prod": {
         "cache": false,
         "dependsOn": ["^build"],
@@ -34,4 +39,3 @@
       }
     }
   }
-  

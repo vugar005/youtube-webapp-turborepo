@@ -4,12 +4,11 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
+    "serve:ssr": "ng run shell:serve-ssr",
     "serve:prod": "ng serve --configuration=production",
     "build": "npm run prerender",
     "watch": "ng build --watch --configuration=development",
     "test": "ng test",
-    "dev:ssr": "ng run shell:serve-ssr",
-    "serve:ssr": "node dist/shell/server/main.js",
     "build:ssr": "ng build && ng run shell:server",
     "prerender": "ng run shell:prerender",
     "lint": "ng lint",

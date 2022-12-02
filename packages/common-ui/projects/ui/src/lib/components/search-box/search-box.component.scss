@@ -27,10 +27,19 @@
   }
 
   &__option {
-    background: #fff !important;
-    color: #2c2c54 !important;
+    --mdc-theme-text-primary-on-background: #2c2c54;
+    background-color: #fff;
     font-size: 1.6rem;
-    height: 30px;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    max-height: 3.2rem;
+
+    ::ng-deep {
+      span {
+        max-height: inherit;
+      }
+    }
+
     &:hover {
       background: #eee !important;
     }
