@@ -9,13 +9,18 @@ import {
   IYoutubeSearchResult,
   IYoutubeSearchSnippet,
 } from '@youtube/common-ui';
-import { catchError, forkJoin, from, map, Observable, of } from 'rxjs';
+import { catchError, EMPTY, forkJoin, from, map, Observable, of } from 'rxjs';
 import * as yts from 'youtube-sr';
 
 @Injectable()
 export class YoutubeApiServiceV2 {
   public searchList(query: string): Observable<IYoutubeSearchResult> {
-    return from(yts.default.search(query)).pipe(map((res) => this.mapToYoutubeSearchResult(res)));
+    return from(yts.default.search(query)).pipe(
+      catchError(() => {
+        return EMPTY;
+      }),
+      map((res) => this.mapToYoutubeSearchResult(res))
+    );
   }
 
   public videoList(id: string): Observable<IYoutubeVideoResult[]> {

@@ -50,9 +50,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.initStoreData();
     this.isServer = isPlatformServer(this.platformId);
-    if (!this.isServer) {
-      this.listenToEvents();
-    }
+    this.listenToEvents();
   }
 
   public ngOnDestroy(): void {
@@ -119,7 +117,8 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
 
   private getSearchRequest(query: string): Observable<IYoutubeSearchResult> {
     return this.youtubeService.searchList({ query }).pipe(
-      catchError(() => {
+      catchError((error) => {
+        console.log('err', error.message);
         this.setHasError(true);
         this.cdr.detectChanges();
         return EMPTY;
