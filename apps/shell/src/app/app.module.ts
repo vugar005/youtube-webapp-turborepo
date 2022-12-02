@@ -10,7 +10,7 @@ import { YOUTUBE_SERVICE, APP_CONFIG, youtubeApiServiceFactory, NotFoundPageComp
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS } from './reducers';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { MatDialogModule } from '@angular/material/dialog';
 import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
@@ -20,6 +20,7 @@ import { MiniPlayerComponent } from './components/mini-player/mini-player.compon
 import { MiniSidebarComponent } from './components/mini-sidebar/mini-sidebar.component';
 import { BrowseVideosComponent } from './browse-videos/browse-videos.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BrowserStateInterceptor } from './core/interceptors/browser-state/browser-state-incerceptor.service';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, KeyEventsListenerComponent],
@@ -60,6 +61,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
       provide: YOUTUBE_SERVICE,
       useFactory: youtubeApiServiceFactory,
       deps: [Injector],
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BrowserStateInterceptor,
+      multi: true,
     },
     { provide: APP_CONFIG, useValue: environment },
   ],
