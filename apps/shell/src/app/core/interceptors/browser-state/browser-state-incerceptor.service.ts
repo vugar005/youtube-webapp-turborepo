@@ -12,7 +12,6 @@ export class BrowserStateInterceptor implements HttpInterceptor {
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (req.method === 'GET') {
       const key: StateKey<string> = makeStateKey(req.url);
-      console.log(key);
       const cachedResponse: any = this.transferState.get(key, null);
       if (cachedResponse) {
         this.transferState.remove(key);
