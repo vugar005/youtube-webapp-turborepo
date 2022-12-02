@@ -81,6 +81,10 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
     return this.videoDetails?.find((item) => item.items[0].id === id)?.items?.[0];
   }
 
+  public trackVideoItem(index: number, item: IYoutubeSearchItem): string | undefined {
+    return item?.id?.videoId;
+  }
+
   private listenToEvents(): void {
     this.listenToSearchQuery();
   }
