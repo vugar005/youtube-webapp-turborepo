@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "serve": "ng serve",
+    "serve:ssr": "npm run serve",
     "serve:prod": "ng serve --configuration=production",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
