@@ -80,7 +80,13 @@ npm install
 3- Start project and navigate to localhost:4200:  
 ```bash
 npm run serve
+```  
+
+4- To Start in SSR mode:
+```  
+npm run serve:ssr
 ```
+
 Other commands: please see ```package.json``` for other commands. 
 
 ---
