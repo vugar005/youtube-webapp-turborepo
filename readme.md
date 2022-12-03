@@ -50,6 +50,11 @@ For version 13 without standalone components use [13.x branch](https://github.co
 ☑ Routing between applications     
 ☑ Server Side Rendering   
 
+And others:   
+☑ Theming   
+☑ Keyboard shortcuts
+
+
 <a id="mission"></a>
 ## Mission:
 My mission is to make complex microfrontend app as much as possible to have many cases for developers.
