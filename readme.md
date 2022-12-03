@@ -155,6 +155,10 @@ ng update @angular/core --migrate-only=true --from=13 --to=14
 ng update @angular/cli --migrate-only=true --from=13 --to=14
 ```
 
+## Common Questions
+**1- Why I pass data via Input to remote apps?**   
+The microfrontends apps(such as history or likes app) are NOT meant to be dependent on shell app.The reason I put inputs there is that I did not want to create additional Rest API for this(or signals such as socketjs) since I waslazy. Nevertheless, there are some cases where putting data via Input is very useful such as the current app state(ex: current playing videoId). For example, in my case, I deliberately inform Shell app from video-app that that I click on Like button(in real life we would do this via API of course). Sole purpose of this to provide example for communication between apps.So I strongly agree that remote apps should NOT be dependent on shell app for Data and the **ONLY reason** I put Input is to give example how can we pass data to remotes which could be done without Signals(socketjs) APIs. The rest cases should be done via APIs.
+
 ## What is next?
 Currently, the unit tests were not aded since the project was focused on main features such as module federation, managing state, intercommucation and so on. It can be started soon.   
 
