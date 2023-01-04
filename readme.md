@@ -114,29 +114,17 @@ Other commands: please see ```package.json``` for other commands.
 </div>
 
 <a id="compate-nx-turborepo-lerna"></a>
-## Pros and cons of Nx, Turborepo and Lerna tools
-Below are just my experiences working in those tools. They can be inaccurate.   
-### Lerna
-✅ Supports both same and different versions of libraries (such as Angular, RxJs)   
-✅ Native - Use Angular CLI   
-❌ Configuration of applications required a change to `angular.json` to make it work. Switched to `ngx-build-plus` builders to support custom webpack config.  
-❌ Slow development efficiency. Rebuild everytime you make changes to common packages such as UI   
-❌ No dependency graph   
+## Pros and Cons of Lerna, Nx, and Turborepo tools
+Here is my experience working with these tools. This can be inaccurate.
 
-### Nx
-❌ Not supports both same and different versions of libraries (such as Angular, RxJs). Only Monorepo.   
-❌ Not native. Uses Nx CLI  
-❌ Configuration of applications required a change to `angular.json` to make it work. Switched to Nx Officially Supported Builders to support custom webpack config.   
-  Problems with adding new packages (such as ssr)    
-✅ Very fast development efficiency   
-✅ Powerful dependency graph   
+|                                                                    |                                                                                                                 Lerna                                                                                                                  |                                                                                                                      Nx                                                                                                                       |                                                                                                             Turborepo                                                                                                             |
+|:-------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Supports both same and different versions of libraries (such as Angular, RxJs) |                                                                                                                   ✅                                                                                                                    |                                                                                                                       ❌                                                                                                                       |                                                                                                        ❌<br/>Monorepo only                                                                                                        |
+| Native (Angular CLI)                                                           |                                                                                                                   ✅                                                                                                                    |                                                                                                               ❌<br/>Uses Nx CLI                                                                                                               |                                                                                                                 ✅                                                                                                                 |
+| Development efficiency                                                         |                                                                                                              ❌<br/>Slow. Rebuild everytime you make changes to common packages such as UI                                                                                                              |                                                                                                                ✅<br/>Very fast                                                                                                                |                                                                                                                 ✅                                                                                                                 |
+| Dependency graph                                                               |                                                                                                             ❌<br/>No graph                                                                                                             |                                                                                                                ✅<br/>Powerful                                                                                                                 |                                                                                                                 ✅                                                                                                                 |
+| Application configuration                                      | ❌<br/><div style="text-align:center;"><ul style="display: inline-block; text-align: left;"><li>Changed `angular.json` to make it work.</li><li>Switched to `ngx-build-plus` builders to support custom webpack config.</li></ul></div> | ❌<br/><div style="text-align:center;"><ul style="display: inline-block; text-align: left;"><li>Changed `angular.json` to make it work.</li><li>Switched to Nx officially-supported builders to support custom webpack config.</li></ul></div> | ❌<div style="text-align:center;"><ul style="display: inline-block; text-align: left;"><li>Changed `angular.json` to make it work.</li><li>Switched to `ngx-build-plus` builders to support custom webpack config.</li></ul></div> |
 
-### Turborepo
-❌ Not supports both same and different versions of libraries (such as Angular, RxJs). Only Monorepo.   
-✅ Native - Use Angular CLI  
-❌ Configuration of applications required a change to `angular.json` to make it work. Switched to `ngx-build-plus` builders to support custom webpack config.   
-✅ Fast development efficiency   
-✅ Dependency graph  
 
 <a id="upgrade-guide"></a>
 ## Upgrade Guide
