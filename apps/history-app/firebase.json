@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist/history-app",
+    "trailingSlash": false,
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
