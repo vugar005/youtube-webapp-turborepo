@@ -1,26 +1,30 @@
 {
-  "extends": ["../../.eslintrc.json"],
-    "overrides": [
-      {
-        "files": ["*.ts"],
-        "rules": {
-          "@angular-eslint/directive-selector": [
-            "error",
-            {
-              "type": "attribute",
-              "prefix": "ytd",
-              "style": "camelCase"
-            }
-          ],
-          "@angular-eslint/component-selector": [
-            "error",
-            {
-              "type": "element",
-              "prefix": "ytd",
-              "style": "kebab-case"
-            }
-          ]
-        }
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "ytd",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "ytd",
+            "style": "kebab-case"
+          }
+        ]
       }
-    ]
-  }
+    }
+  ]
+}
