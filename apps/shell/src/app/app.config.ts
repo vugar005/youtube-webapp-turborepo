@@ -12,11 +12,13 @@ import { environment } from 'src/environments/environment';
 import { ROOT_REDUCERS } from './reducers';
 import { YOUTUBE_SERVICE, youtubeApiServiceFactory, APP_CONFIG } from '@youtube/common-ui';
 import { BrowserStateInterceptor } from './core/interceptors/browser-state/browser-state-incerceptor.service';
+import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(APP_ROUTES),
     provideHttpClient(),
+    provideClientHydration(),
     {
       provide: YOUTUBE_SERVICE,
       useFactory: youtubeApiServiceFactory,
