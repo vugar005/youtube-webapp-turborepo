@@ -25,7 +25,7 @@ const sharedMappings = new mf.SharedMappings();
     '@angular/platform-browser/animations': { requiredVersion: deps['@angular/platform-browser'] },
     '@angular/animations': { requiredVersion: deps['@angular/animations'] },
     // RxJs
-    rxjs: { requiredVersion: deps['rxjs'] },
+    "rxjs": { requiredVersion: deps['rxjs'] },
     'rxjs/operators': { requiredVersion: deps['rxjs'] },
     // Material
     '@angular/cdk': { requiredVersion: deps['@angular/cdk'] },
@@ -42,6 +42,7 @@ const sharedMappings = new mf.SharedMappings();
     '@angular/material/snack-bar': { requiredVersion: deps['@angular/material'] },
     '@angular/cdk/layout': { requiredVersion: deps['@angular/material'] },
 
+    '@youtube/common-ui': {requiredVersion: false},
     // Ngrx
     '@ngrx/store': { requiredVersion: deps['@ngrx/store'] },
    ...sharedMappings.getDescriptors(),
