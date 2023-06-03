@@ -6,6 +6,7 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   CUSTOM_ELEMENTS_SCHEMA,
+  ViewContainerRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventDispatcherService, HistoryAppEvent } from '@youtube/common-ui';
@@ -33,6 +34,7 @@ export class HistoryAppWrapperComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private accountStore: AccountStoreService,
     private eventDispatcher: EventDispatcherService,
+    private viewContainer: ViewContainerRef,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -47,9 +49,11 @@ export class HistoryAppWrapperComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
-  public loadElement(): void {
+  public async loadElement(): Promise<void> {
     const elementName = this.route.snapshot.data['elementName'];
     const importName = this.route.snapshot.data['importName'];
+
+    console.log('importName', importName);
 
     const importFn = registry[importName];
     importFn()
