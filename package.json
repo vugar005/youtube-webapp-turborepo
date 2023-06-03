@@ -98,7 +98,7 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.10.1",
-    "turbo": "1.2.8",
+    "turbo": "1.10.1",
     "typescript": "5.0.4",
     "webpack-bundle-analyzer": "4.5.0"
   }
