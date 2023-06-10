@@ -3,7 +3,7 @@ jobs:
  setup:
   working_directory: ~/youtube-webapp-turborepo
   docker:
-   - image: cimg/node:16.13.0
+   - image: cimg/node:18.16.0
   steps:
   - checkout
   - restore_cache:
@@ -18,7 +18,7 @@ jobs:
  lint:
   working_directory: ~/youtube-webapp-turborepo
   docker:
-   - image: cimg/node:16.13.0
+   - image: cimg/node:18.16.0
   steps:
   - checkout
   - restore_cache:
@@ -32,7 +32,7 @@ jobs:
  build:
   working_directory: ~/youtube-webapp-turborepo
   docker:
-   - image: cimg/node:16.13.0
+   - image: cimg/node:18.16.0
   steps:
   - checkout
   - restore_cache:
