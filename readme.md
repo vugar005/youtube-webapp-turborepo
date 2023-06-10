@@ -72,11 +72,11 @@ https://youtube.vugar.app
 <a id="getting-started"></a>
 ## Getting Started 🚀
 ### Prerequisites
-Since workspaces are available from npm v7, you should have <b>NodeJs 16+</b> installed.
+<b>NodeJs</b>: v18+
 
 1- Install turbo globally:
 ```bash 
-npm install turbo@1.2.8 -g
+npm install turbo@1.10.1 -g
 ```  
 2- On root project install dependencies:
 ```bash
