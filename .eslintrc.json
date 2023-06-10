@@ -1,11 +1,17 @@
 {
   "root": true,
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": [
+          "tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -32,7 +38,9 @@
             "type": "attribute"
           }
         ],
-        "@angular-eslint/prefer-output-readonly": ["warn"],
+        "@angular-eslint/prefer-output-readonly": [
+          "warn"
+        ],
         "@typescript-eslint/member-ordering": [
           "error",
           {
@@ -43,21 +51,25 @@
               "protected-instance-field",
               "private-static-field",
               "private-instance-field",
-
               "public-constructor",
               "private-constructor",
-
               "public-instance-method",
               "protected-instance-method",
               "private-instance-method"
             ]
           }
         ],
-        "@typescript-eslint/no-unsafe-member-access": ["off"],
-        "@typescript-eslint/no-explicit-any": ["off"],
+        "@typescript-eslint/no-unsafe-member-access": [
+          "off"
+        ],
+        "@typescript-eslint/no-explicit-any": [
+          "off"
+        ],
         "@typescript-eslint/no-implicit-any-catch": [
           "error",
-          { "allowExplicitAny": true }
+          {
+            "allowExplicitAny": true
+          }
         ],
         "@typescript-eslint/explicit-function-return-type": [
           "error",
@@ -66,14 +78,30 @@
             "allowTypedFunctionExpressions": true
           }
         ],
-        "@typescript-eslint/switch-exhaustiveness-check": ["error"],
-        "@typescript-eslint/no-unsafe-call": ["off"],
-        "@typescript-eslint/no-unsafe-assignment": ["off"],
-        "@typescript-eslint/explicit-module-boundary-types": ["off"],
-        "@typescript-eslint/no-empty-function": ["off"],
-        "@typescript-eslint/no-non-null-assertion": ["off"],
-        "no-prototype-builtins": ["off"],
-        "no-case-declarations": ["off"],
+        "@typescript-eslint/switch-exhaustiveness-check": [
+          "error"
+        ],
+        "@typescript-eslint/no-unsafe-call": [
+          "off"
+        ],
+        "@typescript-eslint/no-unsafe-assignment": [
+          "off"
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": [
+          "off"
+        ],
+        "@typescript-eslint/no-empty-function": [
+          "off"
+        ],
+        "@typescript-eslint/no-non-null-assertion": [
+          "off"
+        ],
+        "no-prototype-builtins": [
+          "off"
+        ],
+        "no-case-declarations": [
+          "off"
+        ],
         "no-multiple-empty-lines": [
           "error",
           {
@@ -82,16 +110,39 @@
             "maxBOF": 0
           }
         ],
-        "eol-last": ["error", "always"],
-        "semi": ["error", "always"],
+        "eol-last": [
+          "error",
+          "always"
+        ],
+        "semi": [
+          "error",
+          "always"
+        ],
         "quotes": [
           "error",
           "single",
-          { "allowTemplateLiterals": true, "avoidEscape": true }
+          {
+            "allowTemplateLiterals": true,
+            "avoidEscape": true
+          }
         ],
-        "no-empty": ["error"],
-        "no-console": ["error", { "allow": ["warn", "error", "info", "log"] }],
-        "curly": ["error"],
+        "no-empty": [
+          "error"
+        ],
+        "no-console": [
+          "error",
+          {
+            "allow": [
+              "warn",
+              "error",
+              "info",
+              "log"
+            ]
+          }
+        ],
+        "curly": [
+          "error"
+        ],
         "space-before-function-paren": [
           "error",
           {
@@ -100,14 +151,22 @@
             "asyncArrow": "always"
           }
         ],
-        "@typescript-eslint/no-shadow": ["error"],
-        "@typescript-eslint/no-useless-constructor": ["error"],
-        "@typescript-eslint/type-annotation-spacing": ["error"],
+        "@typescript-eslint/no-shadow": [
+          "error"
+        ],
+        "@typescript-eslint/no-useless-constructor": [
+          "error"
+        ],
+        "@typescript-eslint/type-annotation-spacing": [
+          "error"
+        ],
         "@typescript-eslint/naming-convention": [
           "error",
           {
             "selector": "default",
-            "format": ["camelCase"],
+            "format": [
+              "camelCase"
+            ],
             "leadingUnderscore": "allow",
             "trailingUnderscore": "allow"
           },
@@ -118,33 +177,57 @@
               "classProperty",
               "enumMember"
             ],
-            "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+            "format": [
+              "camelCase",
+              "UPPER_CASE",
+              "PascalCase"
+            ],
             "leadingUnderscore": "allow",
             "trailingUnderscore": "allow"
           },
           {
-            "selector": ["typeProperty"],
-            "format": ["camelCase", "PascalCase"],
+            "selector": [
+              "typeProperty"
+            ],
+            "format": [
+              "camelCase",
+              "PascalCase"
+            ],
             "leadingUnderscore": "allow",
             "trailingUnderscore": "allow"
           },
           {
             "selector": "typeLike",
-            "format": ["PascalCase"]
+            "format": [
+              "PascalCase"
+            ]
           }
         ]
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     },
     {
-      "files": ["*.html"],
-      "excludedFiles": ["*inline-template-*.component.html"],
+      "files": [
+        "*.html"
+      ],
+      "excludedFiles": [
+        "*inline-template-*.component.html"
+      ],
       "rules": {
-        "prettier/prettier": ["error", { "parser": "angular" }]
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
       }
     }
   ]

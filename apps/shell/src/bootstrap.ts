@@ -1,40 +1,5 @@
-/* eslint-disable */
-import { enableProdMode, VERSION } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
 
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowser().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
-
-/** You can use below code to support multiple versions of Angular
- *  Each different version Angular app should have different plattform instance
- *  In our case we use monorepo(same angular version) so no need to check plattform.
-*/
-
-// const ngVersion = VERSION.full;
-// (window as any).plattform = (window as any).plattform || {};
-// let platform = (window as any).plattform[ngVersion];
-// if (!platform) {
-//   platform = platformBrowser();
-//   (window as any).plattform[ngVersion] = platform;
-// }
-
-// platform.bootstrapModule(AppModule).catch((err: any) => console.error(err));
-
-/** Or use ready bootstrap util function from @angular-architects/module-federation-tools package
- *  LINK: https://www.npmjs.com/package/@angular-architects/module-federation-tools#helper-for-angular
-*/ 
-
-/**
- * Added by angular universal
- */
-// if (document.readyState === 'complete') {
-//   bootstrap();
-// } else {
-//   document.addEventListener('DOMContentLoaded', bootstrap);
-// }
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));

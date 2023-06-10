@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { isPlatformServer } from '@angular/common';
+import { CommonModule, isPlatformServer } from '@angular/common';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import {
   EventDispatcherService,
@@ -11,6 +12,7 @@ import {
   WebApiService,
   LocalStorageEnum,
   SessionStorageEnum,
+  NotFoundPageComponent,
 } from '@youtube/common-ui';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
@@ -20,12 +22,33 @@ import { ThemeService } from './core/services/theme-service/theme.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PolicyTermsDialogComponent } from './components/policy-terms/policy-terms-dialog/policy-terms-dialog.component';
 import { environment } from 'src/environments/environment';
+import { BrowseVideosComponent } from './browse-videos/browse-videos.component';
+import { AccountSidebarComponent } from './components/account-sidebar/account-sidebar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MiniPlayerComponent } from './components/mini-player/mini-player.component';
+import { MiniSidebarComponent } from './components/mini-sidebar/mini-sidebar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { KeyEventsListenerComponent } from './key-events-listener/key-events-listener.component';
 
 @Component({
+  standalone: true,
   selector: 'yt-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    SidebarComponent,
+    MiniSidebarComponent,
+    AccountSidebarComponent,
+    MiniPlayerComponent,
+    BrowseVideosComponent,
+    NotFoundPageComponent,
+    KeyEventsListenerComponent,
+    MatSidenavModule,
+  ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   public miniVideo$?: Observable<MiniVideoPayload>;

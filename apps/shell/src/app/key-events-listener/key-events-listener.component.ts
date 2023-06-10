@@ -8,10 +8,13 @@ import {
 } from '@youtube/common-ui';
 import { take } from 'rxjs';
 import { VideoStoreService } from '../core/services/video-store/video-store.service';
+import { CommonModule } from '@angular/common';
 @Component({
+  standalone: true,
   selector: 'yt-key-events-listener',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
 })
 export class KeyEventsListenerComponent {
   constructor(
