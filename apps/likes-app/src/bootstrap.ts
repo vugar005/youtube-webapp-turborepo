@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { importProvidersFrom, Injector } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -13,23 +13,25 @@ import { provideRouter } from '@angular/router';
 import { LIKES_APP_ROUTES } from './app/routes';
 
 
+const config: ApplicationConfig = {
+  providers: [
+    provideRouter(LIKES_APP_ROUTES),
+    provideHttpClient(),
+    importProvidersFrom(
+      StoreModule.forRoot(ROOT_REDUCERS),
+      StoreDevtoolsModule.instrument(),
+    ),
+    {
+      provide: YOUTUBE_SERVICE,
+      useFactory: youtubeApiServiceFactory,
+      deps: [Injector],
+    },
+    { provide: APP_CONFIG, useValue: environment },
+  ]
+};
+
 (async function () {
-  const envInjector = await createApplication({
-    providers: [
-      provideRouter(LIKES_APP_ROUTES),
-      provideHttpClient(),
-      importProvidersFrom(
-        StoreModule.forRoot(ROOT_REDUCERS),
-        StoreDevtoolsModule.instrument(),
-      ),
-      {
-        provide: YOUTUBE_SERVICE,
-        useFactory: youtubeApiServiceFactory,
-        deps: [Injector],
-      },
-      { provide: APP_CONFIG, useValue: environment },
-    ]
-  });
+  const envInjector = await createApplication(config);
   const ce = createCustomElement(AppComponent, { injector: envInjector.injector });
   customElements.define('likes-app-element', ce);
 })();

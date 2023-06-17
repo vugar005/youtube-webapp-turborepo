@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom, Injector } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { createApplication } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
@@ -13,8 +13,7 @@ import { provideRouter } from '@angular/router';
 import { HISTORY_APP_ROUTES } from './app/routes';
 
 
-(async function () {
-  const envInjector = await createApplication({
+const config: ApplicationConfig = {
     providers: [
       provideRouter(HISTORY_APP_ROUTES),
       provideHttpClient(),
@@ -29,7 +28,10 @@ import { HISTORY_APP_ROUTES } from './app/routes';
       },
       { provide: APP_CONFIG, useValue: environment },
     ]
-  });
+};
+
+(async function () {
+  const envInjector = await createApplication(config);
   const ce = createCustomElement(AppComponent, { injector: envInjector.injector });
   customElements.define('history-app-element', ce);
 })();
