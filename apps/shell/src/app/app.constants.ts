@@ -6,4 +6,4 @@ export const SHELL_META_TAGS: ICommonMetaTagConfig = {
   title: 'Youtube Angular Clone',
 };
 
-export const DEFAULT_SEARCH_VALUE = 'jay aliyev roudeep';
+export const DEFAULT_SEARCH_VALUE = 'arabic lounge';
