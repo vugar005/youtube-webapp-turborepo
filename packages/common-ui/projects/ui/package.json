@@ -25,6 +25,12 @@
     "./styles/_theme": {
       "sass": "./lib/styles/_theme.scss"
     },
+    "./styles/_scrollbar": {
+      "sass": "./lib/styles/_scrollbar.scss"
+    },
+    "./styles/_core": {
+      "sass": "./lib/styles/_core.scss"
+    },
     "./styles/utils/generate-material-colors": {
       "sass": "./lib/styles/utils/generate-material-colors.scss"
     }
