@@ -101,6 +101,7 @@ export class BrowseVideosComponent implements OnInit, OnDestroy {
         takeUntil(this.onDestroy$)
       )
       .subscribe((result: IYoutubeSearchResult) => {
+        console.log('--- Is Server Mode ----', this.isServer);
         this.videoLinks = result?.items;
         const ids = result?.items?.map((item) => item.id?.videoId).join(',');
         this.getVideoDetails(ids);
