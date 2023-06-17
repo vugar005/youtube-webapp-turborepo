@@ -1,6 +1,6 @@
 import { ICommonMetaTagConfig } from '@youtube/common-ui';
 
-export const APP_VERSION = '3.3.1';
+export const APP_VERSION = '3.3.2';
 
 export const SHELL_META_TAGS: ICommonMetaTagConfig = {
   title: 'Youtube Angular Clone',
