@@ -6,10 +6,12 @@
   html {
     font-size: 10px;
     font-family: Roboto, Arial, sans-serif;
+    height: 100vh;
   }
 
   body {
     background: var(--yt-spec-background-primary);
+    height: 100%;
   }
 
   a {
