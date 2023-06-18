@@ -50,7 +50,7 @@
     "rxjs": "7.5.6",
     "tslib": "^2.3.0",
     "youtube-search-without-api-key": "1.1.0",
-    "youtube-sr": "4.1.15",
+    "youtube-sr": "4.3.4",
     "zone.js": "0.13.0"
   },
   "devDependencies": {
