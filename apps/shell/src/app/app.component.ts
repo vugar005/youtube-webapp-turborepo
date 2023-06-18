@@ -13,6 +13,8 @@ import {
   LocalStorageEnum,
   SessionStorageEnum,
   NotFoundPageComponent,
+  IYoutubeService,
+  YOUTUBE_SERVICE,
 } from '@youtube/common-ui';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
@@ -59,6 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object, //eslint-disable-line
+    @Inject(YOUTUBE_SERVICE) private youtubeService: IYoutubeService,
     private videoStore: VideoStoreService,
     private router: Router,
     private eventDispatcher: EventDispatcherService,
@@ -76,6 +79,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.tryRestoreMiniVideoSetings();
     this.tryRestoreTheme();
     this.openPolicyTermsDialog();
+    this.warmUpServer();
   }
 
   public ngOnDestroy(): void {
@@ -176,5 +180,9 @@ export class AppComponent implements OnInit, OnDestroy {
         sessionStorage.setItem(SessionStorageEnum.IS_APP_POLICY_AGREED, 'true');
       }
     });
+  }
+
+  private warmUpServer(): void {
+    this.youtubeService.warmUp().subscribe();
   }
 }

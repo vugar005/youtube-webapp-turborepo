@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "main.js",
   "scripts": {
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "deploy": "gcloud config set project youtube-webapp-341311 && gcloud app deploy"
   },
   "dependencies": {
     "@nestjs/common": "9.4.2",

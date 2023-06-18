@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { IAppConfig, IYoutubeSearchResult, IYoutubeVideoResult } from '../../models';
 import { IYoutubeSearchParams, IYoutubeService, IYoutubeVideoListParams } from '../../models/youtube.service.model';
 import { APP_CONFIG } from '../../tokens';
@@ -22,5 +22,9 @@ export class YoutubeService implements IYoutubeService {
     const { apiKey } = this.appConfig;
     const url = `${YT_BASE_URL}/videos?part=${part}&id=${id}&key=${apiKey}`;
     return this.http.get<IYoutubeVideoResult[]>(url);
+  }
+
+  public warmUp(): Observable<void> {
+    return EMPTY;
   }
 }

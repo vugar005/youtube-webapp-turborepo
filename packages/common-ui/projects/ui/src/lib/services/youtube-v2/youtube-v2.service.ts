@@ -17,13 +17,22 @@ export class YoutubeServiceV2 implements IYoutubeService {
 
   public searchList(params: IYoutubeSearchParams): Observable<IYoutubeSearchResult> {
     const { query } = params;
-    const url = `${this.appConfig.backendUrl}/api/v2/youtube/searchlist?q=${query}`;
+    const url = `${this.prefix}/searchlist?q=${query}`;
     return this.http.get<IYoutubeSearchResult>(url);
   }
 
   public videoList(params: IYoutubeVideoListParams): Observable<IYoutubeVideoResult[]> {
     const { id } = params;
-    const url = `${this.appConfig.backendUrl}/api/v2/youtube/videolist?id=${id}`;
+    const url = `${this.prefix}/videolist?id=${id}`;
     return this.http.get<IYoutubeVideoResult[]>(url);
+  }
+
+  public warmUp(): Observable<void> {
+    const url = `${this.appConfig.backendUrl}/api/manual_warmup`;
+    return this.http.get<any>(url);
+  }
+
+  private get prefix(): string {
+    return `${this.appConfig.backendUrl}/api/v2/youtube`;
   }
 }

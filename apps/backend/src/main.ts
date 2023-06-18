@@ -24,7 +24,7 @@ async function bootstrap(): Promise<void> {
   });
   app.enableVersioning({
     type: VersioningType.URI,
-    defaultVersion: '1',
+    defaultVersion: '',
   });
   const port = process.env.PORT || 3333;
   await app.listen(port);

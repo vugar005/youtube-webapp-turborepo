@@ -9,4 +9,11 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('/manual_warmup')
+  async manualWarmUp(): Promise<any> {
+    return {
+      ok: true,
+    };
+  }
 }
