@@ -27,11 +27,11 @@ import {
 } from '@youtube/common-ui';
 import { catchError, EMPTY, Subject, take, takeUntil } from 'rxjs';
 import { DEFAULT_SEARCH_VALUE } from 'src/app/app.constants';
-import { environment } from 'src/environments/environment';
 import { SettingsStore } from '../../core/services/settings-store/settings-store.service';
 import { AppTheme } from '../../core/services/theme-service/theme.constants';
 import { ThemeService } from '../../core/services/theme-service/theme.service';
 import { VideoStoreService } from '../../core/services/video-store/video-store.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   standalone: true,
@@ -117,9 +117,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private getCountryCode(): void {
     // load only on production to save api traffic :)
-    // if (!environment.production || isPlatformServer(this.platformId)) {
-    //   return;
-    // }
+    if (!environment.production || isPlatformServer(this.platformId)) {
+      return;
+    }
     this.countryApiService
       .getCountryCode()
       .pipe(catchError(() => EMPTY))
