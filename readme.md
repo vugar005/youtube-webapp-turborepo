@@ -62,7 +62,7 @@ My mission is to make complex microfrontend app to have many use cases for devel
 
 <a id="demo"></a>
 ## Demo: ▶
-https://youtube.vugar.app
+[https://youtube.vugar.app](https://web.archive.org/web/20241001000000*/youtube.vugar.app)
 ---
 **NOTE**:
 
