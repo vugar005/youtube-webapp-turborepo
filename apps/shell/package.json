@@ -1,0 +1,24 @@
+{
+  "name": "shell",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "serve": "ng serve",
+    "serve:ssr": "ng run shell:serve-ssr",
+    "serve:prod": "ng serve --configuration=production",
+    "build": "npm run prerender",
+    "watch": "ng build --watch --configuration=development",
+    "test": "ng test",
+    "build:ssr": "ng build && ng run shell:server",
+    "prerender": "ng run shell:prerender",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "analyze": "ng build --stats-json --named-chunks && webpack-bundle-analyzer dist/shell/browser/stats.json",
+    "deploy": "firebase deploy",
+    "clean": "rimraf .angular && rimraf dist"
+  },
+  "private": true,
+  "dependencies": {
+    "@youtube/common-ui": "*"
+  }
+}

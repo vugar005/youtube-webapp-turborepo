@@ -1,0 +1,28 @@
+<div class="yt-container">
+  <div class="yt-row">
+    <div class="video-owner">
+      <div class="video-owner__avatar"></div>
+      <div class="video-owner__title mat-subtitle-1">{{ videoItem?.snippet?.channelTitle }}</div>
+      <a
+        class="video-owner__subscribe"
+        href="https://www.youtube.com/channel/{{ videoItem?.snippet?.channelId }}"
+        target="_blank"
+      >
+        <button mat-raised-button>SUBSCRIBE</button>
+      </a>
+    </div>
+  </div>
+  <div class="yt-row">
+    <div class="yt-expander">
+      <div
+        class="yt-expander__content mat-subtitle-1"
+        [ngClass]="{ 'yt-expander__content--expanded': isExpanded }"
+        [innerText]="this.videoItem?.snippet?.description"
+      ></div>
+      <button class="yt-expander__more mat-subtitle-2">
+        <span (click)="onSetExpand(true)" *ngIf="!isExpanded">Show More</span>
+        <span (click)="onSetExpand(false)" *ngIf="isExpanded">Show Less</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+version: 2.1
+jobs:
+ setup:
+  working_directory: ~/youtube-webapp-turborepo
+  docker:
+   - image: cimg/node:18.16.0
+  steps:
+  - checkout
+  - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+  - run:
+     name: install-dependencies
+     command: npm install --no-package-lock --force
+  - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+ lint:
+  working_directory: ~/youtube-webapp-turborepo
+  docker:
+   - image: cimg/node:18.16.0
+  steps:
+  - checkout
+  - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+  - run:
+     name: install-dependencies
+     command: npm install
+  - run:
+      name: angular-lint
+      command: npm run lint
+ build:
+  working_directory: ~/youtube-webapp-turborepo
+  docker:
+   - image: cimg/node:18.16.0
+  steps:
+  - checkout
+  - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+  - run:
+     name: angular-build
+     command: npm run build
+
+workflows:
+  version: 2
+  lint_and_build:
+    jobs:
+      - setup
+      - lint:
+         requires:
+          - setup
+      - build:
+         requires:
+          - setup
+

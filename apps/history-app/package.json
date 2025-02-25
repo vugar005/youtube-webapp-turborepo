@@ -1,0 +1,23 @@
+{
+  "name": "history-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "serve": "ng serve",
+    "serve:ssr": "npm run serve",
+    "serve:prod": "ng serve --configuration=production",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "analyze": "ng build --stats-json --named-chunks && webpack-bundle-analyzer dist/history-app/stats.json",
+    "deploy": "firebase deploy",
+    "clean": "rimraf .angular && rimraf dist"
+  },
+  "private": true,
+  "dependencies": {
+    "@youtube/common-ui": "*"
+  }
+}

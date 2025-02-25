@@ -1,0 +1,76 @@
+<div class="video-card" *ngIf="videoResult?.snippet?.title; else loadingTemplate">
+  <div class="video-card__player">
+    <ytd-video-player
+      [videoId]="videoId"
+      (videoLoaded)="onVideoReady($event)"
+      [startSeconds]="startSeconds"
+    ></ytd-video-player>
+  </div>
+
+  <div class="video-details" *ngIf="videoResult">
+    <div class="video-details-tags" *ngIf="videoResult?.snippet?.tags?.length">
+      <div class="video-details-tag mat-subtitle-2" *ngFor="let tag of videoResult.snippet?.tags?.slice(0, 3)">
+        #{{ tag }}
+      </div>
+    </div>
+
+    <div class="video-details__title mat-h2">{{ videoResult.snippet?.title }}</div>
+    <div class="video-details__footer">
+      <div class="video-details__footer__views mat-h3">
+        <span> {{ videoResult.statistics?.viewCount | number: '1.0-0' }} views </span>
+        <span> • {{ videoResult.snippet?.publishedAt }} </span>
+      </div>
+      <div class="video-details-actions">
+        <button class="video-details-actions__item" (click)="onToggleLike()">
+          <mat-icon class="video-details-actions__item__icon">
+            <ng-container *ngIf="isLiked"> thumb_up </ng-container>
+
+            <ng-container *ngIf="!isLiked"> thumb_up_off_alt </ng-container>
+          </mat-icon>
+
+          <p
+            class="video-details-actions__item__text mat-h3"
+            *ngIf="videoResult.statistics?.likeCount; else emptyLikesCount"
+          >
+            {{ +videoResult.statistics?.likeCount! | ytdAbbreviateNumber: 0 }}
+          </p>
+
+          <ng-template #emptyLikesCount> LIKES </ng-template>
+        </button>
+
+        <button class="video-details-actions__item" (click)="onToggleDisLike()">
+          <mat-icon class="video-details-actions__item__icon">
+            <ng-container *ngIf="isDisLiked"> thumb_down </ng-container>
+
+            <ng-container *ngIf="!isDisLiked"> thumb_down_off_alt </ng-container>
+          </mat-icon>
+          <p class="video-details-actions__item__text mat-h3">DISLIKE</p>
+        </button>
+
+        <button class="video-details-actions__item" (click)="onShareVideo()">
+          <mat-icon class="video-details-actions__item__icon">share</mat-icon>
+          <p class="video-details-actions__item__text mat-h3">SHARE</p>
+        </button>
+
+        <button class="video-details-actions__item flash" (click)="onMiniPlayerMode()">
+          <mat-icon class="video-details-actions__item__icon">picture_in_picture_alt</mat-icon>
+          <p class="video-details-actions__item__text mat-h3">MINI PLAYER</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="video-card__secondary-info" *ngIf="this.videoResult?.snippet?.description">
+    <watch-app-video-secondary-info [videoItem]="videoResult"></watch-app-video-secondary-info>
+  </div>
+
+  <mat-divider></mat-divider>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="video-card-loader">
+    <ytd-video-thumbnail-loader [direction]="'horizontal'"></ytd-video-thumbnail-loader>
+  </div>
+</ng-template>

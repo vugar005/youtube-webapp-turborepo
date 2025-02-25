@@ -1,0 +1,45 @@
+<div
+  class="thumbnail"
+  [ngClass]="{ 'thumbnail--vertical': direction === 'vertical', 'thumbnail--horizontal': direction === 'horizontal' }"
+>
+  <div class="thumbnail__image">
+    <ng-container *ngIf="searchItem?.snippet?.thumbnails?.high?.url as imageSrc">
+      <img [ngSrc]="imageSrc" [fill]="true" [priority]="priority" alt="Video image" />
+    </ng-container>
+
+    <div class="thumbnail__image__duration" *ngIf="videoDetail?.contentDetails?.duration">
+      {{ videoDetail?.contentDetails?.duration }}
+    </div>
+    <div class="image-backdrop"></div>
+
+    <div class="now-playing-overlay" *ngIf="isNowPlaying">
+      <div class="now-playing-overlay__text mat-subtitle-1">Now Playing</div>
+      <div class="now-playing-overlay__equalizer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <rect class="eq-bar eq-bar--1" x="0" y="4" width="4" height="8" />
+          <rect class="eq-bar eq-bar--2" x="6" y="4" width="4" height="16" />
+          <rect class="eq-bar eq-bar--3" x="12" y="4" width="4" height="11" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="thumbnail-details">
+    <div class="thumbnail-details__icon"></div>
+    <div class="thumbnail-details-content">
+      <div class="thumbnail-details-content">
+        <h3 class="thumbnail-details-content__title mat-h3" [innerHtml]="searchItem?.snippet?.title"></h3>
+        <h4
+          class="thumbnail-details-content__channelTitle mat-subtitle-2"
+          [innerHtml]="searchItem?.snippet?.channelTitle"
+        ></h4>
+        <p class="thumbnail-details-content__footer mat-h5">
+          <span *ngIf="videoDetail?.statistics?.viewCount as viewsCount"
+            >{{ viewsCount | ytdAbbreviateNumber: 0 }} views •</span
+          >
+          {{ searchItem?.snippet?.publishedAt | ytdTimeAgo }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

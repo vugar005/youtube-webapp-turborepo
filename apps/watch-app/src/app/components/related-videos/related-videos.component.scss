@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.video-item {
+  display: flex;
+  width: 100%;
+  &__thumbnail {
+    min-width: var(--yt-related-thumbnail-width);
+    height: 94px;
+    margin-bottom: 8px;
+    position: relative;
+    width: 100%;
+  }
+}
+
+.thumbnail-loader-template {
+  width: 100%;
+  position: relative;
+  margin-top: 16px;
+  padding: 16px 0;
+  margin-bottom: 8px;
+  height: 94px;
+}

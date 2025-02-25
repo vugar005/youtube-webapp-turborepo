@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist",
+  "lib": {
+    "entryFile": "src/index.ts"
+  },
+  "assets": [
+    "./src/lib/styles/_palette.scss",
+    "./src/lib/styles/_typography.scss",
+    "./src/lib/styles/_variables.scss",
+    "./src/lib/styles/_theme.scss",
+    "./src/lib/styles/_scrollbar.scss",
+    "./src/lib/styles/_core.scss",
+    "./src/lib/styles/utils/generate-material-colors.scss"
+  ]
+}

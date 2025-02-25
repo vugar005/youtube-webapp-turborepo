@@ -1,0 +1,19 @@
+{
+  "name": "@youtube/common-ui",
+  "version": "0.0.0",
+  "main": "./dist/esm20222/index.mjs",
+  "module": "./dist/esm2022/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "serve": "ng build ui --watch",
+    "serve:prod": "ng build ui --watch",
+    "build": "ng build ui",
+    "test": "ng test",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "clean": "rimraf .angular && rimraf dist"
+  },
+  "private": true
+}

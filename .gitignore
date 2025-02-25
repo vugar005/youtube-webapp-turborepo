@@ -1,0 +1,58 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+angular.json
+/apps/**/.turbo
+/packages/**/.turbo
+/appengines/backend/dist
+/apps/shell/dist
+/apps/likes-app/dist
+/apps/history-app/dist
+/apps/watch-app/dist
+/apps/backend/dist
+/apps/common-ui/dist
+
+# firebase cache
+/apps/shell/.firebase
+/apps/likes-app/.firebase
+/apps/history-app/.firebase
+/apps/watch-app/.firebase
+
+# dependencies
+node_modules
+/**/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.angular

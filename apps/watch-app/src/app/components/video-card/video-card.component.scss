@@ -1,0 +1,126 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.video-card {
+  width: 100%;
+  &__player {
+    height: var(--ytd-watch-flexy-player-height);
+  }
+
+  &__secondary-info {
+    padding-top: 1.6rem;
+  }
+}
+
+.video-details {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 8px 0;
+  &__title {
+    display: block;
+    max-height: 6.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: var(--yt-spec-text-primary);
+    margin: 0;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--yt-spec-text-secondary);
+    padding: 1rem 0;
+    &__views {
+      margin: 0;
+    }
+  }
+}
+
+.video-details-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--yt-spec-text-primary);
+    margin-top: 1.5rem;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+
+    &__icon {
+      font-size: 2rem;
+      width: 2.4rem;
+      overflow: hidden;
+      height: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    &__text {
+      margin: 0;
+    }
+
+    &.flash {
+      animation-iteration-count: 2;
+    }
+  }
+}
+
+.video-card-loader {
+  width: 100%;
+  padding-top: calc(var(--ytd-watch-flexy-player-height) + 94px);
+  position: relative;
+}
+
+.video-details-tags {
+  display: flex;
+  height: 1.8rem;
+  overflow: hidden;
+  .video-details-tag {
+    margin: 0;
+    margin-right: 3px;
+    color: var(--yt-primary-50);
+  }
+}
+
+
+@media (min-width: 576px) {
+
+  .video-details-actions {
+    width: unset;
+    justify-content: flex-start;
+    &__item {
+      flex-direction: row;
+      margin-top: 0;
+      margin-right: 1.5rem;
+     &__icon {
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+     }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .video-details {
+    &__footer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .video-details-actions {
+    flex: 1 0 430px;
+    justify-content: flex-end;
+  }
+
+}

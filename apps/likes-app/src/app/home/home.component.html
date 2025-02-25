@@ -1,0 +1,58 @@
+<div class="home">
+  <ng-container *ngIf="!isLoading && videoIds?.length; else emptyTemplate">
+    <div class="home-sidebar">
+      <div class="home-sidebar__video">
+        <ng-container *ngIf="likedVideos?.[0] as primaryVideo else primaryLoadingTemplate">
+          <ytd-video-thumbnail
+            (click)="onWatchVideo(primaryVideo.id?.videoId)"
+            [searchItem]="primaryVideo"
+            [direction]="'horizontal'"
+          ></ytd-video-thumbnail>
+        </ng-container>
+      </div>
+
+      <h1 class="home-sidebar__title mat-display-1">Liked videos</h1>
+    </div>
+    <div class="video-list">
+      <ng-container *ngIf="likedVideos?.length; else loadingTemplate">
+        <!-- <ng-container *ngIf="likedVideos?.length; else loadingTemplate"> -->
+        <div
+          class="video-item"
+          *ngFor="let video of likedVideos; index as videoIndex"
+          (click)="onWatchVideo(video.id?.videoId)"
+        >
+          <div class="video-item__index">{{ videoIndex + 1 }}</div>
+
+          <div class="video-item__thumbnail">
+            <ytd-video-thumbnail [searchItem]="video" [direction]="'vertical'"></ytd-video-thumbnail>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="thumbnail-loader-template-item" *ngFor="let item of videoIds">
+    <ytd-video-thumbnail-loader [direction]="'vertical'"></ytd-video-thumbnail-loader>
+  </div>
+</ng-template>
+
+<ng-template #primaryLoadingTemplate>
+  <div class="thumbnail-primary-loader-template-item">
+    <ytd-video-thumbnail-loader [direction]="'horizontal'"> </ytd-video-thumbnail-loader>
+  </div>
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <div class="emptyTemplate">
+    <div class="emptyTemplate__header">
+      <mat-icon class="emptyTemplate-icon">search</mat-icon>
+    </div>
+
+    <div class="emptyTemplate__text">
+      <h2 class="mat-h2">Seems like you have not liked videos yet</h2>
+      <a class="mat-h3" (click)="onBrowseVideos()"> Watch and like some videos </a>
+    </div>
+  </div>
+</ng-template>

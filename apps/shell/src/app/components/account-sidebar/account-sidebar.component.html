@@ -1,0 +1,77 @@
+<div class="sidebar">
+  <div class="sidebar-top">
+    <div class="sidebar-top__avatar">
+      <mat-icon>account_circle</mat-icon>
+    </div>
+    <div class="sidebar-top__text">
+      <h2 class="mat-h2">Anonymous</h2>
+      <h3 class="mat-caption">Version: Angular v.{{ version }}</h3>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="sidebar-content">
+    <div class="sidebar-content-item">
+      <div class="sidebar-content-item__icon">
+        <mat-icon>nightlight_round</mat-icon>
+      </div>
+
+      <div class="sidebar-content-item__text mat-h3" mat-button [matMenuTriggerFor]="themeMenu">Change Appearance</div>
+      <mat-menu #themeMenu="matMenu">
+        <button mat-menu-item class="menu-btn" (click)="onChangeTheme(appTheme.LIGHT)">Light Theme</button>
+        <button mat-menu-item class="menu-btn" (click)="onChangeTheme(appTheme.DARK)">Dark Theme</button>
+      </mat-menu>
+    </div>
+
+    <a class="sidebar-content-item" href="https://github.com/vugar005/youtube-webapp-turborepo" target="_blank">
+      <div class="sidebar-content-item__icon">
+        <mat-icon>diamond</mat-icon>
+      </div>
+      <div class="sidebar-content-item__text mat-h3">Source Code</div>
+    </a>
+
+    <div class="sidebar-content-item" (click)="onShowKeyEventsDialog()">
+      <div class="sidebar-content-item__icon">
+        <mat-icon>keyboard</mat-icon>
+      </div>
+      <div class="sidebar-content-item__text mat-h3">Keyboard shortcuts</div>
+    </div>
+
+    <div class="sidebar-content-item">
+      <div class="sidebar-content-item__icon">
+        <mat-icon>video_settings</mat-icon>
+      </div>
+
+      <div class="sidebar-content-item__text mat-h3" mat-button [matMenuTriggerFor]="apiMenu">
+        Change Youtube API Service
+      </div>
+      <mat-menu #apiMenu="matMenu">
+        <button
+          mat-menu-item
+          class="menu-btn"
+          *ngFor="let item of apiSelectOptions"
+          [ngClass]="{ 'menu-btn--active': selectedApiService === item.value }"
+          (click)="onChangeAPIService(item.value)"
+          [disabled]="item.disabled"
+        >
+          {{ item.label }}
+        </button>
+      </mat-menu>
+    </div>
+
+    <a class="sidebar-content-item" routerLink="/policy-terms">
+      <div class="sidebar-content-item__icon">
+        <mat-icon>policy</mat-icon>
+      </div>
+      <div class="sidebar-content-item__text mat-h3">Policy & Terms</div>
+    </a>
+
+    <a class="sidebar-content-item" href="https://www.vugar.app" target="_blank">
+      <div class="sidebar-content-item__icon">
+        <mat-icon>trending_up</mat-icon>
+      </div>
+      <div class="sidebar-content-item__text mat-h3">About Author</div>
+    </a>
+  </div>
+</div>

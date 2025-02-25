@@ -1,0 +1,59 @@
+<div class="browse-videos">
+  <div class="browse-videos__sidenav">
+    <yt-mini-sidebar class="mini-sidebar-wrapper"></yt-mini-sidebar>
+  </div>
+  <div class="browse-videos-list">
+    <ng-container *ngIf="!hasError; else errorTemplate">
+      <ng-container *ngIf="!isLoading; else loadingTemplate">
+        <ng-container *ngIf="videoLinks?.length; else emptyTemplate">
+          <div
+            class="video-player"
+            *ngFor="let video of videoLinks; trackBy: trackVideoItem"
+            (click)="onSelectVideo(video.id?.videoId)"
+          >
+            <ytd-video-thumbnail
+              [searchItem]="video"
+              [videoDetail]="getVideoDetail(video.id?.videoId)"
+              [direction]="'horizontal'"
+              [isNowPlaying]="(currentPlayingId$ | async) === video.id?.videoId"
+            ></ytd-video-thumbnail>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loader-template">
+    <ng-container *ngFor="let item of items">
+      <div class="loader-template__item">
+        <ytd-video-thumbnail-loader [direction]="'horizontal'"></ytd-video-thumbnail-loader>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #emptyTemplate>
+  <div class="emptyTemplate">
+    <div class="emptyTemplate__header">
+      <mat-icon class="emptyTemplate-icon">search</mat-icon>
+    </div>
+
+    <div class="emptyTemplate__text">
+      <h2 class="mat-h2">No results found</h2>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <div class="errorTemplate">
+    <div class="errorTemplate__header">
+      <mat-icon class="errorTemplate-icon">report_problem</mat-icon>
+    </div>
+
+    <div class="errorTemplate__text">
+      <h2 class="mat-h2">Oops... Someting went wrong.</h2>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,128 @@
+
+
+:host {
+  display: block;
+  height: 100%;
+ --sidebar-width: 300px;
+}
+
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.home-sidebar {
+  width: var(--sidebar-width);
+  padding: 15px 24px;
+  border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+
+  &__video {
+    width: 100%;
+    position: relative;
+    padding-top: calc(var( --sidebar-width) / var(--yt-image-aspect-ratio) + var(--yt-thumbnail-details-height));
+  }
+
+  &__title {
+    display: block;
+    color: var(--yt-spec-text-primary);
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.video-list {
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--yt-spec-general-background-b);
+  margin-right: 24px;
+}
+
+.video-item {
+  display: flex;
+  align-items: center;
+  transition: background 100ms ease-in-out;
+  position: relative;
+  padding-top: 16px;
+
+  &:hover {
+    background: var(--yt-spec-badge-chip-background);
+  }
+
+  &__index {
+    width: 36px;
+    color: var(--yt-spec-text-secondary);
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  &__thumbnail {
+    flex: 1;
+    height: 94px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+    position: relative;
+  }
+}
+
+.thumbnail-loader-template-item {
+  width: calc(100% - 36px);
+  position: relative;
+  margin-left: 36px;
+  margin-top: 16px;
+  padding: 16px 0;
+  margin-bottom: 8px;
+  height: 94px;
+}
+
+.thumbnail-primary-loader-template-item {
+  width: 312px;
+}
+
+@media (min-width: 768px) {
+  .home {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  :host {
+    --sidebar-width: 360px;
+  }
+}
+
+.emptyTemplate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  width: 100%;
+  .emptyTemplate-icon {
+    width: 14rem;
+    height: 14rem;
+    font-size: 14rem;
+    overflow: hidden;
+    color: var(--yt-primary-50);
+  }
+  &__text {
+    text-align: center;
+    text-align: center;
+    h2 {
+      margin-bottom: 5px;
+      color: var(--yt-spec-text-primary);
+    }
+    a,
+    h3 {
+      color: var(--yt-primary-50);
+      cursor: pointer;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+}

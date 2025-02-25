@@ -1,0 +1,20 @@
+<a
+  class="thumbnail"
+  [ngClass]="{
+    'thumbnail--vertical': direction === 'vertical',
+    'thumbnail--horizontal': direction === 'horizontal'
+  }"
+>
+  <div class="thumbnail__image">
+    <div></div>
+  </div>
+
+  <div class="thumbnail-details">
+    <div class="thumbnail-details__icon"></div>
+    <div class="thumbnail-details-content">
+      <h3 class="thumbnail-details-content__title"></h3>
+      <h3 class="thumbnail-details-content__channelTitle"></h3>
+      <p class="thumbnail-details-content__footer"></p>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+    "pipeline": {
+      "build": {
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
+      "lint": {
+        "outputs": []
+      },
+      "lint:fix": {
+        "outputs": []
+      },
+      "serve": {
+        "cache": false,
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
+      "serve:ssr": {
+        "cache": false,
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
+      "serve:prod": {
+        "cache": false,
+        "dependsOn": ["^build"],
+        "outputs": ["dist/**"]
+      },
+      "clean": {},
+      "pack-lib": {
+        "cache": false
+      },
+      "pack-lib:prod": {
+        "cache": false
+      },
+      "deploy": {},
+      "analyze": {
+        "dependsOn": ["^build"]
+      }
+    }
+  }

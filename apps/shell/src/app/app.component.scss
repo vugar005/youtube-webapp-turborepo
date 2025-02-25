@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.yt-drawer-container {
+  height: 100%;
+}
+
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: var(--ytd-watch-flexy-masthead-z-index);
+  background: var(--yt-spec-background-primary);
+}

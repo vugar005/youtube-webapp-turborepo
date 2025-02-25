@@ -1,0 +1,52 @@
+:host {
+    display: block;
+    width: 100%;
+    cursor: default;
+}
+
+.video-owner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.6rem;
+
+    &__avatar {
+        width: 4.8rem;
+        height: 4.8rem;
+        border-radius: 50%;
+        background: var( --yt-spec-10-percent-layer);
+    }
+
+    &__title{
+        margin: 0;
+        margin-left: 1.6rem;
+        color: var(--yt-spec-text-primary);
+    }
+
+    &__subscribe {
+        button {
+            background:  var( --yt-spec-brand-button-background);
+            color: #fff;
+        }
+       margin-left: auto;
+    }
+}
+
+.yt-expander {
+    margin-left: 6.4rem;
+    &__content {
+        height: 75px;
+        overflow: hidden;
+        color: var(--yt-spec-text-primary);
+
+        &--expanded {
+            height: auto;
+        }
+    }
+    &__more {
+        background: transparent;
+        border: 0;
+        text-transform: uppercase;
+        color: var(--yt-spec-text-secondary);
+        cursor: pointer;
+    }
+}

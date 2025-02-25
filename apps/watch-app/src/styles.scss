@@ -1,0 +1,13 @@
+/*
+
+NOTE: This styles is not needed to run with shell because shell already imports it.
+For remote app to work with shell the app needs to be compiled to web component(angular element).
+To bootstrap app seperate from shell, we need below styles.
+
+*/
+
+
+@import '@youtube/common-ui/dist/src/lib/styles/_variables';
+@import '@youtube/common-ui/dist/src/lib/styles/_theme';
+@import '@youtube/common-ui/dist/src/lib/styles/_scrollbar';
+@import '@youtube/common-ui/dist/src/lib/styles/_core';
